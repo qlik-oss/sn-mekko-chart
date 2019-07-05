@@ -1,5 +1,5 @@
 {
-  "name": "sn-mekko-chart",
+  "name": "@nebula.js/sn-mekko-chart",
   "version": "0.1.0",
   "description": "Supernova mekko chart",
   "license": "MIT",
@@ -9,6 +9,9 @@
     "nebula",
     "supernova"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
     "url": "https://github.com/qlik-oss/sn-mekko-chart/issues"
   },

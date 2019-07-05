@@ -30,7 +30,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.15.0",
     "eslint-plugin-mocha": "^5.2.1",
-    "picasso.js": "^0.26.1",
-    "picasso-plugin-q": "^0.26.1"
+    "picasso-plugin-q": "^0.26.1",
+    "picasso.js": "^0.26.1"
   }
 }

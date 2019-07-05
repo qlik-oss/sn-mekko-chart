@@ -1,0 +1,36 @@
+{
+  "name": "sn-mekko-chart",
+  "version": "0.1.0",
+  "description": "",
+  "license": "MIT",
+  "author": "QlikTech International AB",
+  "keywords": [
+    "qlik",
+    "nebula",
+    "supernova"
+  ],
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "main": "dist/sn-mekko-chart.js",
+  "module": "dist/sn-mekko-chart.esm.js",
+  "scripts": {
+    "build": "nebula build",
+    "lint": "eslint src",
+    "start": "nebula serve",
+    "test:integration": "aw puppet --glob 'test/integration/**/*.spec.js' --chrome.headless true --chrome.slowMo 10"
+  },
+  "devDependencies": {
+    "@after-work.js/aw": "^6.0.3",
+    "@nebula.js/cli": "0.1.0-alpha.15",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-mocha": "^5.2.1",
+    "picasso.js": "^0.25.2",
+    "picasso-plugin-q": "^0.25.2"
+  }
+}

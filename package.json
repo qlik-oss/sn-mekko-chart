@@ -9,6 +9,13 @@
     "nebula",
     "supernova"
   ],
+  "bugs": {
+    "url": "https://github.com/qlik-oss/sn-mekko-chart/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qlik-oss/sn-mekko-chart.git"
+  },
   "files": [
     "dist"
   ],

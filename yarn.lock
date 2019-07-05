@@ -5689,13 +5689,13 @@ phin@^2.9.1:
   version "2.9.3"
   resolved "https://registry.yarnpkg.com/phin/-/phin-2.9.3.tgz#f9b6ac10a035636fb65dfc576aaaa17b8743125c"
 
-picasso-plugin-q@^0.25.2:
-  version "0.25.3"
-  resolved "https://registry.yarnpkg.com/picasso-plugin-q/-/picasso-plugin-q-0.25.3.tgz#8677a94df28d6be731066ffac4d5229c18e0f06f"
+picasso-plugin-q@^0.26.1:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/picasso-plugin-q/-/picasso-plugin-q-0.26.1.tgz#c31e954be43f46533e7a993745b86cff7321042a"
 
-picasso.js@^0.25.2:
-  version "0.25.3"
-  resolved "https://registry.yarnpkg.com/picasso.js/-/picasso.js-0.25.3.tgz#943860f1f92e8f74cb15920ac129b9ad91cb353a"
+picasso.js@^0.26.1:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/picasso.js/-/picasso.js-0.26.1.tgz#b6bd601bbf63c5c4de9e0b65df1e1fd2127b0145"
 
 pify@^2.0.0:
   version "2.3.0"

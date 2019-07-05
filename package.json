@@ -21,7 +21,8 @@
     "build": "nebula build",
     "lint": "eslint src",
     "start": "nebula serve",
-    "test:integration": "aw puppet --glob 'test/integration/**/*.spec.js' --chrome.headless true --chrome.slowMo 10"
+    "test:integration": "aw puppet --glob 'test/integration/**/*.spec.js' --chrome.headless true --chrome.slowMo 10",
+    "prepublishOnly": "rm -rf dist && npm run build"
   },
   "devDependencies": {
     "@after-work.js/aw": "^6.0.3",

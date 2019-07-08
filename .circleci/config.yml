@@ -22,6 +22,9 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.9.0
+      - image: qlikcore/engine:12.401.0
+        command: -S AcceptEULA=yes
+      - image: browserless/chrome:1.9-puppeteer-1.13.0
 
     working_directory: ~/project
 
@@ -50,6 +53,12 @@ jobs:
               echo "Uploading coverage results to coveralls.io..."
               cat ./coverage/unit/lcov.info | npx coveralls
             fi
+
+      - run:
+          name: Integration tests
+          command: |
+            DocId=$(curl -s --data-binary @data/apps/Executive_Dashboard.qvf http://localhost:9076/v1/apps/import | jq -r '.attributes.id')
+            APP_ID=$DocId yarn run test:integration --chrome.browserWSEndpoint "ws://localhost:3000" --no-launch
 
       - store_test_results:
           path: coverage/junit

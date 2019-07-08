@@ -5,6 +5,7 @@ let s;
 before(async () => {
   s = await serve({
     build: false,
+    open: false,
   });
 
   process.testServer = s;

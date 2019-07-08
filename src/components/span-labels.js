@@ -1,6 +1,8 @@
 import REFS from '../refs';
 
-export default function spanLabels() {
+export default function spanLabels({
+  context,
+}) {
   return [{
     key: 'span-boxes',
     type: 'box',
@@ -9,6 +11,17 @@ export default function spanLabels() {
     data: {
       collection: REFS.SPAN_COLLECTION,
     },
+    brush: context.permissions.indexOf('select') !== -1 && context.permissions.indexOf('interact') !== -1 ? {
+      trigger: [{
+        contexts: ['selection'],
+      }],
+      consume: [{
+        context: 'selection',
+        style: {
+          inactive: { opacity: 0.3 },
+        },
+      }],
+    } : {},
     settings: {
       major: {
         binStart: {
@@ -31,6 +44,7 @@ export default function spanLabels() {
       },
     },
   }, {
+    key: 'span-labels',
     type: 'labels',
     dock: '@span-boxes',
     displayOrder: 2,

@@ -26,7 +26,7 @@ export default function ({
     components: [
       ...axis(),
       ...cells({ context }),
-      ...spanLabels(),
+      ...spanLabels({ context }),
     ],
   };
 }

@@ -99,6 +99,17 @@ export default function ({
       data: {
         collection: 'stacked',
       },
+      brush: context.permissions.indexOf('select') !== -1 && context.permissions.indexOf('interact') !== -1 ? {
+        trigger: [{
+          contexts: ['selection'],
+        }],
+        consume: [{
+          context: 'selection',
+          style: {
+            inactive: { opacity: 0.3 },
+          },
+        }],
+      } : {},
       settings: {
         major: {
           ref: 'series',

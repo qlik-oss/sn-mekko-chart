@@ -31,12 +31,17 @@
     "build": "nebula build",
     "lint": "eslint src",
     "start": "nebula serve",
+    "test:unit": "aw -c aw.config.js",
     "test:integration": "aw puppet --glob 'test/integration/**/*.spec.js' --chrome.headless true --chrome.slowMo 10",
     "prepublishOnly": "rm -rf dist && npm run build"
   },
   "devDependencies": {
     "@after-work.js/aw": "^6.0.3",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "@nebula.js/cli": "0.1.0-alpha.16",
+    "babel-plugin-istanbul": "^5.1.4",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.15.0",

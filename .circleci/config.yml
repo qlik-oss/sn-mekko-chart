@@ -42,4 +42,16 @@ jobs:
           name: Lint
           command: yarn run lint
 
+      - run:
+          name: Unit tests
+          command: |
+            npx aw -c aw.config.js --mocha.bail false --mocha.reporter mocha-junit-reporter --mocha.reporterOptions.mochaFile ./coverage/junit/junit.xml
+            if [ ! -z "$COVERALLS_REPO_TOKEN" ]; then
+              echo "Uploading coverage results to coveralls.io..."
+              cat ./coverage/unit/lcov.info | npx coveralls
+            fi
+
+      - store_test_results:
+          path: coverage/junit
+
       - save_cache: *save_yarn_cache

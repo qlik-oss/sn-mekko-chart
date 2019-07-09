@@ -1,7 +1,37 @@
 # sn-mekko-chart
 
+[![CircleCI](https://circleci.com/gh/qlik-oss/sn-mekko-chart.svg?style=shield)](https://circleci.com/gh/qlik-oss/sn-mekko-chart)
+[![Coverage Status](https://coveralls.io/repos/github/qlik-oss/sn-mekko-chart/badge.svg)](https://coveralls.io/github/qlik-oss/sn-mekko-chart)
+
+A basic mekko chart supernova aimed to be used in [nebula.js](https://github.com/qlik-oss/nebula.js).
+
+![mekko chart preview](./assets/preview.gif)
+
+
+## Installing
+
+If you use npm: `npm install @nebula.js/sn-mekko-chart`. You can also load through the script tag directly from [https://unpkg.com](https://unpkg.com/@nebula.js/sn-mekko-chart).
+
 ## Usage
 
 ```js
-npm install sn-mekko-chart
+
+import nucleus from '@nebula.js/nucleus';
+import mekko from '@nebula.js/sn-mekko-chart';
+
+// 'app' is an enigma app model
+const nuked = nucleus(app, {
+  types: [{ // register the mekko chart
+    name: 'mekko',
+    load: () => Promise.resolve(mekko);
+  }]
+});
+
+nuked.create({
+  type: 'mekko',
+}, {
+  element
+});
 ```
+
+[See full example](./example)

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <title>Mekko chart</title>
+
+  <script src="https://unpkg.com/enigma.js@2.4.0/enigma.min.js"></script>
+
+  <script src="https://unpkg.com/@nebula.js/sn-mekko-chart"></script>
+  <script src="https://unpkg.com/@nebula.js/nucleus@0.1.0-alpha.17/dist/nucleus.js"></script>
+
+	<style>
+
+    .object {
+      position: relative;
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 4px;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+      height: 600px;
+      width: calc(50% - 8px);
+      /* margin-left: 12px; */
+    }
+
+    .object:first-child {
+      margin-right: 12px;
+    }
+
+    .toolbar {
+      background-color: white;
+      margin: 12px 0px;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    }
+
+	</style>
+</head>
+<body>
+  <div class="toolbar"></div>
+  <div>
+    <div class="object"></div>
+    <div class="object"></div>
+  </div>
+
+  <script src="index.js"></script>
+</html>

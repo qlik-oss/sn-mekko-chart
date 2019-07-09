@@ -5,6 +5,7 @@ import properties from './object-properties';
 import data from './data';
 import picSelections from './pic-selections';
 import definition from './pic-definition';
+import colorFn from './color';
 
 export default function supernova(/* env */) {
   const picasso = picassojs();
@@ -33,13 +34,16 @@ export default function supernova(/* env */) {
         layout,
         context,
       }) {
+        if (!this.color) {
+          this.color = colorFn();
+        }
         this.pic.update({
           data: [{
             type: 'q',
             key: 'qHyperCube',
             data: layout.qHyperCube,
           }],
-          settings: definition({ layout, context }),
+          settings: definition({ layout, context, color: this.color }),
         });
       },
       resize() {},

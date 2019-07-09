@@ -9,7 +9,8 @@ import REFS from './refs';
 
 export default function ({
   layout, // eslint-disable-line no-unused-vars
-  context, // eslint-disable-line no-unused-vars
+  context,
+  color,
 }) {
   return {
     collections: [
@@ -25,7 +26,7 @@ export default function ({
     scales: scales(),
     components: [
       ...axis(),
-      ...cells({ context }),
+      ...cells({ context, color }),
       ...spanLabels({ context }),
     ],
   };

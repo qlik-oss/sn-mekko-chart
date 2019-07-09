@@ -2,6 +2,7 @@ import REFS from '../refs';
 
 export default function cells({
   context,
+  color,
 }) {
   return [{
     key: 'cells',
@@ -57,6 +58,9 @@ export default function cells({
         strategy: {
           type: 'rows',
           settings: {
+            fill(d) {
+              return color.getBestContrastColor(d.node.attrs.fill);
+            },
             labels: [{
               label: d => (d.data ? d.data.label : ''),
             }],

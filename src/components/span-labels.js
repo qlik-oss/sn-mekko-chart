@@ -18,7 +18,7 @@ export default function spanLabels({
       consume: [{
         context: 'selection',
         style: {
-          inactive: { opacity: 0.3 },
+          inactive: { opacity: 0.4 },
         },
       }],
     } : {},
@@ -48,6 +48,14 @@ export default function spanLabels({
     type: 'labels',
     dock: '@span-boxes',
     displayOrder: 2,
+    brush: {
+      consume: [{
+        context: 'selection',
+        style: {
+          inactive: { opacity: 0.6 },
+        },
+      }],
+    },
     settings: {
       sources: [{
         component: 'span-boxes',
@@ -57,6 +65,9 @@ export default function spanLabels({
           settings: {
             fill: '#111',
             labels: [{
+              linkData({ node }) {
+                return node.data;
+              },
               label: d => (d.data ? d.data.series.label : ''),
             }],
           },

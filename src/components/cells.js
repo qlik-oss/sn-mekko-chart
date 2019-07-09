@@ -17,7 +17,7 @@ export default function cells({
       consume: [{
         context: 'selection',
         style: {
-          inactive: { opacity: 0.3 },
+          inactive: { opacity: 0.4 },
         },
       }],
     } : {},
@@ -51,6 +51,15 @@ export default function cells({
     type: 'labels',
     dock: '@cells',
     displayOrder: 2,
+    brush: {
+      consume: [{
+        context: 'selection',
+        // data: [''],
+        style: {
+          inactive: { opacity: 0.6 },
+        },
+      }],
+    },
     settings: {
       sources: [{
         component: 'cells',
@@ -62,6 +71,9 @@ export default function cells({
               return color.getBestContrastColor(d.node.attrs.fill);
             },
             labels: [{
+              linkData({ node }) {
+                return node.data;
+              },
               label: d => (d.data ? d.data.label : ''),
             }],
           },

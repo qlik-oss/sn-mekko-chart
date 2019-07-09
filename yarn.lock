@@ -1061,9 +1061,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nebula.js/cli-build@0.1.0-alpha.16":
-  version "0.1.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@nebula.js/cli-build/-/cli-build-0.1.0-alpha.16.tgz#e03f996db1835f249d7a0e35151672aca6397b9e"
+"@nebula.js/cli-build@0.1.0-alpha.17":
+  version "0.1.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@nebula.js/cli-build/-/cli-build-0.1.0-alpha.17.tgz#0508eb5307d005f4ac937f63df8fafac7d9bd2ef"
+  integrity sha512-t4gvCvXh+TcP8HqkBDEuhpqeQlkDvOvw9ylrpOieJIFVpl0ySZVMj5iVQyVxC6zfxjiw3WHFXlvggxNrXwaajA==
   dependencies:
     "@babel/cli" "^7.4.4"
     "@babel/core" "^7.4.5"
@@ -1077,23 +1078,25 @@
     rollup-plugin-terser "^5.0.0"
     yargs "^13.2.4"
 
-"@nebula.js/cli-create@0.1.0-alpha.16":
-  version "0.1.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@nebula.js/cli-create/-/cli-create-0.1.0-alpha.16.tgz#628c5a6746a12d7a9f9e0c29cc29d64bec8ed802"
+"@nebula.js/cli-create@0.1.0-alpha.17":
+  version "0.1.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@nebula.js/cli-create/-/cli-create-0.1.0-alpha.17.tgz#9041ca27391b1a71c77d8adabfbf231663e0a9ba"
+  integrity sha512-UAijGse4I3JcZnR5asdN58oNWpFGaRCHXErTxhDm7BffDzUoItGJ6ZdXazosci+IjZ0LELZ/9lwDX2ItDrMs/w==
   dependencies:
     chalk "^2.4.2"
     ejs "^2.6.1"
     fs-extra "^8.0.1"
     inquirer "^6.3.1"
 
-"@nebula.js/cli-sense@0.1.0-alpha.16":
-  version "0.1.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@nebula.js/cli-sense/-/cli-sense-0.1.0-alpha.16.tgz#aa635c5306f4a8e726821f8b32188e9d0c3238fa"
+"@nebula.js/cli-sense@0.1.0-alpha.17":
+  version "0.1.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@nebula.js/cli-sense/-/cli-sense-0.1.0-alpha.17.tgz#ed95f9b6bef0341d3e10638cdbb51633d6be224d"
+  integrity sha512-hYO9K4Bk7cxZsQAzBIjkmeUChC+Z6YTiz53KzIPaQIGJPsl2iClKhADTMC98iqLJkr/34dN1IoMFeY/bxFBivQ==
   dependencies:
     "@babel/cli" "^7.4.4"
     "@babel/core" "^7.4.5"
     "@babel/preset-env" "^7.4.5"
-    "@nebula.js/supernova" "0.1.0-alpha.16"
+    "@nebula.js/supernova" "0.1.0-alpha.17"
     chalk "^2.4.2"
     node-event-emitter "^0.0.1"
     rollup "^1.15.5"
@@ -1103,11 +1106,12 @@
     rollup-plugin-terser "^5.0.0"
     yargs "^13.2.4"
 
-"@nebula.js/cli-serve@0.1.0-alpha.16":
-  version "0.1.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@nebula.js/cli-serve/-/cli-serve-0.1.0-alpha.16.tgz#b4f400d1d6d684e71971d8188b9e518f58c136b3"
+"@nebula.js/cli-serve@0.1.0-alpha.17":
+  version "0.1.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@nebula.js/cli-serve/-/cli-serve-0.1.0-alpha.17.tgz#6f85795872edcce6ae847049d34881a202dd1af7"
+  integrity sha512-xUNatI5btwVNUl7zEkL/Fy7xBoPPWaM0qWY1eL4soOU0i9QIbmY8RA6ISPqBlIsBv4CCAu0b+1MBH0Spk9t9yg==
   dependencies:
-    "@nebula.js/cli-build" "0.1.0-alpha.16"
+    "@nebula.js/cli-build" "0.1.0-alpha.17"
     chalk "^2.4.2"
     cross-env "^5.2.0"
     execa "^1.0.0"
@@ -1118,20 +1122,22 @@
     webpack-dev-server "^3.7.1"
     yargs "^13.2.4"
 
-"@nebula.js/cli@0.1.0-alpha.16":
-  version "0.1.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@nebula.js/cli/-/cli-0.1.0-alpha.16.tgz#937eaded6883bdd18eb3b1c33904ce7f4408904b"
+"@nebula.js/cli@0.1.0-alpha.17":
+  version "0.1.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@nebula.js/cli/-/cli-0.1.0-alpha.17.tgz#fd20d44aeb69807f342633a06e2471845bae3288"
+  integrity sha512-t0vCqwqVDWUSCkKqPsnXjl5x4IA77mhUkbKp/TyTvwS5TGkvla5G0G1nyf0ulVPd66hRljTMMIWPiRR70VxdBg==
   dependencies:
-    "@nebula.js/cli-build" "0.1.0-alpha.16"
-    "@nebula.js/cli-create" "0.1.0-alpha.16"
-    "@nebula.js/cli-sense" "0.1.0-alpha.16"
-    "@nebula.js/cli-serve" "0.1.0-alpha.16"
+    "@nebula.js/cli-build" "0.1.0-alpha.17"
+    "@nebula.js/cli-create" "0.1.0-alpha.17"
+    "@nebula.js/cli-sense" "0.1.0-alpha.17"
+    "@nebula.js/cli-serve" "0.1.0-alpha.17"
     chalk "^2.4.2"
     yargs "^13.2.4"
 
-"@nebula.js/supernova@0.1.0-alpha.16":
-  version "0.1.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@nebula.js/supernova/-/supernova-0.1.0-alpha.16.tgz#4bbc690a7c6b6176c0648858a2f33566e355be3f"
+"@nebula.js/supernova@0.1.0-alpha.17":
+  version "0.1.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@nebula.js/supernova/-/supernova-0.1.0-alpha.17.tgz#5f14edf12dca87215a0fcc45d23a9299ea77b754"
+  integrity sha512-5y7SlzJeNrH07n4LozlC/RN7eVCbYEd7S3OF7LihQrwrIt+4xMCk+Nq7ZGMiUMDgXei4tiCogBB+OnwfcF/QfQ==
 
 "@nodelib/fs.stat@^1.1.2":
   version "1.1.3"

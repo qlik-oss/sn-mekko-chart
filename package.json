@@ -36,16 +36,16 @@
     "prepublishOnly": "rm -rf dist && npm run build"
   },
   "devDependencies": {
-    "@after-work.js/aw": "^6.0.3",
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
+    "@after-work.js/aw": "^6.0.5",
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
     "@nebula.js/cli": "0.1.0-alpha.17",
     "babel-plugin-istanbul": "^5.1.4",
     "eslint": "^6.0.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.15.0",
-    "eslint-plugin-mocha": "^5.2.1",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-mocha": "^5.3.0",
     "mocha-junit-reporter": "^1.23.0",
     "picasso-plugin-q": "^0.26.1",
     "picasso.js": "^0.26.1"

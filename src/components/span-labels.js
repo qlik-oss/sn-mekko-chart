@@ -4,8 +4,8 @@ export default function spanLabels({
   context,
 }) {
   return [{
-    key: 'span-boxes',
     type: 'box',
+    key: 'column-boxes',
     dock: 'top',
     preferredSize: () => 32,
     data: {
@@ -44,9 +44,9 @@ export default function spanLabels({
       },
     },
   }, {
-    key: 'span-labels',
     type: 'labels',
-    dock: '@span-boxes',
+    key: 'column-labels',
+    dock: '@column-boxes',
     displayOrder: 2,
     brush: {
       consume: [{
@@ -58,7 +58,7 @@ export default function spanLabels({
     },
     settings: {
       sources: [{
-        component: 'span-boxes',
+        component: 'column-boxes',
         selector: 'rect',
         strategy: {
           type: 'rows',

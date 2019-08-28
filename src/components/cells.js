@@ -5,8 +5,8 @@ export default function cells({
   color,
 }) {
   return [{
-    key: 'cells',
     type: 'box',
+    key: 'cells',
     data: {
       collection: REFS.STACKED_COLLECTION,
     },
@@ -47,8 +47,8 @@ export default function cells({
       },
     },
   }, {
-    key: 'cell-labels',
     type: 'labels',
+    key: 'cell-labels',
     dock: '@cells',
     displayOrder: 2,
     brush: {

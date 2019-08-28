@@ -6,11 +6,11 @@ describe('interaction', () => {
     await page.waitForSelector(content, {
       timeout: 5000,
     });
-    await page.click('[data-key="span-boxes"] rect[data-label="Americas"]');
-    await page.click('[data-key="span-boxes"] rect[data-label="Europe"]');
+    await page.click('[data-key="column-boxes"] rect[data-label="Americas"]');
+    await page.click('[data-key="column-boxes"] rect[data-label="Europe"]');
     await page.click('button[title="Confirm selection"]');
 
-    let rects = await page.$$eval('[data-key="span-boxes"] rect[data-label]', sel => sel.map(r => r.getAttribute('data-label')));
+    let rects = await page.$$eval('[data-key="column-boxes"] rect[data-label]', sel => sel.map(r => r.getAttribute('data-label')));
     expect(rects).to.eql(['Americas', 'Europe']);
 
     await page.click('[data-key="cells"] rect[data-label="2012"]');

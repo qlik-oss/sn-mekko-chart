@@ -1,6 +1,7 @@
 import axis from './components/axis';
 import cells from './components/cells';
 import spanLabels from './components/span-labels';
+import tooltip from './components/tooltip';
 
 import scales from './scales';
 import stack from './stack';
@@ -12,6 +13,7 @@ export default function ({
   context,
   color,
 }) {
+  const allowTooltip = context.permissions.indexOf('passive') !== -1;
   return {
     collections: [
       stack({
@@ -28,6 +30,34 @@ export default function ({
       ...axis(),
       ...cells({ context, color }),
       ...spanLabels({ context }),
+      ...(allowTooltip ? tooltip() : []),
     ],
+    interactions: [{
+      type: 'native',
+      events: context.permissions.indexOf('passive') !== -1 ? {
+        mousemove(e) {
+          const bounds = this.chart.element.getBoundingClientRect();
+          const p = {
+            x: e.clientX - bounds.left,
+            y: e.clientY - bounds.top,
+          };
+
+          let shapes = [];
+
+          shapes = this.chart.shapesAt(p, {
+            components: [
+              { key: 'cells' },
+              { key: 'column-boxes' },
+            ],
+            propagation: 'stop',
+          });
+
+          this.chart.component('tool').emit('show', e, { nodes: shapes });
+        },
+        mouseleave() {
+          this.chart.component('tool').emit('hide');
+        },
+      } : {},
+    }],
   };
 }

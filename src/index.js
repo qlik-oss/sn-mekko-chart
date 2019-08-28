@@ -6,6 +6,7 @@ import data from './data';
 import picSelections from './pic-selections';
 import definition from './pic-definition';
 import colorFn from './color';
+import ext from './ext';
 
 export default function supernova(/* env */) {
   const picasso = picassojs();
@@ -50,5 +51,6 @@ export default function supernova(/* env */) {
       willUnmount() {},
       destroy() {},
     },
+    ext,
   };
 }

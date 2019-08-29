@@ -3,6 +3,7 @@ const mock = ({
   cells = () => [],
   spanLabels = () => [],
   tooltip = () => ['nope'],
+  disclaimer = () => [],
   scales = () => ({}),
   stack = () => ({}),
 } = {}) => aw.mock([
@@ -10,6 +11,7 @@ const mock = ({
   ['**/components/cells.js', () => cells],
   ['**/components/span-labels.js', () => spanLabels],
   ['**/components/tooltip.js', () => tooltip],
+  ['**/components/disclaimer.js', () => disclaimer],
   ['**/scales.js', () => scales],
   ['**/stack.js', () => stack],
 ], ['../pic-definition']);
@@ -49,6 +51,25 @@ describe('pic-definition', () => {
       });
       const c = def({ context: { permissions: ['passive'] } }).components;
       expect(c).to.eql(['t']);
+    });
+
+    it('should only contain disclaimer component when disruptive restrictions apply', () => {
+      const [{ default: def }] = mock({
+        disclaimer: () => ['d'],
+        cells: () => ['c'],
+      });
+      const c = def({ context, restricted: { type: 'disrupt' } });
+      expect(c).to.eql({
+        components: ['d'],
+      });
+    });
+
+    it('should contain disclaimer component when restrictions apply', () => {
+      const [{ default: def }] = mock({
+        disclaimer: () => ['d'],
+      });
+      const c = def({ context, restricted: {} }).components;
+      expect(c).to.eql(['d']);
     });
   });
 

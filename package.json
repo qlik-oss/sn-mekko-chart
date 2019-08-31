@@ -42,7 +42,7 @@
     "@babel/preset-env": "^7.5.5",
     "@nebula.js/cli": "0.1.0-alpha.18",
     "babel-plugin-istanbul": "^5.2.0",
-    "eslint": "^6.2.2",
+    "eslint": "^6.3.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-mocha": "^6.1.0",

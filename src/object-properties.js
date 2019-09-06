@@ -12,6 +12,9 @@ const properties = {
   title: '',
   subtitle: '',
   footnote: '',
+  color: {
+    mode: 'auto',
+  },
 };
 
 export default properties;

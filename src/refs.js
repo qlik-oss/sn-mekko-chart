@@ -1,5 +1,5 @@
 export default {
   SPAN_COLLECTION: 'span',
-  STACKED_COLLECTION: 'stacked',
+  CELL_COLLECTION: 'cells',
   SERIES: 'series',
 };

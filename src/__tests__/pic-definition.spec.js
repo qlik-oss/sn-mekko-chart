@@ -20,12 +20,19 @@ describe('pic-definition', () => {
   const context = {
     permissions: [],
   };
+  const picassoColoring = {
+    color: () => 'fill',
+    datumProps: () => ({ colorProp: 'c' }),
+    scales: () => ({ colorScale: 's' }),
+    palettes: () => ['p'],
+    legend: () => ({ components: [], interactions: [] }),
+  };
   describe('components', () => {
     it('should contain axis', () => {
       const [{ default: def }] = mock({
         axis: () => ['x', 'y'],
       });
-      const c = def({ context }).components;
+      const c = def({ context, picassoColoring }).components;
       expect(c).to.eql(['x', 'y']);
     });
 
@@ -33,7 +40,7 @@ describe('pic-definition', () => {
       const [{ default: def }] = mock({
         cells: () => ['rects', 'labels'],
       });
-      const c = def({ context }).components;
+      const c = def({ context, picassoColoring }).components;
       expect(c).to.eql(['rects', 'labels']);
     });
 
@@ -41,7 +48,7 @@ describe('pic-definition', () => {
       const [{ default: def }] = mock({
         axis: () => ['sr', 'slabels'],
       });
-      const c = def({ context }).components;
+      const c = def({ context, picassoColoring }).components;
       expect(c).to.eql(['sr', 'slabels']);
     });
 
@@ -49,7 +56,7 @@ describe('pic-definition', () => {
       const [{ default: def }] = mock({
         tooltip: () => ['t'],
       });
-      const c = def({ context: { permissions: ['passive'] } }).components;
+      const c = def({ context: { permissions: ['passive'] }, picassoColoring }).components;
       expect(c).to.eql(['t']);
     });
 
@@ -58,7 +65,7 @@ describe('pic-definition', () => {
         disclaimer: () => ['d'],
         cells: () => ['c'],
       });
-      const c = def({ context, restricted: { type: 'disrupt' } });
+      const c = def({ context, restricted: { type: 'disrupt' }, picassoColoring });
       expect(c).to.eql({
         components: ['d'],
       });
@@ -68,8 +75,20 @@ describe('pic-definition', () => {
       const [{ default: def }] = mock({
         disclaimer: () => ['d'],
       });
-      const c = def({ context, restricted: {} }).components;
+      const c = def({ context, restricted: {}, picassoColoring }).components;
       expect(c).to.eql(['d']);
+    });
+
+    it('should contain legend component', () => {
+      const [{ default: def }] = mock();
+      const c = def({
+        context,
+        restricted: {},
+        picassoColoring: {
+          ...picassoColoring, legend: () => ({ components: ['leg'], interactions: [] }),
+        },
+      }).components;
+      expect(c).to.eql(['leg']);
     });
   });
 
@@ -77,8 +96,14 @@ describe('pic-definition', () => {
     const [{ default: def }] = mock({
       scales: () => ({ x: 'data' }),
     });
-    const s = def({ context }).scales;
-    expect(s).to.eql({ x: 'data' });
+    const s = def({ context, picassoColoring }).scales;
+    expect(s).to.eql({ x: 'data', colorScale: 's' });
+  });
+
+  it('should contain palettes', () => {
+    const [{ default: def }] = mock();
+    const s = def({ context, picassoColoring }).palettes;
+    expect(s).to.eql(['p']);
   });
 
   describe('collections', () => {
@@ -86,7 +111,7 @@ describe('pic-definition', () => {
       const [{ default: def }] = mock({
         stack: opts => opts,
       });
-      const [first] = def({ context }).collections;
+      const [first] = def({ context, picassoColoring }).collections;
       expect(first).to.containSubset({
         key: 'span',
         field: 'qDimensionInfo/0',
@@ -102,23 +127,40 @@ describe('pic-definition', () => {
       const [{ default: def }] = mock({
         stack: opts => opts,
       });
-      const [, second] = def({ context }).collections;
+      const [, second] = def({ context, picassoColoring }).collections;
       expect(second).to.eql({
-        key: 'stacked',
+        key: 'cells',
         field: 'qDimensionInfo/1',
+        props: {
+          colorProp: 'c',
+        },
       });
     });
   });
 
-  it('should not contain any events when passive permission is missing', () => {
+  it('should not contain any events when passive and interact permission is missing', () => {
     const [{ default: def }] = mock();
-    const s = def({ context }).interactions;
-    expect(Object.keys(s[0].events)).to.eql([]);
+    const s = def({ context, picassoColoring }).interactions;
+    expect(s).to.eql([]);
   });
 
   it('should contain interactive mousemove and mouseleave when passive', () => {
     const [{ default: def }] = mock();
-    const s = def({ context: { permissions: ['passive'] } }).interactions;
+    const s = def({ context: { permissions: ['passive'] }, picassoColoring }).interactions;
     expect(Object.keys(s[0].events)).to.eql(['mousemove', 'mouseleave']);
+  });
+
+  it('should contain legend interactions', () => {
+    const [{ default: def }] = mock();
+    const c = def({
+      context: {
+        permissions: [''],
+      },
+      restricted: {},
+      picassoColoring: {
+        ...picassoColoring, legend: () => ({ components: [], interactions: ['legint'] }),
+      },
+    }).interactions;
+    expect(c).to.eql(['legint']);
   });
 });

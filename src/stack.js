@@ -6,6 +6,7 @@ export default function stack({
   trackBy,
   reduce,
   stackKey = d => d.series.value,
+  props = {},
 }) {
   return {
     key,
@@ -16,6 +17,7 @@ export default function stack({
           [REFS.SERIES]: { field: 'qDimensionInfo/0' },
           metric: { field: 'qMeasureInfo/0', reduce: 'sum' },
           end: { field: 'qMeasureInfo/0', reduce: 'sum' },
+          ...props,
         },
         // optional
         trackBy,
@@ -25,6 +27,7 @@ export default function stack({
         stackKey,
         value: d => d.end.value,
         offset: 'expand',
+        props,
       },
     },
   };

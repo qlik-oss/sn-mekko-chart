@@ -2,13 +2,14 @@ import REFS from '../refs';
 
 export default function cells({
   context,
-  color,
+  contraster,
+  colorFill,
 }) {
   return [{
     type: 'box',
     key: 'cells',
     data: {
-      collection: REFS.STACKED_COLLECTION,
+      collection: REFS.CELL_COLLECTION,
     },
     brush: context.permissions.indexOf('select') !== -1 && context.permissions.indexOf('interact') !== -1 ? {
       trigger: [{
@@ -43,7 +44,7 @@ export default function cells({
         ref: 'end',
       },
       box: {
-        fill: { scale: 'color' },
+        fill: colorFill,
       },
     },
   }, {
@@ -68,7 +69,7 @@ export default function cells({
           type: 'rows',
           settings: {
             fill(d) {
-              return color.getBestContrastColor(d.node.attrs.fill);
+              return contraster.getBestContrastColor(d.node.attrs.fill);
             },
             labels: [{
               linkData({ node }) {

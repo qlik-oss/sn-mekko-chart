@@ -5,11 +5,16 @@ import properties from './object-properties';
 import data from './data';
 import picSelections from './pic-selections';
 import definition from './pic-definition';
-import colorFn from './color';
+import contrasterFn from './coloring/contraster';
 import ext from './ext';
 import plugin from './component-definitions/disclaimer';
 
 import { restriction, RESTRICTIONS } from './data-restrictions';
+
+import chartColorConfig from './coloring';
+
+import picassoColoring from './coloring/picasso';
+import theme from './theme';
 
 export default function supernova(/* env */) {
   const picasso = picassojs();
@@ -22,7 +27,13 @@ export default function supernova(/* env */) {
       data,
     },
     component: {
-      created() {},
+      created() {
+        this.picassoColoring = picassoColoring({
+          picasso,
+        });
+
+        this.contraster = contrasterFn();
+      },
       mounted(element) {
         this.pic = picasso.chart({
           element,
@@ -39,9 +50,6 @@ export default function supernova(/* env */) {
         layout,
         context,
       }) {
-        if (!this.color) {
-          this.color = colorFn();
-        }
         let hc = layout.qHyperCube;
         const restricted = restriction(hc);
 
@@ -63,16 +71,30 @@ export default function supernova(/* env */) {
           };
         }
 
+        const c = chartColorConfig({
+          layout,
+          theme: theme(),
+        });
+
+        this.picassoColoring.config({
+          key: 'asd',
+          source: 'qHyperCube',
+          hc,
+          chartColorModel: c,
+          permissions: context.permissions,
+        });
+
         this.pic.update({
           data: [{
             type: 'q',
             key: 'qHyperCube',
             data: hc,
-          }],
+          }, ...this.picassoColoring.data()],
           settings: definition({
             layout,
             context,
-            color: this.color,
+            contraster: this.contraster,
+            picassoColoring: this.picassoColoring,
             restricted,
           }),
         });

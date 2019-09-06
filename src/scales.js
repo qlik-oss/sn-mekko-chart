@@ -4,7 +4,7 @@ export default function scales() {
   return {
     y: {
       data: {
-        collections: { key: REFS.STACKED_COLLECTION },
+        collections: { key: REFS.CELL_COLLECTION },
       },
       invert: true,
     },
@@ -23,14 +23,6 @@ export default function scales() {
         },
       },
       max: 1,
-    },
-    color: {
-      data: {
-        extract: {
-          field: 'qDimensionInfo/1',
-        },
-      },
-      type: 'color',
     },
   };
 }

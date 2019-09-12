@@ -7,13 +7,13 @@ export function findFields(needle, hc) {
     : [['qDimensionInfo', 'qMeasureInfo'], ['qAttrDimInfo', 'qAttrExprInfo']];
 
   targets[0].forEach((f) => {
-    const arr = hc[f];
+    const arr = hc[f] || [];
     for (let i = 0; i < arr.length; i++) {
       if (needle(typeof arr[i].qDef === 'object' ? arr[i].qDef : arr[i])) {
         found.push({ path: `/${f}/${i}`, definition: arr[i] });
       }
       targets[1].forEach((af) => {
-        const attrArr = arr[i][af];
+        const attrArr = arr[i][af] || [];
         for (let j = 0; j < attrArr.length; j++) {
           if (needle(typeof attrArr[j].qDef === 'object' ? attrArr[j].qDef : attrArr[j])) {
             found.push({ path: `/${f}/${i}/${af}/${j}`, definition: attrArr[j] });

@@ -23,7 +23,14 @@ export default function supernova(/* env */) {
 
   return {
     qae: {
-      properties,
+      properties: {
+        initial: properties,
+        onChange(p) {
+          chartColorConfig({
+            properties: p,
+          }).update();
+        },
+      },
       data,
     },
     component: {

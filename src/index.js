@@ -16,7 +16,7 @@ import chartColorConfig from './coloring';
 import picassoColoring from './coloring/picasso';
 import theme from './theme';
 
-export default function supernova(/* env */) {
+export default function supernova(env) {
   const picasso = picassojs();
   picasso.use(picassoQ);
   picasso.use(plugin);
@@ -80,7 +80,7 @@ export default function supernova(/* env */) {
 
         const c = chartColorConfig({
           layout,
-          theme: theme(),
+          theme: theme(env.Theme ? env.Theme.getCurrent().properties : {}),
         });
 
         this.picassoColoring.config({

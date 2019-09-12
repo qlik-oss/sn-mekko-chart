@@ -103,6 +103,7 @@ export default function supernova(env) {
             contraster: this.contraster,
             picassoColoring: this.picassoColoring,
             restricted,
+            env,
           }),
         });
       },

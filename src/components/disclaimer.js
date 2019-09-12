@@ -1,7 +1,8 @@
-export default function disclaimer(config) {
+export default function disclaimer(config, env) {
   if (!config) {
     return [];
   }
+  const t = env.translator;
   // TODO - use translator
   if (config.type === 'disrupt') {
     return [{
@@ -9,7 +10,7 @@ export default function disclaimer(config) {
       type: 'disclaimer',
       dock: 'center',
       settings: {
-        text: config.label,
+        text: t ? t.get(config.translation) : config.label,
       },
     }];
   }
@@ -27,7 +28,7 @@ export default function disclaimer(config) {
       },
     },
     settings: {
-      text: `* ${config.label}`,
+      text: `* ${t ? t.get(config.translation) : config.label}`,
       anchor: 'left',
     },
   }];

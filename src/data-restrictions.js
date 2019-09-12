@@ -1,22 +1,22 @@
 export const RESTRICTIONS = {
   HasNoData: {
     label: 'The selections generated no data for this chart.',
-    translation: 'NoDataExist',
+    translation: 'Object.Disclaimer.NoDataExist',
     type: 'disrupt',
   },
   HasOnlyNaNValues: {
     label: 'The chart is not displayed because it contains only undefined values.',
-    translation: 'OnlyNaNData',
+    translation: 'Object.Disclaimer.OnlyNaNData',
     type: 'disrupt',
   },
   HasOnlyNegativeOrZeroValues: {
     label: 'The chart is not displayed because it contains only negative or zero values.',
-    translation: 'OnlyNegativeOrZeroValues',
+    translation: 'Object.Disclaimer.OnlyNegativeOrZeroValues',
     type: 'disrupt',
   },
   HasZeroOrNegativeValues: {
     label: 'The data set contains negative or zero values that cannot be shown in this chart.',
-    translation: 'NegativeOrZeroValues',
+    translation: 'Object.Disclaimer.NegativeOrZeroValues',
     type: 'note',
   },
 };

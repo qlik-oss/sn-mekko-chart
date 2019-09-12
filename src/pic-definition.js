@@ -46,10 +46,11 @@ export default function ({
   contraster,
   restricted,
   picassoColoring,
+  env,
 }) {
   if (restricted && restricted.type === 'disrupt') {
     return {
-      components: disclaimer(restricted),
+      components: disclaimer(restricted, env),
     };
   }
 
@@ -90,7 +91,7 @@ export default function ({
       ...cells({ context, contraster, colorFill }),
       ...spanLabels({ context }),
       ...(allowTooltip ? tooltip() : []),
-      ...disclaimer(restricted),
+      ...disclaimer(restricted, env),
     ],
     interactions: [...leg.interactions, allowTooltip ? tooltipInteraction() : false].filter(Boolean),
   };

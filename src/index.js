@@ -110,6 +110,6 @@ export default function supernova(env) {
       willUnmount() {},
       destroy() {},
     },
-    ext,
+    ext: ext(env),
   };
 }

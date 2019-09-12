@@ -1,5 +1,4 @@
 import {
-  removeRole,
   addRole,
 } from '../roles/roles';
 
@@ -15,18 +14,19 @@ const RXA = /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeE
  * @param {string} byDimensionConfig.scheme
  * @param {string|QAE.StringExpression} byDimensionConfig.label
  */
-export function setByDimension(properties, byDimensionConfig) {
-  // remove existing
-  removeRole(properties.qHyperCubeDef, 'color');
-
+export function setByDimension(properties, byDimensionConfig, update) {
   const dimensions = properties.qHyperCubeDef.qDimensions;
-
-  const defaultTargetPath = `/qDimensions/${dimensions.length - 1}`;
+  const defaultTargetPath = `/qDimensions/${Math.max(0, dimensions.length - 1)}`;
 
   const config = byDimensionConfig || {
     type: 'index',
-    typeValue: dimensions.length - 1,
+    typeValue: Math.max(0, dimensions.length - 1),
   };
+
+  if (config.type === 'index' && config.typeValue > dimensions.length - 1) {
+    // reset dimension index to one that exits in the cube
+    config.typeValue = Math.max(0, dimensions.length - 1);
+  }
 
   let targetPath;
   if (config.type === 'index') {
@@ -35,27 +35,31 @@ export function setByDimension(properties, byDimensionConfig) {
     targetPath = `${defaultTargetPath}/qAttributeDimensions/0`;
   }
 
-  const m = RXA.exec(targetPath);
-  if (m) {
-    const def = config.type === 'libraryId' ? {
-      qLibraryId: config.typeValue,
-      libraryId: config.typeValue, // add custom property since qLibraryId is not returned in attr dimension/measure in layout
-    } : {
-      qDef: config.typeValue,
-    };
-    properties.qHyperCubeDef[m[1]][+m[2]][m[3]].splice(+m[4], 0, {
-      ...def,
-      qAttribute: true,
-      qSortBy: { qSortByAscii: 1 },
-      roles: [{ role: 'color' }],
-    });
-  } else {
-    // add role only
-    const mx = RX.exec(targetPath);
-    if (mx) {
-      addRole(properties.qHyperCubeDef[mx[1]][+mx[2]], 'color');
+  if (update && dimensions.length) {
+    const m = RXA.exec(targetPath);
+    if (m) {
+      const def = config.type === 'libraryId' ? {
+        qLibraryId: config.typeValue,
+        libraryId: config.typeValue, // add custom property since qLibraryId is not returned in attr dimension/measure in layout
+      } : {
+        qDef: config.typeValue,
+      };
+      // add qAttributeX array since it's not always set
+      if (!properties.qHyperCubeDef[m[1]][+m[2]][m[3]]) {
+        properties.qHyperCubeDef[m[1]][+m[2]][m[3]] = [];
+      }
+      properties.qHyperCubeDef[m[1]][+m[2]][m[3]].splice(+m[4], 0, {
+        ...def,
+        qAttribute: true,
+        qSortBy: { qSortByAscii: 1 },
+        roles: [{ role: 'color' }],
+      });
     } else {
-      console.error('hmm?');
+      // add role only
+      const mx = RX.exec(targetPath);
+      if (mx) {
+        addRole(properties.qHyperCubeDef[mx[1]][+mx[2]], 'color');
+      }
     }
   }
 

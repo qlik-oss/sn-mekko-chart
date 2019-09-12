@@ -31,12 +31,28 @@ export default function coloring({
   theme,
 }) {
   return {
+    update() {
+      // verify that the current settings are valid
+      const hc = properties.qHyperCubeDef;
+      const colorByField = findFields(f => f.roles && f.roles.filter(r => r.role === 'color').length > 0, hc)[0];
+
+      const { mode } = properties.color;
+
+      if (mode === 'auto' && colorByField) {
+        this.colorBy({ mode: 'auto' }, false);
+      } else if (mode === 'byDimension') {
+        const config = properties.color.byDimension || {};
+        this.colorBy({ mode: 'byDimension', modeConfig: config }, true);
+      }
+    },
     colorBy({
       mode,
       modeConfig,
-    }) {
+    }, update = false) {
       // reset
-      removeRole(properties.qHyperCubeDef, 'color');
+      if (update) {
+        removeRole(properties.qHyperCubeDef, 'color');
+      }
 
       if (!properties.color) {
         properties.color = {};
@@ -46,7 +62,7 @@ export default function coloring({
         setByAuto(properties);
         delete properties.color.byDimension;
       } else if (mode === 'byDimension') {
-        setByDimension(properties, modeConfig);
+        setByDimension(properties, modeConfig, update);
       }
     },
     getSettings() {

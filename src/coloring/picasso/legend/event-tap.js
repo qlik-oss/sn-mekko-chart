@@ -2,11 +2,10 @@ function action(e, {
   chart,
   key,
 }) {
-  const bounds = chart.element.getBoundingClientRect();
   const coord = e.type === 'touchend' ? e.changedTouches[0] : e;
   const p = {
-    x: coord.clientX - bounds.left,
-    y: coord.clientY - bounds.top,
+    x: coord.clientX,
+    y: coord.clientY,
   };
 
   const comps = chart.componentsFromPoint(p).some(c => c.key === `${key}-cat`);

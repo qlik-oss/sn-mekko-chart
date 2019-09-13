@@ -48,9 +48,24 @@ export default function ({
   picassoColoring,
   env,
 }) {
+  let picassoStyle;
+
+  if (env.Theme) {
+    try {
+      const props = env.Theme.getCurrent().properties;
+      picassoStyle = {
+        '$font-family': props.fontFamily || "'QlikView Sans', sans-serif",
+        '$font-color': props.color,
+        '$font-size': props.fontSize,
+        '$font-size--l': props.object.legend.title.fontSize,
+        '$guide-color': props.object.axis.line.major.color,
+      };
+    } catch (e) { /* empty */ }
+  }
   if (restricted && restricted.type === 'disrupt') {
     return {
       components: disclaimer(restricted, env),
+      ...(picassoStyle ? { style: picassoStyle } : {}), // ugly way to avoid setting style: undefined
     };
   }
 
@@ -94,5 +109,6 @@ export default function ({
       ...disclaimer(restricted, env),
     ],
     interactions: [...leg.interactions, allowTooltip ? tooltipInteraction() : false].filter(Boolean),
+    style: picassoStyle,
   };
 }

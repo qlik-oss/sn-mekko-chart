@@ -84,7 +84,7 @@ export default function supernova(env) {
         });
 
         this.picassoColoring.config({
-          key: 'asd',
+          key: 'ferj',
           source: 'qHyperCube',
           hc,
           chartColorModel: c,

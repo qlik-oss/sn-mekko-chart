@@ -41,6 +41,7 @@ export default function spanLabels({
       minor: { start: 0, end: 1 },
       box: {
         fill: 'rgba(100, 0, 0, 0.0)',
+        strokeWidth: 0,
       },
     },
   }, {
@@ -63,7 +64,6 @@ export default function spanLabels({
         strategy: {
           type: 'rows',
           settings: {
-            fill: '#111',
             labels: [{
               linkData({ node }) {
                 return node.data;

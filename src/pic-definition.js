@@ -99,13 +99,20 @@ export default function ({
       ...scales(),
       ...picassoColoring.scales(),
     },
+    formatters: {
+      metric: {
+        data: {
+          field: 'qMeasureInfo/0',
+        },
+      },
+    },
     palettes: picassoColoring.palettes(),
     components: [
       ...leg.components,
       ...axis(),
       ...cells({ context, contraster, colorFill }),
       ...spanLabels({ context }),
-      ...(allowTooltip ? tooltip() : []),
+      ...(allowTooltip ? tooltip(picassoColoring.settings(), env) : []),
       ...disclaimer(restricted, env),
     ],
     interactions: [...leg.interactions, allowTooltip ? tooltipInteraction() : false].filter(Boolean),

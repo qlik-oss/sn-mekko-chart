@@ -50,7 +50,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-mocha": "^6.1.1",
     "mocha-junit-reporter": "^1.23.1",
-    "picasso-plugin-q": "^0.26.1",
-    "picasso.js": "^0.26.1"
+    "picasso-plugin-q": "^0.27.0",
+    "picasso.js": "^0.27.0"
   }
 }

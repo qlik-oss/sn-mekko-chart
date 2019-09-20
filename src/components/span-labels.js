@@ -2,12 +2,16 @@ import REFS from '../refs';
 
 export default function spanLabels({
   context,
+  style,
 }) {
   return [{
     type: 'box',
     key: 'column-boxes',
     dock: 'top',
-    preferredSize: () => 32,
+    preferredSize: () => {
+      const fontSize = style && style['$font-size'] ? parseInt(style['$font-size'], 10) : 12;
+      return fontSize * 4;
+    },
     data: {
       collection: REFS.SPAN_COLLECTION,
     },
@@ -68,7 +72,17 @@ export default function spanLabels({
               linkData({ node }) {
                 return node.data;
               },
-              label: d => (d.data ? d.data.series.label : ''),
+              label: (d) => {
+                if (!d.data) {
+                  return '';
+                }
+                return `${d.data.series.label} (${((d.data.end.value - d.data.start.value) * 100).toFixed(2)}%)`;
+              },
+            }, {
+              linkData({ node }) {
+                return node.data;
+              },
+              label: d => (d.data ? `${d.data.metric.label}` : ''),
             }],
           },
         },

@@ -75,7 +75,17 @@ export default function cells({
               linkData({ node }) {
                 return node.data;
               },
-              label: d => (d.data ? d.data.label : ''),
+              label: (d) => {
+                if (!d.data) {
+                  return '';
+                }
+                return `${d.data.label} (${((d.data.end.value - d.data.start.value) * 100).toFixed(2)}%)`;
+              },
+            }, {
+              linkData({ node }) {
+                return node.data;
+              },
+              label: ({ formatter, data }) => (data ? `${formatter('metric')(data.metric.value)}` : ''),
             }],
           },
         },

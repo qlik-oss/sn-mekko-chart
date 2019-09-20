@@ -111,7 +111,7 @@ export default function ({
       ...leg.components,
       ...axis(),
       ...cells({ context, contraster, colorFill }),
-      ...spanLabels({ context }),
+      ...spanLabels({ context, style: picassoStyle }),
       ...(allowTooltip ? tooltip(picassoColoring.settings(), env) : []),
       ...disclaimer(restricted, env),
     ],

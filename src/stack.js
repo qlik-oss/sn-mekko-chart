@@ -27,7 +27,6 @@ export default function stack({
         stackKey,
         value: d => d.end.value,
         offset: 'expand',
-        props,
       },
     },
   };

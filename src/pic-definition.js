@@ -1,6 +1,6 @@
 import axis from './components/axis';
 import cells from './components/cells';
-import spanLabels from './components/span-labels';
+import columns from './components/columns';
 import tooltip from './components/tooltip';
 import disclaimer from './components/disclaimer';
 
@@ -41,7 +41,7 @@ function tooltipInteraction() {
 }
 
 export default function ({
-  // layout,
+  layout,
   context,
   contraster,
   restricted,
@@ -110,8 +110,10 @@ export default function ({
     components: [
       ...leg.components,
       ...axis(),
-      ...cells({ context, contraster, colorFill }),
-      ...spanLabels({ context, style: picassoStyle }),
+      ...cells({
+        context, contraster, colorFill, hc: layout.qHyperCube,
+      }),
+      ...columns({ context, style: picassoStyle, hc: layout.qHyperCube }),
       ...(allowTooltip ? tooltip(picassoColoring.settings(), env) : []),
       ...disclaimer(restricted, env),
     ],

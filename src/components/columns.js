@@ -1,9 +1,11 @@
 import REFS from '../refs';
 
-export default function spanLabels({
+export default function columns({
   context,
   style,
+  hc,
 }) {
+  const isLocked = hc.qDimensionInfo[0].qLocked;
   return [{
     type: 'box',
     key: 'column-boxes',
@@ -16,7 +18,7 @@ export default function spanLabels({
       collection: REFS.SPAN_COLLECTION,
     },
     brush: context.permissions.indexOf('select') !== -1 && context.permissions.indexOf('interact') !== -1 ? {
-      trigger: [{
+      trigger: isLocked ? [] : [{
         contexts: ['selection'],
       }],
       consume: [{

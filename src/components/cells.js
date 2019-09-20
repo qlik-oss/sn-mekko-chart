@@ -4,7 +4,9 @@ export default function cells({
   context,
   contraster,
   colorFill,
+  hc,
 }) {
+  const isLocked = hc.qDimensionInfo[1].qLocked;
   return [{
     type: 'box',
     key: 'cells',
@@ -12,7 +14,7 @@ export default function cells({
       collection: REFS.CELL_COLLECTION,
     },
     brush: context.permissions.indexOf('select') !== -1 && context.permissions.indexOf('interact') !== -1 ? {
-      trigger: [{
+      trigger: isLocked ? [] : [{
         contexts: ['selection'],
       }],
       consume: [{

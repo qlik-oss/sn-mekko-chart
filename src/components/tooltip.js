@@ -1,3 +1,5 @@
+import REFS from '../refs';
+
 const TOOLTIP_CONTAINER_SELECTOR = 'nebulajs-sn-mekko-tooltip';
 
 function appendTooltipContainer() {
@@ -55,7 +57,7 @@ const nodeTooltipContent = ({ h, data }) => {
   return h('div', { style: { display: 'table' } }, rows);
 };
 
-export default function () {
+export default function (coloring, env) {
   return [{
     type: 'tooltip',
     key: 'tool',
@@ -76,26 +78,31 @@ export default function () {
       filter: nodes => nodes.filter(n => n.key === 'cells' || n.key === 'column-boxes'),
       extract: ({ node, resources }) => {
         const share = `${((node.data.end.value - node.data.start.value) * 100).toFixed(2)}%`;
-        if (node.key === 'column-boxes') {
-          // column label tooltip
-          return {
-            contentFn: nodeTooltipContent,
-            title: node.data.label,
-            props: [{
-              label: resources.dataset().field('qMeasureInfo/0').title(),
-              value: node.data.metric.label,
-            }],
+        const localizedLabel = env.translator.get('properties.dataPoints.labelmode.share');
+        const SHARE_LABEL = localizedLabel !== 'properties.dataPoints.labelmode.share' ? localizedLabel : 'Share';
+        const mField = resources.dataset().field('qMeasureInfo/0');
+        const autoFormat = ['R', 'U'].indexOf(mField.raw().qNumFormat.qType) !== -1;
+
+        let colorRow;
+        if (coloring.mode === 'field' && coloring.field && node.key === 'cells') {
+          const colorSourceField = resources.dataset(node.data[REFS.CELL_COLOR].source.key).field(node.data[REFS.CELL_COLOR].source.field);
+          colorRow = {
+            label: coloring.label ? coloring.label : colorSourceField.title(),
+            value: node.data[REFS.CELL_COLOR].label || '-',
+            color: node.children[0].attrs.fill,
           };
         }
 
-        // cell tooltip
         return {
           contentFn: nodeTooltipContent,
-          title: `${node.data.series.label}, ${node.data.label}`,
+          title: node.key === 'cells' ? `${node.data.series.label}, ${node.data.label}` : node.data.label,
           props: [{
-            label: resources.dataset().field('qMeasureInfo/0').title(),
+            label: SHARE_LABEL,
             value: share,
-          }],
+          }, {
+            label: mField.title(),
+            value: autoFormat ? mField.formatter()(node.data.metric.value) : node.data.metric.label,
+          }, colorRow].filter(Boolean),
         };
       },
       content: nodeTooltipContent,

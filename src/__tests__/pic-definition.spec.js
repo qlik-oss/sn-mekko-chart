@@ -26,6 +26,7 @@ describe('pic-definition', () => {
     scales: () => ({ colorScale: 's' }),
     palettes: () => ['p'],
     legend: () => ({ components: [], interactions: [] }),
+    settings: () => ({}),
   };
   const env = {};
   describe('components', () => {

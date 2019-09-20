@@ -10,6 +10,7 @@ import ext from './ext';
 import plugin from './component-definitions/disclaimer';
 
 import { restriction, RESTRICTIONS } from './data-restrictions';
+import REFS from './refs';
 
 import chartColorConfig from './coloring';
 
@@ -84,7 +85,7 @@ export default function supernova(env) {
         });
 
         this.picassoColoring.config({
-          key: 'ferj',
+          key: REFS.CELL_COLOR,
           source: 'qHyperCube',
           hc,
           chartColorModel: c,

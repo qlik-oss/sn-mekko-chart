@@ -27,17 +27,17 @@ describe('interaction', () => {
     await page.waitForSelector('.pic-tooltip', { visible: true });
     let tooltipContent = [];
     let tooltiphHeader = await page.$eval('.pic-tooltip-content th', header => header.textContent);
-    let tooltipValue = await page.$eval('.pic-tooltip-content tr', value => value.textContent);
+    let tooltipValue = await page.$$eval('.pic-tooltip-content tr', values => values.map(v => v.textContent));
     tooltipContent.push(tooltiphHeader, tooltipValue);
-    expect(tooltipContent).to.eql(['Europe', '=1:3']);
+    expect(tooltipContent).to.eql(['Europe', ['Share:14.29%', '=1:3']]);
     // hover "Americas, 2012"
     tooltipContent = [];
     const rects = await page.$$('[data-key="cells"] rect[data-label="2012"]');
     await rects[1].hover();
     await page.waitForSelector('.pic-tooltip', { visible: true });
     tooltiphHeader = await page.$eval('.pic-tooltip-content th', header => header.textContent);
-    tooltipValue = await page.$eval('.pic-tooltip-content tr', value => value.textContent);
+    tooltipValue = await page.$$eval('.pic-tooltip-content tr', values => values.map(v => v.textContent));
     tooltipContent.push(tooltiphHeader, tooltipValue);
-    expect(tooltipContent).to.eql(['Americas, 2012', '=1:33.33%']);
+    expect(tooltipContent).to.eql(['Americas, 2012', ['Share:33.33%', '=1:1', 'Fiscal Year:2012']]);
   });
 });

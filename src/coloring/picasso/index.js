@@ -7,6 +7,7 @@ import datumProps from './datum';
 /**
  * Creates a new coloring model
  *
+ * @private
  * @param {object} resources
  * @param {picasso} resources.picasso
  * @returns {coloring}
@@ -26,6 +27,7 @@ function coloringFn(resources) {
 
   /**
    * @typedef {object} coloring
+   * @private
    */
   const c = /** @lends coloring */{
     /**

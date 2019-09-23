@@ -47,6 +47,10 @@ export function catLegend(componentConfig, opts) {
       },
     },
     brush: {
+      trigger: !coloring.locked && permissions.indexOf('interact') !== -1 && permissions.indexOf('select') !== -1 ? [{
+        contexts: ['selection'],
+        data: ['', key],
+      }] : [],
       consume: [{
         context: 'selection',
         data: ['', key],

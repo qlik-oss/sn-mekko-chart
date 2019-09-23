@@ -126,5 +126,7 @@ export function getByDimensionSettings({
 
     // for tooltips and legend
     label: c.type === 'expression' ? c.label || definition.qFallbackTitle : definition.qFallbackTitle,
+
+    locked: definition.qLocked || false,
   };
 }

@@ -80,6 +80,17 @@ export default function ({
 
   const allowTooltip = context.permissions.indexOf('passive') !== -1;
   return {
+    strategy: {
+      layoutModes: {
+        MEDIUM: { width: 300, height: 200 },
+
+        HEIGHT_MEDIUM: { width: 100, height: 400 },
+        HEIGHT_SMALL: { width: 50, height: 200 },
+
+        WIDTH_MEDIUM: { width: 400, height: 100 },
+        WIDTH_SMALL: { width: 300, height: 100 },
+      },
+    },
     collections: [
       stack({
         key: REFS.SPAN_COLLECTION,

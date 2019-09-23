@@ -29,7 +29,7 @@ describe('interaction', () => {
     let tooltiphHeader = await page.$eval('.pic-tooltip-content th', header => header.textContent);
     let tooltipValue = await page.$$eval('.pic-tooltip-content tr', values => values.map(v => v.textContent));
     tooltipContent.push(tooltiphHeader, tooltipValue);
-    expect(tooltipContent).to.eql(['Europe', ['Share:14.29%', '=1:3']]);
+    expect(tooltipContent).to.eql(['Europe', ['Share:14.3%', '=1:3']]);
     // hover "Americas, 2012"
     tooltipContent = [];
     const rects = await page.$$('[data-key="cells"] rect[data-label="2012"]');
@@ -38,6 +38,6 @@ describe('interaction', () => {
     tooltiphHeader = await page.$eval('.pic-tooltip-content th', header => header.textContent);
     tooltipValue = await page.$$eval('.pic-tooltip-content tr', values => values.map(v => v.textContent));
     tooltipContent.push(tooltiphHeader, tooltipValue);
-    expect(tooltipContent).to.eql(['Americas, 2012', ['Share:33.33%', '=1:1', 'Fiscal Year:2012']]);
+    expect(tooltipContent).to.eql(['Americas, 2012', ['Share:33.3%', '=1:1', 'Fiscal Year:2012']]);
   });
 });

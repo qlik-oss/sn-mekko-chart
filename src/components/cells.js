@@ -5,6 +5,7 @@ export default function cells({
   contraster,
   colorFill,
   hc,
+  formatPercentage,
 }) {
   const isLocked = hc.qDimensionInfo[1].qLocked;
   return [{
@@ -81,7 +82,7 @@ export default function cells({
                 if (!d.data) {
                   return '';
                 }
-                return `${d.data.label} (${((d.data.end.value - d.data.start.value) * 100).toFixed(2)}%)`;
+                return `${d.data.label} (${formatPercentage(d.data.end.value - d.data.start.value)})`;
               },
             }, {
               linkData({ node }) {

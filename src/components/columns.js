@@ -4,6 +4,7 @@ export default function columns({
   context,
   style,
   hc,
+  formatPercentage,
 }) {
   const isLocked = hc.qDimensionInfo[0].qLocked;
   return [{
@@ -78,7 +79,7 @@ export default function columns({
                 if (!d.data) {
                   return '';
                 }
-                return `${d.data.series.label} (${((d.data.end.value - d.data.start.value) * 100).toFixed(2)}%)`;
+                return `${d.data.series.label} (${formatPercentage(d.data.end.value - d.data.start.value)})`;
               },
             }, {
               linkData({ node }) {

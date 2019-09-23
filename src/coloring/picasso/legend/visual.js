@@ -28,7 +28,10 @@ export function catLegend(componentConfig, opts) {
     key: `${key}-cat`,
     scale: s in scales ? s : scaleKey,
     show: legendShow({}, hc, coloring),
-    dock: 'right',
+    layout: {
+      minimumLayoutMode: 'MEDIUM',
+      dock: 'right',
+    },
     settings: {
       item: {
         show: d => d.datum.value !== -2,

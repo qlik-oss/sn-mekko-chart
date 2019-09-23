@@ -2,7 +2,10 @@ export default function axis() {
   return [{
     key: 'y-axis',
     type: 'axis',
-    dock: 'left',
+    layout: {
+      minimumLayoutMode: 'WIDTH_MEDIUM',
+      dock: 'left',
+    },
     scale: 'y',
     formatter: {
       type: 'd3-number',
@@ -11,7 +14,10 @@ export default function axis() {
   }, {
     key: 'x-axis',
     type: 'axis',
-    dock: 'bottom',
+    layout: {
+      minimumLayoutMode: 'HEIGHT_MEDIUM',
+      dock: 'bottom',
+    },
     scale: 'm',
     formatter: {
       type: 'd3-number',

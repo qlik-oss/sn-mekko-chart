@@ -10,7 +10,10 @@ export default function columns({
   return [{
     type: 'box',
     key: 'column-boxes',
-    dock: 'top',
+    layout: {
+      dock: 'top',
+      minimumLayoutMode: 'HEIGHT_SMALL',
+    },
     preferredSize: () => {
       const fontSize = style && style['$font-size'] ? parseInt(style['$font-size'], 10) : 12;
       return fontSize * 4;

@@ -67,6 +67,9 @@
                 }
               ],
               "type": "string"
+            },
+            "legend": {
+              "type": "#/definitions/legendConfig"
             }
           }
         }
@@ -127,6 +130,28 @@
           "optional": true,
           "defaultValue": "",
           "type": "string"
+        }
+      }
+    },
+    "legendConfig": {
+      "kind": "object",
+      "entries": {
+        "show": {
+          "defaultValue": "auto",
+          "kind": "union",
+          "items": [
+            {
+              "type": "boolean"
+            },
+            {
+              "kind": "literal",
+              "value": "'auto'"
+            }
+          ]
+        },
+        "showTitle": {
+          "defaultValue": true,
+          "type": "boolean"
         }
       }
     }

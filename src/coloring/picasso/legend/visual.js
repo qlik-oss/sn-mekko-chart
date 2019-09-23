@@ -27,10 +27,10 @@ export function catLegend(componentConfig, opts) {
     type: 'legend-cat',
     key: `${key}-cat`,
     scale: s in scales ? s : scaleKey,
-    show: legendShow({}, hc, coloring),
+    show: legendShow(opts.legendConfig, hc, coloring),
     layout: {
       minimumLayoutMode: 'MEDIUM',
-      dock: 'right',
+      dock: opts.legendConfig.dock,
     },
     settings: {
       item: {
@@ -40,6 +40,7 @@ export function catLegend(componentConfig, opts) {
         wordBreak: 'break-word',
         maxLines: 2,
         text: coloring.label || '',
+        show: opts.legendConfig.showTitle !== false,
       },
       navigation: {
         disabled: permissions.indexOf('interact') === -1,

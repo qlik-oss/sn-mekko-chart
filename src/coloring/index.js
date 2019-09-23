@@ -11,6 +11,16 @@ import {
 const DIMENSION_RX = /(qDimensions|qDimensionInfo)\/\d+(\/(qAttributeDimensions|qAttrDimInfo)\/\d+)?$/;
 const MEASURE_RX = /(qMeasures|qMeasureInfo)\/\d+(\/(qAttributeExpressions|qAttrExprInfo)\/\d+)?$/;
 
+/**
+ * @typedef {object}
+ */
+export const legendConfig = {
+  /** @type {boolean|'auto'} */
+  show: 'auto',
+  /** @type {boolean} */
+  showTitle: true,
+};
+
 function getFieldType(path) {
   if (DIMENSION_RX.test(path)) {
     return 'dimension';
@@ -95,6 +105,8 @@ export default function coloring({
     },
     getLegendSettings() {
       return {
+        ...legendConfig,
+        ...layout.color.legend,
         dock: 'right',
       };
     },

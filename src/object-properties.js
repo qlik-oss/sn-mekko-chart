@@ -1,3 +1,4 @@
+import { legendConfig } from './coloring';
 /**
  * @typedef {object}
  */
@@ -46,6 +47,10 @@ const properties = {
      * @type {'auto'|'byDimension'}
      */
     mode: 'auto',
+    /**
+     * @type {legendConfig}
+     */
+    legend: legendConfig,
   },
 };
 

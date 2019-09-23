@@ -177,51 +177,19 @@ export default function ext(env) {
               items: {
                 show: {
                   ref: 'color.legend.show',
-                  type: 'boolean',
+                  type: '_mixed_', // to avoid 'auto' being converted to boolean
                   translation: 'properties.legend.show',
                   component: 'switch',
                   schemaIgnore: true,
-                  options: [
-                    {
-                      value: true,
-                      translation: 'Common.Auto',
-                    },
-                    {
-                      value: false,
-                      translation: 'properties.off',
-                    },
-                  ],
+                  trueOption: {
+                    value: 'auto',
+                    translation: 'Common.Auto',
+                  },
+                  falseOption: {
+                    value: false,
+                    translation: 'properties.off',
+                  },
                 },
-                // dock: {
-                //   type: 'string',
-                //   component: 'dropdown',
-                //   ref: 'legend.dock',
-                //   translation: 'properties.legend.position',
-                //   options: [
-                //     {
-                //       value: 'auto',
-                //       translation: 'Common.Auto',
-                //     },
-                //     {
-                //       value: 'right',
-                //       translation: 'properties.dock.right',
-                //     },
-                //     {
-                //       value: 'bottom',
-                //       translation: 'Common.Bottom',
-                //     },
-                //     {
-                //       value: 'left',
-                //       translation: 'properties.dock.left',
-                //     },
-                //     {
-                //       value: 'top',
-                //       translation: 'Common.Top',
-                //     },
-                //   ],
-                //   defaultValue: 'auto',
-                //   show: propertyLogic.legend.dock.show,
-                // },
                 showTitle: {
                   ref: 'color.legend.showTitle',
                   translation: 'properties.legend.showTitle',

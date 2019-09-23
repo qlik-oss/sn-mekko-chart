@@ -92,11 +92,16 @@ export default function supernova(env) {
           permissions: context.permissions,
         });
 
+        const formatPercentage = v => `${(v * 100).toFixed(1)}%`.replace('.', context.localeInfo ? context.localeInfo.qDecimalSep : '.');
+
         this.pic.update({
           data: [{
             type: 'q',
             key: 'qHyperCube',
             data: hc,
+            config: {
+              localeInfo: context.localeInfo,
+            },
           }, ...this.picassoColoring.data()],
           settings: definition({
             layout,
@@ -105,6 +110,7 @@ export default function supernova(env) {
             picassoColoring: this.picassoColoring,
             restricted,
             env,
+            formatPercentage,
           }),
         });
       },

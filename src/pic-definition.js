@@ -47,6 +47,7 @@ export default function ({
   restricted,
   picassoColoring,
   env,
+  formatPercentage,
 }) {
   let picassoStyle;
 
@@ -111,10 +112,15 @@ export default function ({
       ...leg.components,
       ...axis(),
       ...cells({
-        context, contraster, colorFill, hc: layout.qHyperCube,
+        context, contraster, colorFill, hc: layout.qHyperCube, formatPercentage,
       }),
-      ...columns({ context, style: picassoStyle, hc: layout.qHyperCube }),
-      ...(allowTooltip ? tooltip(picassoColoring.settings(), env) : []),
+      ...columns({
+        context,
+        style: picassoStyle,
+        hc: layout.qHyperCube,
+        formatPercentage,
+      }),
+      ...(allowTooltip ? tooltip(picassoColoring.settings(), env, formatPercentage) : []),
       ...disclaimer(restricted, env),
     ],
     interactions: [...leg.interactions, allowTooltip ? tooltipInteraction() : false].filter(Boolean),

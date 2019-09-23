@@ -38,6 +38,12 @@ jobs:
           command: yarn install --frozen-lockfile
 
       - run:
+          name: Validate that API spec is up to date
+          command: |
+            yarn run spec
+            git diff --exit-code --name-only ./spec.json
+
+      - run:
           name: Build
           command: yarn run build
 

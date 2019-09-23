@@ -6,8 +6,36 @@ const RX = /\/(qDimensions|qMeasures)\/(\d+)/;
 const RXA = /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeExpressions)\/(\d+)/;
 
 /**
+ * @typedef {object}
+ * @alias byDimensionConfig
+ */
+const byDimension = {
+  /**
+   * @type {'index'|'libraryId'|'expression'}
+   */
+  type: undefined,
+  /**
+   * @type {number|string}
+   */
+  typeValue: undefined,
+  /**
+   * @type {(string|StringExpression)=}
+   */
+  label: undefined,
+  /**
+   * @type {boolean=}
+   */
+  persistent: false,
+  /**
+   * @type {string=}
+   */
+  scheme: '',
+};
+
+/**
+ * @private
  * @param {object} properties
- * @param {object} byDimensionConfig
+ * @param {byDimensionConfig} byDimensionConfig
  * @param {'index'|'expression'|'libraryId'} byDimensionConfig.type
  * @param {string|integer} byDimensionConfig.typeValue
  * @param {boolean} byDimensionConfig.persistent
@@ -64,8 +92,7 @@ export function setByDimension(properties, byDimensionConfig, update) {
   }
 
   properties.color.byDimension = {
-    persistent: false,
-    scheme: '',
+    ...byDimension,
     ...(properties.color.byDimension || {}),
     ...(config || {}),
   };

@@ -1,0 +1,134 @@
+{
+  "scriptappy": "1.0.0",
+  "info": {
+    "name": "@nebula.js/sn-mekko-chart",
+    "description": "Supernova mekko chart",
+    "version": "0.4.0",
+    "license": "MIT"
+  },
+  "entries": {},
+  "definitions": {
+    "properties": {
+      "kind": "object",
+      "entries": {
+        "qHyperCubeDef": {
+          "kind": "object",
+          "entries": {
+            "qSuppressZero": {
+              "defaultValue": true,
+              "type": "boolean"
+            },
+            "qSuppressMissing": {
+              "defaultValue": true,
+              "type": "boolean"
+            },
+            "qCalcCondition": {
+              "type": "NxCalcCond"
+            }
+          }
+        },
+        "showTitles": {
+          "optional": true,
+          "defaultValue": true,
+          "type": "boolean"
+        },
+        "title": {
+          "optional": true,
+          "defaultValue": "",
+          "type": "string"
+        },
+        "subtitle": {
+          "optional": true,
+          "defaultValue": "",
+          "type": "string"
+        },
+        "footnote": {
+          "optional": true,
+          "defaultValue": "",
+          "type": "string"
+        },
+        "color": {
+          "kind": "object",
+          "entries": {
+            "byDimension": {
+              "type": "#/definitions/byDimensionConfig"
+            },
+            "mode": {
+              "defaultValue": "auto",
+              "kind": "union",
+              "items": [
+                {
+                  "kind": "literal",
+                  "value": "'auto'"
+                },
+                {
+                  "kind": "literal",
+                  "value": "'byDimension'"
+                }
+              ],
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "byDimensionConfig": {
+      "kind": "object",
+      "entries": {
+        "type": {
+          "kind": "union",
+          "items": [
+            {
+              "kind": "literal",
+              "value": "'index'"
+            },
+            {
+              "kind": "literal",
+              "value": "'libraryId'"
+            },
+            {
+              "kind": "literal",
+              "value": "'expression'"
+            }
+          ],
+          "type": "string"
+        },
+        "typeValue": {
+          "kind": "union",
+          "items": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "type": "any"
+        },
+        "label": {
+          "optional": true,
+          "kind": "union",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "StringExpression"
+            }
+          ],
+          "type": "any"
+        },
+        "persistent": {
+          "optional": true,
+          "defaultValue": false,
+          "type": "boolean"
+        },
+        "scheme": {
+          "optional": true,
+          "defaultValue": "",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

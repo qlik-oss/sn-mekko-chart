@@ -81,6 +81,7 @@ export function byDimensionData({
 }
 
 /**
+ * @private
  * @param {object} p
  * @param {QAE.HyperCube} p.hc
  * @param {object} p.coloring

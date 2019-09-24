@@ -38,7 +38,9 @@
     "prepublishOnly": "rm -rf dist && npm run build"
   },
   "peerDependencies": {
-    "@nebula.js/supernova": "0.1.0-alpha.19"
+    "@nebula.js/supernova": "0.1.0-alpha.19",
+    "picasso-plugin-q": "^0.27.0",
+    "picasso.js": "^0.27.0"
   },
   "devDependencies": {
     "@after-work.js/aw": "^6.0.8",

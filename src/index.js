@@ -18,7 +18,11 @@ import picassoColoring from './coloring/picasso';
 import theme from './theme';
 
 export default function supernova(env) {
-  const picasso = picassojs();
+  const picasso = picassojs({
+    renderer: {
+      prio: [env.Theme ? 'canvas' : 'svg'], // temporary way to check if running in Sense
+    },
+  });
   picasso.use(picassoQ);
   picasso.use(plugin);
 

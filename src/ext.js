@@ -26,6 +26,14 @@ export default function ext(env) {
       items: {
         data: {
           uses: 'data',
+          items: {
+            dimensions: {
+              disabledRef: '', // to disable alternative
+            },
+            measures: {
+              disabledRef: '',
+            },
+          },
         },
         sorting: {
           uses: 'sorting',

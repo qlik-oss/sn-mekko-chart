@@ -1,16 +1,22 @@
 {
   "scriptappy": "1.0.0",
   "info": {
-    "name": "@nebula.js/sn-mekko-chart",
-    "description": "Supernova mekko chart",
-    "version": "0.5.0",
-    "license": "MIT"
+    "name": "@nebula.js/sn-mekko-chart:properties",
+    "description": "Mekko chart generic object definition",
+    "version": "0.1.0",
+    "license": "MIT",
+    "stability": "experimental",
+    "x-qlik-visibility": "public"
   },
-  "entries": {},
-  "definitions": {
+  "entries": {
     "properties": {
       "kind": "object",
       "entries": {
+        "version": {
+          "description": "Current version of this generic object definition",
+          "defaultValue": "0.1.0",
+          "type": "string"
+        },
         "qHyperCubeDef": {
           "kind": "object",
           "entries": {
@@ -74,7 +80,9 @@
           }
         }
       }
-    },
+    }
+  },
+  "definitions": {
     "byDimensionConfig": {
       "kind": "object",
       "entries": {

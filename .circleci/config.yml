@@ -41,7 +41,7 @@ jobs:
           name: Validate that API spec is up to date
           command: |
             yarn run spec
-            git diff --exit-code --name-only ./spec.json
+            git diff --exit-code --name-only ./api-specifications/properties.json
 
       - run:
           name: Build

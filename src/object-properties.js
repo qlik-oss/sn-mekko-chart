@@ -1,8 +1,14 @@
 import { legendConfig } from './coloring';
 /**
  * @typedef {object}
+ * @entry
  */
 const properties = {
+  /**
+   * Current version of this generic object definition
+   * @type {string}
+   */
+  version: '0.1.0',
   /**
    * @typedef
    */

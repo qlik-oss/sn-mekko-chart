@@ -48,7 +48,7 @@ const properties = {
    * @typedef {object}
    * @property {byDimensionConfig} byDimension
    */
-  color: {
+  cellColor: {
     /**
      * @type {'auto'|'byDimension'}
      */

@@ -50,7 +50,7 @@ export default function ext(env) {
                   type: 'items',
                   items: {
                     auto: {
-                      ref: 'color.mode',
+                      ref: 'cellColor.mode',
                       type: 'string',
                       translation: 'properties.colors',
                       component: 'switch',
@@ -69,22 +69,22 @@ export default function ext(env) {
                           properties,
                         });
                         c.colorBy({
-                          mode: data.color.mode === 'auto' ? 'auto' : 'byDimension',
+                          mode: data.cellColor.mode === 'auto' ? 'auto' : 'byDimension',
                         });
                       },
                     },
                     dimensionDropdown: {
                       component: 'color-by-dropdown',
                       libraryItemType: 'dimension',
-                      ref: 'color.byDimension',
+                      ref: 'cellColor.byDimension',
                       defaultValue: {},
                       show(data) {
-                        return data.color.mode === 'byDimension';
+                        return data.cellColor.mode === 'byDimension';
                       },
                       change() {}, // needed to avoid error thrown in 'color-by-dropdown'
                       convertFunctions: {
                         get(getter, def, args) {
-                          const c = args.properties.color.byDimension || {};
+                          const c = args.properties.cellColor.byDimension || {};
                           if (c.type === 'index') {
                             return {
                               activeDimensionIndex: c.typeValue,
@@ -136,31 +136,31 @@ export default function ext(env) {
                     },
                     colorByDimensionLabel: {
                       type: 'string',
-                      ref: 'color.byDimension.label',
+                      ref: 'cellColor.byDimension.label',
                       schemaIgnore: true,
                       translation: 'Common.Label',
                       expression: 'optional',
                       show(data) {
-                        return data.color.mode === 'byDimension' && data.color.byDimension && data.color.byDimension.type === 'expression';
+                        return data.cellColor.mode === 'byDimension' && data.cellColor.byDimension && data.cellColor.byDimension.type === 'expression';
                       },
                     },
                     persistentColors: {
-                      ref: 'color.byDimension.persistent',
+                      ref: 'cellColor.byDimension.persistent',
                       translation: 'properties.colorPersistence',
                       type: 'boolean',
                       schemaIgnore: true,
                       show(data) {
-                        return data.color.mode === 'byDimension';
+                        return data.cellColor.mode === 'byDimension';
                       },
                     },
                     colorSchemeDimension: {
-                      ref: 'color.byDimension.scheme',
+                      ref: 'cellColor.byDimension.scheme',
                       type: 'string',
                       translation: 'properties.colorScheme',
                       component: 'item-selection-list',
                       schemaIgnore: true,
                       show(data) {
-                        return data.color.mode === 'byDimension';
+                        return data.cellColor.mode === 'byDimension';
                       },
                       defaultValue() {
                         const t = theme(env.Theme ? env.Theme.getCurrent().properties : {}).dataPalettes()[0];
@@ -184,7 +184,7 @@ export default function ext(env) {
                   type: 'items',
                   items: {
                     show: {
-                      ref: 'color.legend.show',
+                      ref: 'cellColor.legend.show',
                       type: '_mixed_', // to avoid 'auto' being converted to boolean
                       translation: 'properties.legend.show',
                       component: 'switch',
@@ -199,12 +199,12 @@ export default function ext(env) {
                       },
                     },
                     showTitle: {
-                      ref: 'color.legend.showTitle',
+                      ref: 'cellColor.legend.showTitle',
                       translation: 'properties.legend.showTitle',
                       type: 'boolean',
                       schemaIgnore: true,
                       show(data) {
-                        return data.color.legend.show !== false;
+                        return data.cellColor.legend.show !== false;
                       },
                     },
                   },

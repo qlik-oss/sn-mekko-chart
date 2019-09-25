@@ -8,7 +8,7 @@ const properties = {
    * Current version of this generic object definition
    * @type {string}
    */
-  version: '0.1.0',
+  version: '1.0.0',
   /**
    * @typedef
    */

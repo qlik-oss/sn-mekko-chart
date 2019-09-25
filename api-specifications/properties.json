@@ -3,7 +3,7 @@
   "info": {
     "name": "@nebula.js/sn-mekko-chart:properties",
     "description": "Mekko chart generic object definition",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "license": "MIT",
     "stability": "experimental",
     "x-qlik-visibility": "public"
@@ -14,7 +14,7 @@
       "entries": {
         "version": {
           "description": "Current version of this generic object definition",
-          "defaultValue": "0.1.0",
+          "defaultValue": "1.0.0",
           "type": "string"
         },
         "qHyperCubeDef": {
@@ -83,6 +83,28 @@
     }
   },
   "definitions": {
+    "legendConfig": {
+      "kind": "object",
+      "entries": {
+        "show": {
+          "defaultValue": "auto",
+          "kind": "union",
+          "items": [
+            {
+              "type": "boolean"
+            },
+            {
+              "kind": "literal",
+              "value": "'auto'"
+            }
+          ]
+        },
+        "showTitle": {
+          "defaultValue": true,
+          "type": "boolean"
+        }
+      }
+    },
     "byDimensionConfig": {
       "kind": "object",
       "entries": {
@@ -138,28 +160,6 @@
           "optional": true,
           "defaultValue": "",
           "type": "string"
-        }
-      }
-    },
-    "legendConfig": {
-      "kind": "object",
-      "entries": {
-        "show": {
-          "defaultValue": "auto",
-          "kind": "union",
-          "items": [
-            {
-              "type": "boolean"
-            },
-            {
-              "kind": "literal",
-              "value": "'auto'"
-            }
-          ]
-        },
-        "showTitle": {
-          "defaultValue": true,
-          "type": "boolean"
         }
       }
     }

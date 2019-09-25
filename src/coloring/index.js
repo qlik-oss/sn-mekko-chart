@@ -42,6 +42,9 @@ export default function coloring({
 }) {
   return {
     update() {
+      if (!properties || !properties.qHyperCubeDef) {
+        return;
+      }
       // verify that the current settings are valid
       const hc = properties.qHyperCubeDef;
       const colorByField = findFields(f => f.roles && f.roles.filter(r => r.role === 'color').length > 0, hc)[0];
@@ -59,6 +62,9 @@ export default function coloring({
       mode,
       modeConfig,
     }, update = false) {
+      if (!properties || !properties.qHyperCubeDef) {
+        return;
+      }
       // reset
       if (update) {
         removeRole(properties.qHyperCubeDef, 'color');

@@ -53,7 +53,7 @@
           "defaultValue": "",
           "type": "string"
         },
-        "color": {
+        "cellColor": {
           "kind": "object",
           "entries": {
             "byDimension": {

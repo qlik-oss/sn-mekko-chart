@@ -32,7 +32,7 @@ function getFieldType(path) {
 }
 
 function setByAuto(properties) {
-  properties.color.mode = 'auto';
+  properties.cellColor.mode = 'auto';
 }
 
 export default function coloring({
@@ -49,12 +49,12 @@ export default function coloring({
       const hc = properties.qHyperCubeDef;
       const colorByField = findFields(f => f.roles && f.roles.filter(r => r.role === 'color').length > 0, hc)[0];
 
-      const { mode } = properties.color;
+      const { mode } = properties.cellColor;
 
       if (mode === 'auto' && colorByField) {
         this.colorBy({ mode: 'auto' }, false);
       } else if (mode === 'byDimension') {
-        const config = properties.color.byDimension || {};
+        const config = properties.cellColor.byDimension || {};
         this.colorBy({ mode: 'byDimension', modeConfig: config }, true);
       }
     },
@@ -70,20 +70,20 @@ export default function coloring({
         removeRole(properties.qHyperCubeDef, 'color');
       }
 
-      if (!properties.color) {
-        properties.color = {};
+      if (!properties.cellColor) {
+        properties.cellColor = {};
       }
 
       if (mode === 'auto') {
         setByAuto(properties);
-        delete properties.color.byDimension;
+        delete properties.cellColor.byDimension;
       } else if (mode === 'byDimension') {
         setByDimension(properties, modeConfig, update);
       }
     },
     getSettings() {
       const hc = layout ? layout.qHyperCube : properties.qHyperCubeDef;
-      const colorProps = layout ? layout.color : properties.color;
+      const colorProps = layout ? layout.cellColor : properties.cellColor;
 
       const colorByField = findFields(f => f.roles && f.roles.filter(r => r.role === 'color').length > 0, hc)[0];
       let fieldPath = colorByField ? colorByField.path.replace(/^\//, '') : 'qDimensionInfo/1';
@@ -112,7 +112,7 @@ export default function coloring({
     getLegendSettings() {
       return {
         ...legendConfig,
-        ...layout.color.legend,
+        ...layout.cellColor.legend,
         dock: 'right',
       };
     },

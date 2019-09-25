@@ -91,9 +91,9 @@ export function setByDimension(properties, byDimensionConfig, update) {
     }
   }
 
-  properties.color.byDimension = {
+  properties.cellColor.byDimension = {
     ...byDimension,
-    ...(properties.color.byDimension || {}),
+    ...(properties.cellColor.byDimension || {}),
     ...(config || {}),
   };
 }
@@ -111,7 +111,7 @@ export function getByDimensionSettings({
     };
   }
   const pals = theme.palettes('qualitative');
-  const c = (layout.color && layout.color.byDimension) || {};
+  const c = (layout.cellColor && layout.cellColor.byDimension) || {};
   return {
     mode: 'field',
     field: fieldPath,

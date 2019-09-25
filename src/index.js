@@ -119,7 +119,9 @@ export default function supernova(env) {
         });
       },
       resize() {},
-      willUnmount() {},
+      willUnmount() {
+        this.pic.destroy();
+      },
       destroy() {},
     },
     ext: ext(env),

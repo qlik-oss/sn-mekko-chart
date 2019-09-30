@@ -43,6 +43,7 @@ describe('interaction', () => {
   it('should select "2011" in the legend', async () => {
     await page.waitForSelector('[data-key="color-legend-cat"] [data-label="2011"]', { visible: true });
     await page.click('[data-key="color-legend-cat"] [data-label="2011"]');
+    await page.waitForSelector('button[title="Confirm selection"]', { visible: true });
     await page.click('button[title="Confirm selection"]');
 
     const dataCellRects = await page.$$eval('[data-key="cells"] rect[data-label]', sel => sel.map(r => r.getAttribute('data-label')));

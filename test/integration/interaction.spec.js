@@ -40,4 +40,15 @@ describe('interaction', () => {
     tooltipContent.push(tooltiphHeader, tooltipValue);
     expect(tooltipContent).to.eql(['Americas, 2012', ['Share:33.3%', '=1:1', 'Fiscal Year:2012']]);
   });
+  it('should select "2011" in the legend', async () => {
+    await page.waitForSelector('[data-key="color-legend-cat"] [data-label="2011"]', { visible: true });
+    await page.click('[data-key="color-legend-cat"] [data-label="2011"]');
+    await page.click('button[title="Confirm selection"]');
+
+    const dataCellRects = await page.$$eval('[data-key="cells"] rect[data-label]', sel => sel.map(r => r.getAttribute('data-label')));
+    const legendRects = await page.$$eval('[data-key="color-legend-cat"] rect[data-label]', sel => sel.map(r => r.getAttribute('data-label')));
+
+    expect(dataCellRects).to.eql(['2011', '2011', '2011', '2011', '2011', '2011', '2011']);
+    expect(legendRects).to.eql(['2011']);
+  });
 });

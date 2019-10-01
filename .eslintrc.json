@@ -30,7 +30,8 @@
         "expect": false,
         "sinon": false,
         "aw": false,
-        "page": false
+        "page": false,
+        "document": false
       },
       "plugins": [
         "mocha"

@@ -38,18 +38,18 @@
     "prepublishOnly": "rm -rf dist && npm run build"
   },
   "peerDependencies": {
-    "@nebula.js/supernova": "0.1.0-alpha.19",
+    "@nebula.js/supernova": "0.1.0-alpha.20",
     "picasso-plugin-q": "^0.27.0",
     "picasso.js": "^0.27.0"
   },
   "devDependencies": {
     "@after-work.js/aw": "^6.0.8",
-    "@babel/cli": "^7.6.0",
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
-    "@nebula.js/cli": "0.1.0-alpha.19",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@nebula.js/cli": "0.1.0-alpha.20",
     "babel-plugin-istanbul": "^5.2.0",
-    "eslint": "^6.4.0",
+    "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-mocha": "^6.1.1",

@@ -1,3 +1,5 @@
+const devices = require('../../node_modules/puppeteer-core/DeviceDescriptors');
+
 describe('interaction', () => {
   const content = '.nebulajs-sn';
   const app = encodeURIComponent(process.env.APP_ID || '/apps/Executive_Dashboard.qvf');
@@ -51,5 +53,24 @@ describe('interaction', () => {
 
     expect(dataCellRects).to.eql(['2011', '2011', '2011', '2011', '2011', '2011', '2011']);
     expect(legendRects).to.eql(['2011']);
+  });
+  it('should tap to select column "Europe" and data cells "2012" and "2013"', async () => {
+    await page.emulate(devices.iPad);
+
+    await page.waitForSelector('[data-key="column-boxes"] rect[data-label="Europe"]', { visible: true });
+    await page.tap('[data-key="column-boxes"] rect[data-label="Europe"]');
+    await page.waitForSelector('button[title="Confirm selection"]', { visible: true });
+    await page.tap('button[title="Confirm selection"]');
+
+    let rects = await page.$$eval('[data-key="column-boxes"] rect[data-label]', sel => sel.map(r => r.getAttribute('data-label')));
+    expect(rects).to.eql(['Europe']);
+
+    await page.tap('[data-key="cells"] rect[data-label="2012"');
+    await page.tap('[data-key="cells"] rect[data-label="2013"');
+    await page.waitForSelector('button[title="Confirm selection"]', { visible: true });
+    await page.tap('button[title="Confirm selection"]');
+
+    rects = await page.$$eval('[data-key="cells"] rect[data-label]', sel => sel.map(r => r.getAttribute('data-label')));
+    expect(rects).to.eql(['2012', '2013']);
   });
 });

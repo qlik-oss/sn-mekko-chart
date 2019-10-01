@@ -27,15 +27,19 @@ function destroyTooltipContainer() {
 
 const nodeTooltipContent = ({ h, data }) => {
   const rows = [];
-  data.forEach((node) => {
-    const title = h('th', {
-      attrs: { colspan: 3 },
-      style: { fontWeight: 600, 'text-align': 'left', padding: '2px 4px' },
-    }, node.title);
+  data.forEach(node => {
+    const title = h(
+      'th',
+      {
+        attrs: { colspan: 3 },
+        style: { fontWeight: 600, 'text-align': 'left', padding: '2px 4px' },
+      },
+      node.title
+    );
 
     rows.push(title);
 
-    node.props.forEach((prop) => {
+    node.props.forEach(prop => {
       const cells = [
         h('td', { style: { padding: '2px 4px' } }, `${prop.label}:`),
         h('td', { style: { margin: '2px 4px' } }, [
@@ -57,55 +61,63 @@ const nodeTooltipContent = ({ h, data }) => {
   return h('div', { style: { display: 'table' } }, rows);
 };
 
-export default function (coloring, env, formatPercentage) {
-  return [{
-    type: 'tooltip',
-    key: 'tool',
-    layout: {
-      displayOrder: 99,
-    },
-    beforeMount() {
-      appendTooltipContainer();
-    },
-    beforeUpdate() {
-      // appendTooltipContainer();
-    },
-    destroyed() {
-      destroyTooltipContainer();
-    },
-    settings: {
-      appendTo: () => document.querySelector(`#${TOOLTIP_CONTAINER_SELECTOR}`),
-      filter: (nodes) => nodes.filter((n) => n.key === 'cells' || n.key === 'column-boxes'),
-      extract: ({ node, resources }) => {
-        const share = formatPercentage((node.data.end.value - node.data.start.value));
-        const localizedLabel = env.translator.get('properties.dataPoints.labelmode.share');
-        const SHARE_LABEL = localizedLabel !== 'properties.dataPoints.labelmode.share' ? localizedLabel : 'Share';
-        const mField = resources.dataset().field('qMeasureInfo/0');
-        const autoFormat = ['R', 'U'].indexOf(mField.raw().qNumFormat.qType) !== -1;
-
-        let colorRow;
-        if (coloring.mode === 'field' && coloring.field && node.key === 'cells') {
-          const colorSourceField = resources.dataset(node.data[REFS.CELL_COLOR].source.key).field(node.data[REFS.CELL_COLOR].source.field);
-          colorRow = {
-            label: coloring.label ? coloring.label : colorSourceField.title(),
-            value: node.data[REFS.CELL_COLOR].label || '-',
-            color: node.children[0].attrs.fill,
-          };
-        }
-
-        return {
-          contentFn: nodeTooltipContent,
-          title: node.key === 'cells' ? `${node.data.series.label}, ${node.data.label}` : node.data.label,
-          props: [{
-            label: SHARE_LABEL,
-            value: share,
-          }, {
-            label: mField.title(),
-            value: autoFormat ? mField.formatter()(node.data.metric.value) : node.data.metric.label,
-          }, colorRow].filter(Boolean),
-        };
+export default function(coloring, env, formatPercentage) {
+  return [
+    {
+      type: 'tooltip',
+      key: 'tool',
+      layout: {
+        displayOrder: 99,
       },
-      content: nodeTooltipContent,
+      beforeMount() {
+        appendTooltipContainer();
+      },
+      beforeUpdate() {
+        // appendTooltipContainer();
+      },
+      destroyed() {
+        destroyTooltipContainer();
+      },
+      settings: {
+        appendTo: () => document.querySelector(`#${TOOLTIP_CONTAINER_SELECTOR}`),
+        filter: nodes => nodes.filter(n => n.key === 'cells' || n.key === 'column-boxes'),
+        extract: ({ node, resources }) => {
+          const share = formatPercentage(node.data.end.value - node.data.start.value);
+          const localizedLabel = env.translator.get('properties.dataPoints.labelmode.share');
+          const SHARE_LABEL = localizedLabel !== 'properties.dataPoints.labelmode.share' ? localizedLabel : 'Share';
+          const mField = resources.dataset().field('qMeasureInfo/0');
+          const autoFormat = ['R', 'U'].indexOf(mField.raw().qNumFormat.qType) !== -1;
+
+          let colorRow;
+          if (coloring.mode === 'field' && coloring.field && node.key === 'cells') {
+            const colorSourceField = resources
+              .dataset(node.data[REFS.CELL_COLOR].source.key)
+              .field(node.data[REFS.CELL_COLOR].source.field);
+            colorRow = {
+              label: coloring.label ? coloring.label : colorSourceField.title(),
+              value: node.data[REFS.CELL_COLOR].label || '-',
+              color: node.children[0].attrs.fill,
+            };
+          }
+
+          return {
+            contentFn: nodeTooltipContent,
+            title: node.key === 'cells' ? `${node.data.series.label}, ${node.data.label}` : node.data.label,
+            props: [
+              {
+                label: SHARE_LABEL,
+                value: share,
+              },
+              {
+                label: mField.title(),
+                value: autoFormat ? mField.formatter()(node.data.metric.value) : node.data.metric.label,
+              },
+              colorRow,
+            ].filter(Boolean),
+          };
+        },
+        content: nodeTooltipContent,
+      },
     },
-  }];
+  ];
 }

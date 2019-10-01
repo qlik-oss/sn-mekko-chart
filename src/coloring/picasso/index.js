@@ -29,7 +29,7 @@ function coloringFn(resources) {
    * @typedef {object} coloring
    * @private
    */
-  const c = /** @lends coloring */{
+  const c = /** @lends coloring */ {
     /**
      * Configure this coloring model
      * @param {object} cfg
@@ -88,13 +88,15 @@ function coloringFn(resources) {
      * @returns {object<string,scale>}
      */
     scales() {
-      calculatedCache.scales = calculatedCache.scales || scales({
-        hc: inputCache.hc,
-        coloring: getSettings(),
-        key: inputCache.key,
-        source: inputCache.source,
-        picasso: resources.picasso,
-      });
+      calculatedCache.scales =
+        calculatedCache.scales ||
+        scales({
+          hc: inputCache.hc,
+          coloring: getSettings(),
+          key: inputCache.key,
+          source: inputCache.source,
+          picasso: resources.picasso,
+        });
       return calculatedCache.scales;
     },
 
@@ -102,11 +104,13 @@ function coloringFn(resources) {
      * @returns {function}
      */
     color() {
-      calculatedCache.color = calculatedCache.color || colorFn({
-        coloring: getSettings(),
-        scales: this.scales(),
-        key: inputCache.key,
-      });
+      calculatedCache.color =
+        calculatedCache.color ||
+        colorFn({
+          coloring: getSettings(),
+          scales: this.scales(),
+          key: inputCache.key,
+        });
 
       return calculatedCache.color;
     },
@@ -116,25 +120,27 @@ function coloringFn(resources) {
      * @returns {object<string,datumProp>}
      */
     datumProps(midx) {
-      return datumProps({
-        coloring: getSettings(),
-        scales: this.scales(),
-        key: inputCache.key,
-        hc: inputCache.hc,
-      }, midx);
+      return datumProps(
+        {
+          coloring: getSettings(),
+          scales: this.scales(),
+          key: inputCache.key,
+          hc: inputCache.hc,
+        },
+        midx
+      );
     },
 
     /**
      * @returns {data[]}
      */
     data() {
-      return [{
-        key: 'dummy',
-        data: [
-          ['field'],
-          ['a'],
-        ],
-      }];
+      return [
+        {
+          key: 'dummy',
+          data: [['field'], ['a']],
+        },
+      ];
     },
 
     /**
@@ -147,27 +153,25 @@ function coloringFn(resources) {
      * @param {string} [cfg.styleReference='object.legend']
      * @returns {object}
      */
-    legend({
-      eventName,
-      key,
-    } = {}) {
-      return legend({
-        eventName,
-        key,
-      }, {
-        legendConfig: chartColorModel.getLegendSettings(),
-        scaleKey: inputCache.key,
-        coloring: getSettings(),
-        hc: inputCache.hc,
-        scales: this.scales(),
-        permissions: inputCache.permissions,
-      });
+    legend({ eventName, key } = {}) {
+      return legend(
+        {
+          eventName,
+          key,
+        },
+        {
+          legendConfig: chartColorModel.getLegendSettings(),
+          scaleKey: inputCache.key,
+          coloring: getSettings(),
+          hc: inputCache.hc,
+          scales: this.scales(),
+          permissions: inputCache.permissions,
+        }
+      );
     },
   };
 
   return c;
 }
 
-export {
-  coloringFn as default,
-};
+export { coloringFn as default };

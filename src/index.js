@@ -58,24 +58,23 @@ export default function supernova(env) {
           picassoQ,
         });
       },
-      render({
-        layout,
-        context,
-      }) {
+      render({ layout, context }) {
         let hc = layout.qHyperCube;
         const restricted = restriction(hc);
 
         if (restricted === RESTRICTIONS.HasZeroOrNegativeValues) {
-          const filteredMatrix = hc.qDataPages[0].qMatrix.filter((row) => row[2].qNum > 0);
+          const filteredMatrix = hc.qDataPages[0].qMatrix.filter(row => row[2].qNum > 0);
           hc = {
             ...layout.qHyperCube,
-            qDataPages: [{
-              qArea: {
-                ...hc.qDataPages[0].qArea,
-                qHeight: filteredMatrix.height,
+            qDataPages: [
+              {
+                qArea: {
+                  ...hc.qDataPages[0].qArea,
+                  qHeight: filteredMatrix.height,
+                },
+                qMatrix: filteredMatrix,
               },
-              qMatrix: filteredMatrix,
-            }],
+            ],
             qSize: {
               qcx: layout.qHyperCube.qSize.qcx,
               qcy: filteredMatrix.height,
@@ -96,17 +95,21 @@ export default function supernova(env) {
           permissions: context.permissions,
         });
 
-        const formatPercentage = (v) => `${(v * 100).toFixed(1)}%`.replace('.', context.localeInfo ? context.localeInfo.qDecimalSep : '.');
+        const formatPercentage = v =>
+          `${(v * 100).toFixed(1)}%`.replace('.', context.localeInfo ? context.localeInfo.qDecimalSep : '.');
 
         this.pic.update({
-          data: [{
-            type: 'q',
-            key: 'qHyperCube',
-            data: hc,
-            config: {
-              localeInfo: context.localeInfo,
+          data: [
+            {
+              type: 'q',
+              key: 'qHyperCube',
+              data: hc,
+              config: {
+                localeInfo: context.localeInfo,
+              },
             },
-          }, ...this.picassoColoring.data()],
+            ...this.picassoColoring.data(),
+          ],
           settings: definition({
             layout,
             context,

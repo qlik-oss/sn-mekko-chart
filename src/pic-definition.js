@@ -24,10 +24,7 @@ function tooltipInteraction() {
         let shapes = [];
 
         shapes = this.chart.shapesAt(p, {
-          components: [
-            { key: 'cells' },
-            { key: 'column-boxes' },
-          ],
+          components: [{ key: 'cells' }, { key: 'column-boxes' }],
           propagation: 'stop',
         });
 
@@ -40,15 +37,7 @@ function tooltipInteraction() {
   };
 }
 
-export default function ({
-  layout,
-  context,
-  contraster,
-  restricted,
-  picassoColoring,
-  env,
-  formatPercentage,
-}) {
+export default function({ layout, context, contraster, restricted, picassoColoring, env, formatPercentage }) {
   let picassoStyle;
 
   if (env.Theme) {
@@ -61,7 +50,9 @@ export default function ({
         '$font-size--l': props.object.legend.title.fontSize,
         '$guide-color': props.object.axis.line.major.color,
       };
-    } catch (e) { /* empty */ }
+    } catch (e) {
+      /* empty */
+    }
   }
   if (restricted && restricted.type === 'disrupt') {
     return {
@@ -95,7 +86,7 @@ export default function ({
       stack({
         key: REFS.SPAN_COLLECTION,
         field: 'qDimensionInfo/0',
-        trackBy: (cell) => cell.qElemNumber,
+        trackBy: cell => cell.qElemNumber,
         reduce: 'first',
         stackKey: () => -1,
       }),
@@ -123,7 +114,11 @@ export default function ({
       ...leg.components,
       ...axis(),
       ...cells({
-        context, contraster, colorFill, hc: layout.qHyperCube, formatPercentage,
+        context,
+        contraster,
+        colorFill,
+        hc: layout.qHyperCube,
+        formatPercentage,
       }),
       ...columns({
         context,

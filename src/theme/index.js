@@ -19,13 +19,13 @@ export default function theme(custom) {
         pals.push(...this.dataPalettes(), ...this.dataScales());
       }
       if (key) {
-        return pals.filter((p) => p.key === key);
+        return pals.filter(p => p.key === key);
       }
       return pals;
     },
     dataScales() {
       const pals = [];
-      t.scales.forEach((s) => {
+      t.scales.forEach(s => {
         pals.push({
           key: s.propertyValue,
           name: s.name,
@@ -40,7 +40,7 @@ export default function theme(custom) {
     },
     dataPalettes() {
       const pals = [];
-      t.palettes.data.forEach((s) => {
+      t.palettes.data.forEach(s => {
         pals.push({
           key: s.propertyValue,
           name: s.name,
@@ -54,7 +54,7 @@ export default function theme(custom) {
     },
     uiPalettes() {
       const pals = [];
-      t.palettes.ui.forEach((s) => {
+      t.palettes.ui.forEach(s => {
         pals.push({
           key: 'ui',
           name: s.name,

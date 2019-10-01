@@ -6,15 +6,19 @@ const mock = ({
   disclaimer = () => [],
   scales = () => ({}),
   stack = () => ({}),
-} = {}) => aw.mock([
-  ['**/components/axis.js', () => axis],
-  ['**/components/cells.js', () => cells],
-  ['**/components/columns.js', () => columns],
-  ['**/components/tooltip.js', () => tooltip],
-  ['**/components/disclaimer.js', () => disclaimer],
-  ['**/scales.js', () => scales],
-  ['**/stack.js', () => stack],
-], ['../pic-definition']);
+} = {}) =>
+  aw.mock(
+    [
+      ['**/components/axis.js', () => axis],
+      ['**/components/cells.js', () => cells],
+      ['**/components/columns.js', () => columns],
+      ['**/components/tooltip.js', () => tooltip],
+      ['**/components/disclaimer.js', () => disclaimer],
+      ['**/scales.js', () => scales],
+      ['**/stack.js', () => stack],
+    ],
+    ['../pic-definition']
+  );
 
 describe('pic-definition', () => {
   const context = {
@@ -77,7 +81,10 @@ describe('pic-definition', () => {
         cells: () => ['c'],
       });
       const c = def({
-        context, restricted: { type: 'disrupt' }, picassoColoring, env,
+        context,
+        restricted: { type: 'disrupt' },
+        picassoColoring,
+        env,
       });
       expect(c).to.eql({
         components: ['d'],
@@ -101,7 +108,8 @@ describe('pic-definition', () => {
         ...param,
         restricted: {},
         picassoColoring: {
-          ...picassoColoring, legend: () => ({ components: ['leg'], interactions: [] }),
+          ...picassoColoring,
+          legend: () => ({ components: ['leg'], interactions: [] }),
         },
       }).components;
       expect(c).to.eql(['leg']);
@@ -125,7 +133,7 @@ describe('pic-definition', () => {
   describe('collections', () => {
     it('should contain stacked first dimension', () => {
       const [{ default: def }] = mock({
-        stack: (opts) => opts,
+        stack: opts => opts,
       });
       const [first] = def(param).collections;
       expect(first).to.containSubset({
@@ -141,7 +149,7 @@ describe('pic-definition', () => {
 
     it('should contain a second dimension', () => {
       const [{ default: def }] = mock({
-        stack: (opts) => opts,
+        stack: opts => opts,
       });
       const [, second] = def(param).collections;
       expect(second).to.eql({
@@ -177,7 +185,8 @@ describe('pic-definition', () => {
       },
       restricted: {},
       picassoColoring: {
-        ...picassoColoring, legend: () => ({ components: [], interactions: ['legint'] }),
+        ...picassoColoring,
+        legend: () => ({ components: [], interactions: ['legint'] }),
       },
       env,
       layout: {},

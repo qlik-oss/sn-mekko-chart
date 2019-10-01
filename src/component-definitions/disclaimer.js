@@ -48,10 +48,7 @@ const component = {
   },
 
   render() {
-    const {
-      rect,
-      state,
-    } = this;
+    const { rect, state } = this;
 
     const { dock } = this.settings;
 
@@ -68,9 +65,7 @@ const component = {
       struct.x = rect.width / 2;
     }
 
-    const nodes = [
-      struct,
-    ];
+    const nodes = [struct];
     return nodes;
   },
 };

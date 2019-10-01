@@ -11,7 +11,7 @@ before(async function run() {
 
   process.testServer = s;
 
-  page.on('pageerror', (e) => {
+  page.on('pageerror', e => {
     console.log('Error:', e.message, e.stack);
   });
 });

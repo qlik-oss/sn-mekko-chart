@@ -1,7 +1,10 @@
 export const legendShow = (legendProps, hc, coloring) => {
-  if ((coloring.invalid || coloring.type === 'color')
-    || (coloring.mode === 'measure' && hc.qMeasureInfo.length <= 1)
-    || (coloring.mode === 'dimension')) {
+  if (
+    coloring.invalid ||
+    coloring.type === 'color' ||
+    (coloring.mode === 'measure' && hc.qMeasureInfo.length <= 1) ||
+    coloring.mode === 'dimension'
+  ) {
     return false;
   }
 
@@ -9,17 +12,9 @@ export const legendShow = (legendProps, hc, coloring) => {
 };
 
 export function catLegend(componentConfig, opts) {
-  const {
-    key,
-  } = componentConfig;
+  const { key } = componentConfig;
 
-  const {
-    scaleKey,
-    scales,
-    coloring,
-    hc,
-    permissions,
-  } = opts;
+  const { scaleKey, scales, coloring, hc, permissions } = opts;
 
   const s = `${scaleKey}Legend`;
 
@@ -34,7 +29,7 @@ export function catLegend(componentConfig, opts) {
     },
     settings: {
       item: {
-        show: (d) => d.datum.value !== -2,
+        show: d => d.datum.value !== -2,
       },
       title: {
         wordBreak: 'break-word',
@@ -47,19 +42,26 @@ export function catLegend(componentConfig, opts) {
       },
     },
     brush: {
-      trigger: !coloring.locked && permissions.indexOf('interact') !== -1 && permissions.indexOf('select') !== -1 ? [{
-        contexts: ['selection'],
-        data: ['', key],
-      }] : [],
-      consume: [{
-        context: 'selection',
-        data: ['', key],
-        style: {
-          inactive: {
-            opacity: 0.3,
+      trigger:
+        !coloring.locked && permissions.indexOf('interact') !== -1 && permissions.indexOf('select') !== -1
+          ? [
+              {
+                contexts: ['selection'],
+                data: ['', key],
+              },
+            ]
+          : [],
+      consume: [
+        {
+          context: 'selection',
+          data: ['', key],
+          style: {
+            inactive: {
+              opacity: 0.3,
+            },
           },
         },
-      }],
+      ],
     },
   };
 }

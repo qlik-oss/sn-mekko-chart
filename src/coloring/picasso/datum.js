@@ -1,18 +1,11 @@
 /* eslint no-nested-ternary: 0 */
 /* eslint no-bitwise: 0 */
-const rgba = (uint) => `rgba(${[
-  (0xFF0000 & uint) >> 16,
-  (0x00FF00 & uint) >> 8,
-  0x0000FF & uint,
-  ((0xFF000000 & uint) >>> 24) / 255].join(',')
-})`;
+const rgba = uint =>
+  `rgba(${[(0xff0000 & uint) >> 16, (0x00ff00 & uint) >> 8, 0x0000ff & uint, ((0xff000000 & uint) >>> 24) / 255].join(
+    ','
+  )})`;
 
-export default function ({
-  hc,
-  coloring,
-  scales,
-  key,
-}, measureIdx = 0) {
+export default function({ hc, coloring, scales, key }, measureIdx = 0) {
   let fillField;
   let fillData;
   const datumPropKey = key;
@@ -29,7 +22,7 @@ export default function ({
       reduce: 'first',
     };
     if (coloring.type === 'color') {
-      fillData.value = (v) => {
+      fillData.value = v => {
         if (v.qNum !== 'NaN') {
           return rgba(v.qNum);
         }
@@ -46,7 +39,9 @@ export default function ({
 
   if (hc.qDimensionInfo.length > 1) {
     datumProps[`${datumPropKey}IsAnOther`] = {
-      fields: hc.qDimensionInfo.map((d, i) => ({ field: `qDimensionInfo/${i}` })),
+      fields: hc.qDimensionInfo.map((d, i) => ({
+        field: `qDimensionInfo/${i}`,
+      })),
       value(values) {
         return values.indexOf(-3) !== -1;
       },

@@ -1,12 +1,6 @@
-import {
-  removeRole,
-  findFields,
-} from '../roles/roles';
+import { removeRole, findFields } from '../roles/roles';
 
-import {
-  setByDimension,
-  getByDimensionSettings,
-} from './byDimension';
+import { setByDimension, getByDimensionSettings } from './byDimension';
 
 const DIMENSION_RX = /(qDimensions|qDimensionInfo)\/\d+(\/(qAttributeDimensions|qAttrDimInfo)\/\d+)?$/;
 const MEASURE_RX = /(qMeasures|qMeasureInfo)\/\d+(\/(qAttributeExpressions|qAttrExprInfo)\/\d+)?$/;
@@ -35,11 +29,7 @@ function setByAuto(properties) {
   properties.cellColor.mode = 'auto';
 }
 
-export default function coloring({
-  properties,
-  layout,
-  theme,
-}) {
+export default function coloring({ properties, layout, theme }) {
   return {
     update() {
       if (!properties || !properties.qHyperCubeDef) {
@@ -47,7 +37,7 @@ export default function coloring({
       }
       // verify that the current settings are valid
       const hc = properties.qHyperCubeDef;
-      const colorByField = findFields((f) => f.roles && f.roles.filter((r) => r.role === 'color').length > 0, hc)[0];
+      const colorByField = findFields(f => f.roles && f.roles.filter(r => r.role === 'color').length > 0, hc)[0];
 
       const { mode } = properties.cellColor;
 
@@ -58,10 +48,7 @@ export default function coloring({
         this.colorBy({ mode: 'byDimension', modeConfig: config }, true);
       }
     },
-    colorBy({
-      mode,
-      modeConfig,
-    }, update = false) {
+    colorBy({ mode, modeConfig }, update = false) {
       if (!properties || !properties.qHyperCubeDef) {
         return;
       }
@@ -85,7 +72,7 @@ export default function coloring({
       const hc = layout ? layout.qHyperCube : properties.qHyperCubeDef;
       const colorProps = layout ? layout.cellColor : properties.cellColor;
 
-      const colorByField = findFields((f) => f.roles && f.roles.filter((r) => r.role === 'color').length > 0, hc)[0];
+      const colorByField = findFields(f => f.roles && f.roles.filter(r => r.role === 'color').length > 0, hc)[0];
       let fieldPath = colorByField ? colorByField.path.replace(/^\//, '') : 'qDimensionInfo/1';
       let definition = colorByField ? colorByField.definition : null;
 

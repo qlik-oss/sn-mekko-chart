@@ -1,6 +1,4 @@
-import {
-  addRole,
-} from '../roles/roles';
+import { addRole } from '../roles/roles';
 
 const RX = /\/(qDimensions|qMeasures)\/(\d+)/;
 const RXA = /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeExpressions)\/(\d+)/;
@@ -66,12 +64,15 @@ export function setByDimension(properties, byDimensionConfig, update) {
   if (update && dimensions.length) {
     const m = RXA.exec(targetPath);
     if (m) {
-      const def = config.type === 'libraryId' ? {
-        qLibraryId: config.typeValue,
-        libraryId: config.typeValue, // add custom property since qLibraryId is not returned in attr dimension/measure in layout
-      } : {
-        qDef: config.typeValue,
-      };
+      const def =
+        config.type === 'libraryId'
+          ? {
+              qLibraryId: config.typeValue,
+              libraryId: config.typeValue, // add custom property since qLibraryId is not returned in attr dimension/measure in layout
+            }
+          : {
+              qDef: config.typeValue,
+            };
       // add qAttributeX array since it's not always set
       if (!properties.qHyperCubeDef[m[1]][+m[2]][m[3]]) {
         properties.qHyperCubeDef[m[1]][+m[2]][m[3]] = [];
@@ -98,12 +99,7 @@ export function setByDimension(properties, byDimensionConfig, update) {
   };
 }
 
-export function getByDimensionSettings({
-  layout,
-  theme,
-  definition,
-  fieldPath,
-}) {
+export function getByDimensionSettings({ layout, theme, definition, fieldPath }) {
   if (definition.qError || (definition.qSize && definition.qSize.qcy === 0)) {
     return {
       invalid: true,
@@ -121,7 +117,7 @@ export function getByDimensionSettings({
     type: 'categorical',
 
     // references values in a theme
-    palette: pals.filter((p) => p.key === c.scheme)[0] || pals[0],
+    palette: pals.filter(p => p.key === c.scheme)[0] || pals[0],
     ...theme.dataColors(),
 
     // for tooltips and legend

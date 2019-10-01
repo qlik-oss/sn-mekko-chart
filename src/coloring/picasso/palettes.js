@@ -1,6 +1,4 @@
-export default function palettes({
-  coloring,
-} = {}) {
+export default function palettes({ coloring } = {}) {
   const pals = [];
 
   if (coloring.palette) {

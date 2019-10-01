@@ -1,7 +1,7 @@
 import component from './visual';
 import tap from './event-tap';
 
-export default function (componentConfig, config) {
+export default function(componentConfig, config) {
   const components = [];
   const interactions = [];
   const c = component(componentConfig, config);

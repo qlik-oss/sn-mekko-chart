@@ -1,6 +1,6 @@
 /* eslint no-nested-ternary: 0 */
 /* eslint no-bitwise: 0 */
-const rgba = uint => `rgba(${[
+const rgba = (uint) => `rgba(${[
   (0xFF0000 & uint) >> 16,
   (0x00FF00 & uint) >> 8,
   0x0000FF & uint,

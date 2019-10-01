@@ -88,7 +88,7 @@ export default function columns({
               linkData({ node }) {
                 return node.data;
               },
-              label: d => (d.data ? `${d.data.metric.label}` : ''),
+              label: (d) => (d.data ? `${d.data.metric.label}` : ''),
             }],
           },
         },

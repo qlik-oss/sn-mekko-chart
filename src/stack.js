@@ -5,7 +5,7 @@ export default function stack({
   field,
   trackBy,
   reduce,
-  stackKey = d => d.series.value,
+  stackKey = (d) => d.series.value,
   props = {},
 }) {
   return {
@@ -25,7 +25,7 @@ export default function stack({
       },
       stack: {
         stackKey,
-        value: d => d.end.value,
+        value: (d) => d.end.value,
         offset: 'expand',
       },
     },

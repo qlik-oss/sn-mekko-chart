@@ -47,7 +47,7 @@ export default function coloring({
       }
       // verify that the current settings are valid
       const hc = properties.qHyperCubeDef;
-      const colorByField = findFields(f => f.roles && f.roles.filter(r => r.role === 'color').length > 0, hc)[0];
+      const colorByField = findFields((f) => f.roles && f.roles.filter((r) => r.role === 'color').length > 0, hc)[0];
 
       const { mode } = properties.cellColor;
 
@@ -85,7 +85,7 @@ export default function coloring({
       const hc = layout ? layout.qHyperCube : properties.qHyperCubeDef;
       const colorProps = layout ? layout.cellColor : properties.cellColor;
 
-      const colorByField = findFields(f => f.roles && f.roles.filter(r => r.role === 'color').length > 0, hc)[0];
+      const colorByField = findFields((f) => f.roles && f.roles.filter((r) => r.role === 'color').length > 0, hc)[0];
       let fieldPath = colorByField ? colorByField.path.replace(/^\//, '') : 'qDimensionInfo/1';
       let definition = colorByField ? colorByField.definition : null;
 

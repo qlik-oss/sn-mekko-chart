@@ -168,7 +168,7 @@ export default function ext(env) {
                       },
                       items() {
                         const t = theme(env.Theme ? env.Theme.getCurrent().properties : {});
-                        return t.dataPalettes().map(p => ({
+                        return t.dataPalettes().map((p) => ({
                           component: 'color-scale',
                           type: 'classes',
                           translation: p.translation,

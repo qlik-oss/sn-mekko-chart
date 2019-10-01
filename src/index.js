@@ -66,7 +66,7 @@ export default function supernova(env) {
         const restricted = restriction(hc);
 
         if (restricted === RESTRICTIONS.HasZeroOrNegativeValues) {
-          const filteredMatrix = hc.qDataPages[0].qMatrix.filter(row => row[2].qNum > 0);
+          const filteredMatrix = hc.qDataPages[0].qMatrix.filter((row) => row[2].qNum > 0);
           hc = {
             ...layout.qHyperCube,
             qDataPages: [{
@@ -96,7 +96,7 @@ export default function supernova(env) {
           permissions: context.permissions,
         });
 
-        const formatPercentage = v => `${(v * 100).toFixed(1)}%`.replace('.', context.localeInfo ? context.localeInfo.qDecimalSep : '.');
+        const formatPercentage = (v) => `${(v * 100).toFixed(1)}%`.replace('.', context.localeInfo ? context.localeInfo.qDecimalSep : '.');
 
         this.pic.update({
           data: [{

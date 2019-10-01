@@ -8,7 +8,7 @@ function action(e, {
     y: coord.clientY,
   };
 
-  const comps = chart.componentsFromPoint(p).some(c => c.key === `${key}-cat`);
+  const comps = chart.componentsFromPoint(p).some((c) => c.key === `${key}-cat`);
 
   if (!comps || !e.target) {
     return;

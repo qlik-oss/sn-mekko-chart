@@ -9,18 +9,18 @@ function luminance(colStr) {
   let b;
 
   if ((m = (rHex.exec(colStr) || rHexShort.exec(colStr)))) {
-    [r, g, b] = m.slice(1).map(v => parseInt(v.length === 1 ? v + v : v, 16));
+    [r, g, b] = m.slice(1).map((v) => parseInt(v.length === 1 ? v + v : v, 16));
   } else if ((m = /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/i.exec(colStr))) {
-    [, r, g, b] = m.map(v => parseInt(v, 10));
+    [, r, g, b] = m.map((v) => parseInt(v, 10));
   } else if ((m = /^rgba\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d(\.\d+)?)\s*\)$/i.exec(colStr))) {
-    [, r, g, b] = m.map(v => parseInt(v, 10));
+    [, r, g, b] = m.map((v) => parseInt(v, 10));
   } else {
     return 0;
   }
 
   // https://www.w3.org/TR/WCAG20/#relativeluminancedef
-  const [sR, sG, sB] = [r, g, b].map(v => v / 255);
-  const [R, G, B] = [sR, sG, sB].map(v => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  const [sR, sG, sB] = [r, g, b].map((v) => v / 255);
+  const [R, G, B] = [sR, sG, sB].map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
 
   return 0.2126 * R + 0.7152 * G + 0.0722 * B;
 }

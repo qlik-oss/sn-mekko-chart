@@ -1,6 +1,6 @@
 /* eslint no-nested-ternary: 0 */
 function safeValue(prop) {
-  return d => (typeof d.datum[prop] === 'object' ? d.datum[prop].value : undefined);
+  return (d) => (typeof d.datum[prop] === 'object' ? d.datum[prop].value : undefined);
 }
 
 function isNil(d) {
@@ -24,7 +24,7 @@ export default function ({
   const safeOthers = safeValue(`${key}IsAnOther`);
 
   if (coloring.invalid) {
-    fn = d => (isOthers(d) || safeOthers(d) ? others : nil);
+    fn = (d) => (isOthers(d) || safeOthers(d) ? others : nil);
   } else if (scales[scaleKey]) {
     fn = (d) => {
       if (isOthers(d)) {
@@ -41,9 +41,9 @@ export default function ({
       return d.resources.scale(scaleKey)(safeDatum(d)) || others;
     };
   } else if (coloring.mode === 'constant') {
-    fn = d => (isOthers(d) || safeOthers(d) ? others : isNil(d) ? nil : primary);
+    fn = (d) => (isOthers(d) || safeOthers(d) ? others : isNil(d) ? nil : primary);
   } else if (coloring.type === 'color') {
-    fn = d => (isOthers(d) || safeOthers(d) ? others : isNil(d) ? nil : safeDatum(d) || others);
+    fn = (d) => (isOthers(d) || safeOthers(d) ? others : isNil(d) ? nil : safeDatum(d) || others);
   }
 
   return fn;

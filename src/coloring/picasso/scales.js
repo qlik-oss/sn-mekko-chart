@@ -2,7 +2,7 @@ export function persistByElemNo(field, num) {
   return {
     range: ({ resources, data }) => {
       const palette = resources.theme.palette('categorical', num);
-      return data.items.map(v => palette[v.value % palette.length]);
+      return data.items.map((v) => palette[v.value % palette.length]);
     },
     valueAccessor: field.value,
   };
@@ -12,7 +12,7 @@ export function persistByRow(field, num) {
   return {
     range: ({ resources, data }) => {
       const palette = resources.theme.palette('categorical', num);
-      return data.items.map(v => palette[v.row.value % palette.length]);
+      return data.items.map((v) => palette[v.row.value % palette.length]);
     },
     valueAccessor: field.value,
   };
@@ -70,7 +70,7 @@ export function byDimensionData({
           row: {
             reduce: () => ret.expando++,
           },
-          text: { value: v => v.qText, reduce: 'first' },
+          text: { value: (v) => v.qText, reduce: 'first' },
         },
       }],
     },
@@ -123,7 +123,7 @@ export default function colorScales({
           domain: coloring.domain,
           explicit,
           type: 'categorical-color',
-          label: d => (d.datum.text && d.datum.text.value ? d.datum.text.value : d.datum.label),
+          label: (d) => (d.datum.text && d.datum.text.value ? d.datum.text.value : d.datum.label),
         };
 
         scales[scaleKey] = s;

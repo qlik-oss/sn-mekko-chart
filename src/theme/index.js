@@ -19,7 +19,7 @@ export default function theme(custom) {
         pals.push(...this.dataPalettes(), ...this.dataScales());
       }
       if (key) {
-        return pals.filter(p => p.key === key);
+        return pals.filter((p) => p.key === key);
       }
       return pals;
     },

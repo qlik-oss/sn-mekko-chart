@@ -125,7 +125,7 @@ describe('pic-definition', () => {
   describe('collections', () => {
     it('should contain stacked first dimension', () => {
       const [{ default: def }] = mock({
-        stack: opts => opts,
+        stack: (opts) => opts,
       });
       const [first] = def(param).collections;
       expect(first).to.containSubset({
@@ -141,7 +141,7 @@ describe('pic-definition', () => {
 
     it('should contain a second dimension', () => {
       const [{ default: def }] = mock({
-        stack: opts => opts,
+        stack: (opts) => opts,
       });
       const [, second] = def(param).collections;
       expect(second).to.eql({

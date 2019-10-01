@@ -34,7 +34,7 @@ export function catLegend(componentConfig, opts) {
     },
     settings: {
       item: {
-        show: d => d.datum.value !== -2,
+        show: (d) => d.datum.value !== -2,
       },
       title: {
         wordBreak: 'break-word',

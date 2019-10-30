@@ -221,7 +221,7 @@ export default function ext(env) {
     },
     support: {
       export: true,
-      exortData: true,
+      exportData: true,
       snapshot: true,
       viewData: true,
     },

@@ -3,8 +3,14 @@ const RXA = /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeE
 export function findFields(needle, hc) {
   const found = [];
   const targets = hc.qDimensions
-    ? [['qDimensions', 'qMeasures'], ['qAttributeDimensions', 'qAttributeExpressions']]
-    : [['qDimensionInfo', 'qMeasureInfo'], ['qAttrDimInfo', 'qAttrExprInfo']];
+    ? [
+        ['qDimensions', 'qMeasures'],
+        ['qAttributeDimensions', 'qAttributeExpressions'],
+      ]
+    : [
+        ['qDimensionInfo', 'qMeasureInfo'],
+        ['qAttrDimInfo', 'qAttrExprInfo'],
+      ];
 
   targets[0].forEach(f => {
     const arr = hc[f] || [];

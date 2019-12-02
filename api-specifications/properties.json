@@ -12,52 +12,14 @@
     "properties": {
       "kind": "object",
       "entries": {
-        "version": {
-          "description": "Current version of this generic object definition",
-          "defaultValue": "1.0.0",
-          "type": "string"
-        },
-        "qHyperCubeDef": {
-          "kind": "object",
-          "entries": {
-            "qSuppressZero": {
-              "defaultValue": true,
-              "type": "boolean"
-            },
-            "qSuppressMissing": {
-              "defaultValue": true,
-              "type": "boolean"
-            },
-            "qCalcCondition": {
-              "type": "NxCalcCond"
-            }
-          }
-        },
-        "showTitles": {
-          "optional": true,
-          "defaultValue": true,
-          "type": "boolean"
-        },
-        "title": {
-          "optional": true,
-          "defaultValue": "",
-          "type": "string"
-        },
-        "subtitle": {
-          "optional": true,
-          "defaultValue": "",
-          "type": "string"
-        },
-        "footnote": {
-          "optional": true,
-          "defaultValue": "",
-          "type": "string"
-        },
         "cellColor": {
           "kind": "object",
           "entries": {
             "byDimension": {
               "type": "#/definitions/byDimensionConfig"
+            },
+            "legend": {
+              "type": "#/definitions/legendConfig"
             },
             "mode": {
               "defaultValue": "auto",
@@ -73,41 +35,80 @@
                 }
               ],
               "type": "string"
-            },
-            "legend": {
-              "type": "#/definitions/legendConfig"
             }
           }
+        },
+        "footnote": {
+          "optional": true,
+          "defaultValue": "",
+          "type": "string"
+        },
+        "qHyperCubeDef": {
+          "kind": "object",
+          "entries": {
+            "qCalcCondition": {
+              "type": "NxCalcCond"
+            },
+            "qSuppressMissing": {
+              "defaultValue": true,
+              "type": "boolean"
+            },
+            "qSuppressZero": {
+              "defaultValue": true,
+              "type": "boolean"
+            }
+          }
+        },
+        "showTitles": {
+          "optional": true,
+          "defaultValue": true,
+          "type": "boolean"
+        },
+        "subtitle": {
+          "optional": true,
+          "defaultValue": "",
+          "type": "string"
+        },
+        "title": {
+          "optional": true,
+          "defaultValue": "",
+          "type": "string"
+        },
+        "version": {
+          "description": "Current version of this generic object definition",
+          "defaultValue": "1.0.0",
+          "type": "string"
         }
       }
     }
   },
   "definitions": {
-    "legendConfig": {
-      "kind": "object",
-      "entries": {
-        "show": {
-          "defaultValue": "auto",
-          "kind": "union",
-          "items": [
-            {
-              "type": "boolean"
-            },
-            {
-              "kind": "literal",
-              "value": "'auto'"
-            }
-          ]
-        },
-        "showTitle": {
-          "defaultValue": true,
-          "type": "boolean"
-        }
-      }
-    },
     "byDimensionConfig": {
       "kind": "object",
       "entries": {
+        "label": {
+          "optional": true,
+          "kind": "union",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "StringExpression"
+            }
+          ],
+          "type": "any"
+        },
+        "persistent": {
+          "optional": true,
+          "defaultValue": false,
+          "type": "boolean"
+        },
+        "scheme": {
+          "optional": true,
+          "defaultValue": "",
+          "type": "string"
+        },
         "type": {
           "kind": "union",
           "items": [
@@ -137,29 +138,28 @@
             }
           ],
           "type": "any"
-        },
-        "label": {
-          "optional": true,
+        }
+      }
+    },
+    "legendConfig": {
+      "kind": "object",
+      "entries": {
+        "show": {
+          "defaultValue": "auto",
           "kind": "union",
           "items": [
             {
-              "type": "string"
+              "type": "boolean"
             },
             {
-              "type": "StringExpression"
+              "kind": "literal",
+              "value": "'auto'"
             }
-          ],
-          "type": "any"
+          ]
         },
-        "persistent": {
-          "optional": true,
-          "defaultValue": false,
+        "showTitle": {
+          "defaultValue": true,
           "type": "boolean"
-        },
-        "scheme": {
-          "optional": true,
-          "defaultValue": "",
-          "type": "string"
         }
       }
     }

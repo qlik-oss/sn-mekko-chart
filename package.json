@@ -39,27 +39,27 @@
     "prepublishOnly": "rm -rf dist && npm run build"
   },
   "peerDependencies": {
-    "@nebula.js/supernova": "0.1.0-alpha.20",
-    "picasso-plugin-q": "^0.27.0",
-    "picasso.js": "^0.27.0"
+    "@nebula.js/supernova": "0.1.0-alpha.25",
+    "picasso-plugin-q": "^0.28.0",
+    "picasso.js": "^0.28.0"
   },
   "devDependencies": {
-    "@after-work.js/aw": "^6.0.8",
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
-    "@nebula.js/cli": "0.1.0-alpha.20",
+    "@after-work.js/aw": "^6.0.10",
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@nebula.js/cli": "0.1.0-alpha.25",
     "babel-plugin-istanbul": "^5.2.0",
-    "eslint": "^6.5.1",
+    "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-mocha": "^6.1.1",
+    "eslint-plugin-mocha": "^6.2.2",
     "eslint-plugin-prettier": "^3.1.1",
     "mocha-junit-reporter": "^1.23.1",
-    "picasso-plugin-q": "^0.27.0",
-    "picasso.js": "^0.27.0",
-    "prettier": "^1.18.2",
-    "scriptappy-from-jsdoc": "^0.6.0"
+    "picasso-plugin-q": "^0.28.0",
+    "picasso.js": "^0.28.0",
+    "prettier": "^1.19.1",
+    "scriptappy-from-jsdoc": "^0.7.0"
   }
 }

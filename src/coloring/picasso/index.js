@@ -36,7 +36,7 @@ function coloringFn(resources) {
      * @param {string} cfg.key
      * @param {object} cfg.chartColorModel
      * @param {QAE.HyperCube} cfg.hc
-     * @param {string} permissions
+     * @param {object} cfg.constraints
      */
     config(cfg) {
       inputCache = { ...cfg };
@@ -165,7 +165,7 @@ function coloringFn(resources) {
           coloring: getSettings(),
           hc: inputCache.hc,
           scales: this.scales(),
-          permissions: inputCache.permissions,
+          constraints: inputCache.constraints,
         }
       );
     },

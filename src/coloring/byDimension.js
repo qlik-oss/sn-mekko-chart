@@ -103,10 +103,10 @@ export function getByDimensionSettings({ layout, theme, definition, fieldPath })
   if (definition.qError || (definition.qSize && definition.qSize.qcy === 0)) {
     return {
       invalid: true,
-      ...theme.dataColors(),
+      ...theme.getDataColorSpecials(),
     };
   }
-  const pals = theme.palettes('qualitative');
+  const pals = theme.getDataColorPalettes();
   const c = (layout.cellColor && layout.cellColor.byDimension) || {};
   return {
     mode: 'field',
@@ -118,7 +118,7 @@ export function getByDimensionSettings({ layout, theme, definition, fieldPath })
 
     // references values in a theme
     palette: pals.filter(p => p.key === c.scheme)[0] || pals[0],
-    ...theme.dataColors(),
+    ...theme.getDataColorSpecials(),
 
     // for tooltips and legend
     label: c.type === 'expression' ? c.label || definition.qFallbackTitle : definition.qFallbackTitle,

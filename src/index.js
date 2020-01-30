@@ -1,6 +1,19 @@
 import picassojs from 'picasso.js';
 import picassoQ from 'picasso-plugin-q';
 
+import {
+  useElement,
+  useEffect,
+  useState,
+  useStaleLayout,
+  useSelections,
+  useRect,
+  useAppLayout,
+  useTheme,
+  useConstraints,
+  useTranslator,
+} from '@nebula.js/supernova';
+
 import properties from './object-properties';
 import data from './data';
 import picSelections from './pic-selections';
@@ -14,13 +27,13 @@ import REFS from './refs';
 
 import chartColorConfig from './coloring';
 
-import picassoColoring from './coloring/picasso';
-import theme from './theme';
+import picassoColoringFn from './coloring/picasso';
+// import theme from './theme';
 
 export default function supernova(env) {
   const picasso = picassojs({
     renderer: {
-      prio: [env.Theme ? 'canvas' : 'svg'], // temporary way to check if running in Sense
+      prio: [env.sense ? 'canvas' : 'svg'],
     },
   });
   picasso.use(picassoQ);
@@ -38,27 +51,50 @@ export default function supernova(env) {
       },
       data,
     },
-    component: {
-      created() {
-        this.picassoColoring = picassoColoring({
-          picasso,
-        });
+    component: () => {
+      const layout = useStaleLayout();
+      const element = useElement();
+      const selections = useSelections();
+      const appLayout = useAppLayout();
+      const [rect] = useRect();
+      const [pic, setPic] = useState();
+      const constraints = useConstraints();
+      const translator = useTranslator();
 
-        this.contraster = contrasterFn();
-      },
-      mounted(element) {
-        this.pic = picasso.chart({
+      const localeInfo = appLayout.qLocaleInfo;
+      const theme = useTheme();
+
+      useEffect(() => {
+        const p = picasso.chart({
           element,
           data: [],
           settings: {},
         });
-        this.picsel = picSelections({
-          selections: this.selections,
-          brush: this.pic.brush('selection'),
+        const s = picSelections({
+          selections,
+          brush: p.brush('selection'),
           picassoQ,
         });
-      },
-      render({ layout, context }) {
+
+        setPic(p);
+        return () => {
+          s.release();
+          p.destroy();
+        };
+      }, []);
+
+      const [contraster] = useState(() => contrasterFn());
+
+      const [picassoColoring] = useState(() =>
+        picassoColoringFn({
+          picasso,
+        })
+      );
+
+      useEffect(() => {
+        if (!pic) {
+          return;
+        }
         let hc = layout.qHyperCube;
         const restricted = restriction(hc);
 
@@ -84,48 +120,48 @@ export default function supernova(env) {
 
         const c = chartColorConfig({
           layout,
-          theme: theme(env.Theme ? env.Theme.getCurrent().properties : {}),
+          theme,
         });
 
-        this.picassoColoring.config({
+        picassoColoring.config({
           key: REFS.CELL_COLOR,
           source: 'qHyperCube',
           hc,
           chartColorModel: c,
-          permissions: context.permissions,
+          constraints,
         });
 
         const formatPercentage = v =>
-          `${(v * 100).toFixed(1)}%`.replace('.', context.localeInfo ? context.localeInfo.qDecimalSep : '.');
+          `${(v * 100).toFixed(1)}%`.replace('.', localeInfo ? localeInfo.qDecimalSep : '.');
 
-        this.pic.update({
+        pic.update({
           data: [
             {
               type: 'q',
               key: 'qHyperCube',
               data: hc,
               config: {
-                localeInfo: context.localeInfo,
+                localeInfo,
               },
             },
-            ...this.picassoColoring.data(),
+            ...picassoColoring.data(),
           ],
           settings: definition({
             layout,
-            context,
-            contraster: this.contraster,
-            picassoColoring: this.picassoColoring,
+            theme,
+            contraster,
+            picassoColoring,
             restricted,
-            env,
+            translator,
+            constraints,
             formatPercentage,
           }),
         });
-      },
-      resize() {},
-      willUnmount() {
-        this.pic.destroy();
-      },
-      destroy() {},
+      }, [layout, pic, constraints, theme.name(), translator.language()]);
+
+      useEffect(() => {
+        pic && pic.update();
+      }, [rect.width, rect.height]);
     },
     ext: ext(env),
   };

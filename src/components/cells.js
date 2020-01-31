@@ -1,6 +1,6 @@
 import REFS from '../refs';
 
-export default function cells({ context, contraster, colorFill, hc, formatPercentage }) {
+export default function cells({ constraints, contraster, colorFill, hc, formatPercentage }) {
   const isLocked = hc.qDimensionInfo[1].qLocked;
   return [
     {
@@ -10,7 +10,7 @@ export default function cells({ context, contraster, colorFill, hc, formatPercen
         collection: REFS.CELL_COLLECTION,
       },
       brush:
-        context.permissions.indexOf('select') !== -1 && context.permissions.indexOf('interact') !== -1
+        !constraints.select && !constraints.active
           ? {
               trigger: isLocked
                 ? []

@@ -1,9 +1,8 @@
-export default function disclaimer(config, env) {
+export default function disclaimer(config, translator) {
   if (!config) {
     return [];
   }
-  const t = env.translator.get(config.translation);
-  // TODO - use translator
+  const t = translator.get(config.translation);
   if (config.type === 'disrupt') {
     return [
       {

@@ -1,6 +1,6 @@
 import REFS from '../refs';
 
-export default function columns({ context, style, hc, formatPercentage }) {
+export default function columns({ constraints, style, hc, formatPercentage }) {
   const isLocked = hc.qDimensionInfo[0].qLocked;
   return [
     {
@@ -18,7 +18,7 @@ export default function columns({ context, style, hc, formatPercentage }) {
         collection: REFS.SPAN_COLLECTION,
       },
       brush:
-        context.permissions.indexOf('select') !== -1 && context.permissions.indexOf('interact') !== -1
+        !constraints.select && !constraints.active
           ? {
               trigger: isLocked
                 ? []

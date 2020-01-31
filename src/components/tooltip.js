@@ -61,7 +61,7 @@ const nodeTooltipContent = ({ h, data }) => {
   return h('div', { style: { display: 'table' } }, rows);
 };
 
-export default function(coloring, env, formatPercentage) {
+export default function(coloring, translator, formatPercentage) {
   return [
     {
       type: 'tooltip',
@@ -83,7 +83,7 @@ export default function(coloring, env, formatPercentage) {
         filter: nodes => nodes.filter(n => n.key === 'cells' || n.key === 'column-boxes'),
         extract: ({ node, resources }) => {
           const share = formatPercentage(node.data.end.value - node.data.start.value);
-          const localizedLabel = env.translator.get('properties.dataPoints.labelmode.share');
+          const localizedLabel = translator.get('properties.dataPoints.labelmode.share');
           const SHARE_LABEL = localizedLabel !== 'properties.dataPoints.labelmode.share' ? localizedLabel : 'Share';
           const mField = resources.dataset().field('qMeasureInfo/0');
           const autoFormat = ['R', 'U'].indexOf(mField.raw().qNumFormat.qType) !== -1;

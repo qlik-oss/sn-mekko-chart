@@ -14,7 +14,7 @@ export const legendShow = (legendProps, hc, coloring) => {
 export function catLegend(componentConfig, opts) {
   const { key } = componentConfig;
 
-  const { scaleKey, scales, coloring, hc, permissions } = opts;
+  const { scaleKey, scales, coloring, hc, constraints } = opts;
 
   const s = `${scaleKey}Legend`;
 
@@ -38,12 +38,12 @@ export function catLegend(componentConfig, opts) {
         show: opts.legendConfig.showTitle !== false,
       },
       navigation: {
-        disabled: permissions.indexOf('interact') === -1,
+        disabled: constraints.active,
       },
     },
     brush: {
       trigger:
-        !coloring.locked && permissions.indexOf('interact') !== -1 && permissions.indexOf('select') !== -1
+        !coloring.locked && !constraints.active && !constraints.select
           ? [
               {
                 contexts: ['selection'],

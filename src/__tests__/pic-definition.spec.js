@@ -21,9 +21,7 @@ const mock = ({
   );
 
 describe('pic-definition', () => {
-  const context = {
-    permissions: [],
-  };
+  const constraints = { passive: true, active: true, select: true };
   const picassoColoring = {
     color: () => 'fill',
     datumProps: () => ({ colorProp: 'c' }),
@@ -34,7 +32,7 @@ describe('pic-definition', () => {
   };
   const env = {};
   const param = {
-    context,
+    constraints,
     picassoColoring,
     env,
     layout: {},
@@ -64,13 +62,13 @@ describe('pic-definition', () => {
       expect(c).to.eql(['sr', 'slabels']);
     });
 
-    it('should contain tooltip when permission is passive', () => {
+    it('should contain tooltip when no passive constraint', () => {
       const [{ default: def }] = mock({
         tooltip: () => ['t'],
       });
       const c = def({
         ...param,
-        context: { permissions: ['passive'] },
+        constraints: {},
       }).components;
       expect(c).to.eql(['t']);
     });
@@ -81,7 +79,7 @@ describe('pic-definition', () => {
         cells: () => ['c'],
       });
       const c = def({
-        context,
+        constraints,
         restricted: { type: 'disrupt' },
         picassoColoring,
         env,
@@ -162,17 +160,17 @@ describe('pic-definition', () => {
     });
   });
 
-  it('should not contain any events when passive and interact permission is missing', () => {
+  it('should not contain any events when active and passive constraints', () => {
     const [{ default: def }] = mock();
     const s = def(param).interactions;
     expect(s).to.eql([]);
   });
 
-  it('should contain interactive mousemove and mouseleave when passive', () => {
+  it('should contain interactive mousemove and mouseleave when no passive constraints', () => {
     const [{ default: def }] = mock();
     const s = def({
       ...param,
-      context: { permissions: ['passive'] },
+      constraints: {},
     }).interactions;
     expect(Object.keys(s[0].events)).to.eql(['mousemove', 'mouseleave']);
   });
@@ -180,9 +178,7 @@ describe('pic-definition', () => {
   it('should contain legend interactions', () => {
     const [{ default: def }] = mock();
     const c = def({
-      context: {
-        permissions: [''],
-      },
+      constraints: { passive: true },
       restricted: {},
       picassoColoring: {
         ...picassoColoring,

@@ -1,5 +1,4 @@
 import coloring from './coloring';
-import theme from './theme';
 
 const addons = {
   type: 'items',
@@ -167,12 +166,11 @@ export default function ext(env) {
                         return data.cellColor.mode === 'byDimension';
                       },
                       defaultValue() {
-                        const t = theme(env.Theme ? env.Theme.getCurrent().properties : {}).dataPalettes()[0];
+                        const t = env.sense.theme.getDataColorPalettes()[0];
                         return t ? t.key : '';
                       },
                       items() {
-                        const t = theme(env.Theme ? env.Theme.getCurrent().properties : {});
-                        return t.dataPalettes().map(p => ({
+                        return env.sense.theme.getDataColorPalettes().map(p => ({
                           component: 'color-scale',
                           type: 'classes',
                           translation: p.translation,

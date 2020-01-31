@@ -37,18 +37,26 @@ function tooltipInteraction() {
   };
 }
 
-export default function({ layout, context, contraster, restricted, picassoColoring, env, formatPercentage }) {
+export default function({
+  layout,
+  constraints,
+  theme,
+  contraster,
+  restricted,
+  picassoColoring,
+  translator,
+  formatPercentage,
+}) {
   let picassoStyle;
 
-  if (env.Theme) {
+  if (theme) {
     try {
-      const props = env.Theme.getCurrent().properties;
       picassoStyle = {
-        '$font-family': props.fontFamily || "'QlikView Sans', sans-serif",
-        '$font-color': props.color,
-        '$font-size': props.fontSize,
-        '$font-size--l': props.object.legend.title.fontSize,
-        '$guide-color': props.object.axis.line.major.color,
+        '$font-family': theme.getStyle('', '', 'fontFamily') || "'QlikView Sans', sans-serif",
+        '$font-color': theme.getStyle('', '', 'color'),
+        '$font-size': theme.getStyle('', '', 'fontSize'),
+        '$font-size--l': theme.getStyle('object', 'legend.title', 'fontSize'), // props.object.legend.title.fontSize,
+        '$guide-color': theme.getStyle('object', 'axis.line.major', 'color'), // props.object.axis.line.major.color,
       };
     } catch (e) {
       /* empty */
@@ -56,7 +64,7 @@ export default function({ layout, context, contraster, restricted, picassoColori
   }
   if (restricted && restricted.type === 'disrupt') {
     return {
-      components: disclaimer(restricted, env),
+      components: disclaimer(restricted, translator),
       ...(picassoStyle ? { style: picassoStyle } : {}), // ugly way to avoid setting style: undefined
     };
   }
@@ -69,7 +77,7 @@ export default function({ layout, context, contraster, restricted, picassoColori
     eventName: 'ev',
   });
 
-  const allowTooltip = context.permissions.indexOf('passive') !== -1;
+  const allowTooltip = !constraints.passive;
   return {
     strategy: {
       layoutModes: {
@@ -114,20 +122,20 @@ export default function({ layout, context, contraster, restricted, picassoColori
       ...leg.components,
       ...axis(),
       ...cells({
-        context,
+        constraints,
         contraster,
         colorFill,
         hc: layout.qHyperCube,
         formatPercentage,
       }),
       ...columns({
-        context,
+        constraints,
         style: picassoStyle,
         hc: layout.qHyperCube,
         formatPercentage,
       }),
-      ...(allowTooltip ? tooltip(picassoColoring.settings(), env, formatPercentage) : []),
-      ...disclaimer(restricted, env),
+      ...(allowTooltip ? tooltip(picassoColoring.settings(), translator, formatPercentage) : []),
+      ...disclaimer(restricted, translator),
     ],
     interactions: [...leg.interactions, allowTooltip ? tooltipInteraction() : false].filter(Boolean),
     style: picassoStyle,

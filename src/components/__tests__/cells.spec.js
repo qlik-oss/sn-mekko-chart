@@ -2,15 +2,16 @@ import cells from '../cells';
 
 describe('cells', () => {
   const param = {
-    context: {
-      permissions: [],
+    constraints: {
+      passive: true,
+      active: true,
     },
     hc: {
       qDimensionInfo: [{}, {}],
     },
   };
 
-  it('should contain empty brush config when neither select nor interact permissions are allowed', () => {
+  it('should contain empty brush config when passive and active constraints', () => {
     const c = cells(param);
     expect(c[0].brush).to.eql({});
   });
@@ -18,7 +19,7 @@ describe('cells', () => {
   it('should not have any brush trigger when dimension is locked', () => {
     const c = cells({
       ...param,
-      context: { permissions: ['select', 'interact'] },
+      constraints: {},
       hc: { qDimensionInfo: [{}, { qLocked: true }] },
     });
     expect(c[0].brush.trigger).to.eql([]);

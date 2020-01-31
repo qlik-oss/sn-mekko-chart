@@ -10,30 +10,23 @@ const selectors = {
 const getLabels = sel => sel.map(r => r.getAttribute('data-label'));
 
 describe('interaction', () => {
-  const content = '.nebulajs-sn';
+  const content = '.nebulajs-sn[data-render-count="1"]';
   const app = encodeURIComponent(process.env.APP_ID || '/apps/Executive_Dashboard.qvf');
 
   beforeEach(async () => {
-    await page.goto(
-      `${process.testServer.url}/render/app/${app}?cols=Region,Fiscal Year,=1&permissions=interact,select,passive`
-    );
+    await page.goto(`${process.env.BASE_URL}/render/?app=${app}&cols=Region,Fiscal Year,=1`);
     await page.waitForSelector(content, {
       timeout: 5000,
     });
   });
 
-  it('should select "Americas, Europe" and "2012"', async () => {
+  it('should select "Americas, Europe" and "2012"', async function run() {
+    this.timeout(10000);
     await page.click(selectors.columnLabels('Americas'));
     await page.click(selectors.columnLabels('Europe'));
-
     await page.waitForSelector(selectors.confirm);
     await page.click(selectors.confirm);
-
-    await page.waitForFunction(
-      selector => document.querySelectorAll(selector).length === 2,
-      {},
-      selectors.columnLabels()
-    );
+    await page.waitForSelector(selectors.columnLabels('Asia'), { hidden: true });
 
     let rects = await page.$$eval(selectors.columnLabels(), getLabels);
     expect(rects).to.eql(['Americas', 'Europe']);
@@ -43,17 +36,13 @@ describe('interaction', () => {
     await page.waitForSelector(selectors.confirm);
     await page.click(selectors.confirm);
 
-    await page.waitForFunction(
-      selector => document.querySelectorAll(selector).length === 2,
-      {},
-      selectors.cellLabels()
-    );
+    await page.waitForSelector(selectors.cellLabels('2013'), { hidden: true });
 
     rects = await page.$$eval(selectors.cellLabels(), getLabels);
     expect(rects).to.eql(['2012', '2012']);
   });
 
-  it('should show tooltip for column "Europe" and data cell "Americas 2012"', async () => {
+  it('should show tooltip for column "Europe" and data cell "Americas 2012"', async function run() {
     // hover column "Europe"
     await page.hover(selectors.columnLabels('Europe'));
     await page.waitForSelector('.pic-tooltip', { visible: true });
@@ -73,18 +62,15 @@ describe('interaction', () => {
     expect(tooltipContent).to.eql(['Americas, 2012', ['Share:33.3%', '=1:1', 'Fiscal Year:2012']]);
   });
 
-  it('should select "2011" in the legend', async () => {
+  it('should select "2011" in the legend', async function run() {
+    this.timeout(10000);
     await page.waitForSelector(selectors.legendLabels('2011'), { visible: true });
     await page.click(selectors.legendLabels('2011'));
 
     await page.waitForSelector(selectors.confirm, { visible: true });
     await page.click(selectors.confirm);
 
-    await page.waitForFunction(
-      selector => document.querySelectorAll(selector).length === 1,
-      {},
-      selectors.legendLabels()
-    );
+    await page.waitForSelector(selectors.legendLabels('2012'), { hidden: true });
 
     const dataCellRects = await page.$$eval(selectors.cellLabels(), getLabels);
     const legendRects = await page.$$eval(selectors.legendLabels(), getLabels);
@@ -93,7 +79,8 @@ describe('interaction', () => {
     expect(legendRects).to.eql(['2011']);
   });
 
-  it('should tap to select column "Europe" and data cells "2012" and "2013"', async () => {
+  it('should tap to select column "Europe" and data cells "2012" and "2013"', async function run() {
+    this.timeout(10000);
     await page.emulate(devices.iPad);
 
     await page.waitForSelector(selectors.columnLabels(), { visible: true });
@@ -102,11 +89,7 @@ describe('interaction', () => {
     await page.waitForSelector(selectors.confirm, { visible: true });
     await page.tap(selectors.confirm);
 
-    await page.waitForFunction(
-      selector => document.querySelectorAll(selector).length === 1,
-      {},
-      selectors.columnLabels()
-    );
+    await page.waitForSelector(selectors.columnLabels('Asia'), { hidden: true });
 
     let rects = await page.$$eval(selectors.columnLabels(), getLabels);
     expect(rects).to.eql(['Europe']);
@@ -117,11 +100,7 @@ describe('interaction', () => {
     await page.waitForSelector(selectors.confirm, { visible: true });
     await page.tap(selectors.confirm);
 
-    await page.waitForFunction(
-      selector => document.querySelectorAll(selector).length === 2,
-      {},
-      selectors.cellLabels()
-    );
+    await page.waitForSelector(selectors.cellLabels('2011'), { hidden: true });
 
     rects = await page.$$eval(selectors.cellLabels(), getLabels);
     expect(rects).to.eql(['2012', '2013']);

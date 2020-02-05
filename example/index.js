@@ -13,13 +13,14 @@
   connect()('/apps/Executive_Dashboard.qvf').then((app) => {
     // configure nucleus
     const nuked = window.nucleus(app, {
+      context: { theme: 'light' },
       types: [{
         name: 'mekko',
         load: () => Promise.resolve(window['sn-mekko-chart']),
       }],
     });
 
-    nuked.selections().mount(document.querySelector('.toolbar'));
+    nuked.selections().then(s => s.mount(document.querySelector('.toolbar')));
 
     // create a session object
     nuked.create({
@@ -27,9 +28,6 @@
       fields: ['Region', 'Product Group Desc', '=Sum([Sales Quantity]*[Sales Price])'],
     }, {
       element: document.querySelector('.object'),
-      context: {
-        permissions: ['passive', 'interact', 'select', 'fetch'], // allow selections
-      },
     });
 
     // create another session object
@@ -38,9 +36,6 @@
       fields: ['Region', 'Fiscal Year', '=Sum([Sales Quantity]*[Sales Price])'],
     }, {
       element: document.querySelectorAll('.object')[1],
-      context: {
-        permissions: ['passive', 'interact', 'select', 'fetch'], // allow selections
-      },
     });
   });
 }());

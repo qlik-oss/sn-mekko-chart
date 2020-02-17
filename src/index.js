@@ -56,7 +56,7 @@ export default function supernova(env) {
       const element = useElement();
       const selections = useSelections();
       const appLayout = useAppLayout();
-      const [rect] = useRect();
+      const rect = useRect();
       const [pic, setPic] = useState();
       const constraints = useConstraints();
       const translator = useTranslator();

@@ -16,21 +16,20 @@ If you use npm: `npm install @nebula.js/sn-mekko-chart`. You can also load throu
 
 ```js
 
-import nucleus from '@nebula.js/nucleus';
+import { embed } from '@nebula.js/stardust';
 import mekko from '@nebula.js/sn-mekko-chart';
 
 // 'app' is an enigma app model
-const nuked = nucleus(app, {
+const nuked = embed(app, {
   types: [{ // register the mekko chart
     name: 'mekko',
     load: () => Promise.resolve(mekko);
   }]
 });
 
-nuked.create({
+embed.render({
+  element,
   type: 'mekko',
-}, {
-  element
 });
 ```
 

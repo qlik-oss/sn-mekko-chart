@@ -12,7 +12,7 @@
 
   connect()('/apps/Executive_Dashboard.qvf').then((app) => {
     // configure nucleus
-    const nuked = window.nucleus(app, {
+    const nuked = window.stardust.embed(app, {
       context: { theme: 'light' },
       types: [{
         name: 'mekko',
@@ -23,19 +23,17 @@
     nuked.selections().then(s => s.mount(document.querySelector('.toolbar')));
 
     // create a session object
-    nuked.create({
+    nuked.render({
+      element: document.querySelector('.object'),
       type: 'mekko',
       fields: ['Region', 'Product Group Desc', '=Sum([Sales Quantity]*[Sales Price])'],
-    }, {
-      element: document.querySelector('.object'),
     });
 
     // create another session object
-    nuked.create({
+    nuked.render({
+      element: document.querySelectorAll('.object')[1],
       type: 'mekko',
       fields: ['Region', 'Fiscal Year', '=Sum([Sales Quantity]*[Sales Price])'],
-    }, {
-      element: document.querySelectorAll('.object')[1],
     });
   });
 }());

@@ -9,3 +9,5 @@
 node_modules
 coverage
 dist/
+core/*
+!core/package.json

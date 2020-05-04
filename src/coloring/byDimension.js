@@ -117,7 +117,7 @@ export function getByDimensionSettings({ layout, theme, definition, fieldPath })
     type: 'categorical',
 
     // references values in a theme
-    palette: pals.filter(p => p.key === c.scheme)[0] || pals[0],
+    palette: pals.filter((p) => p.key === c.scheme)[0] || pals[0],
     ...theme.getDataColorSpecials(),
 
     // for tooltips and legend

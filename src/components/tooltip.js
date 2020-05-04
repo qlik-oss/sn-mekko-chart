@@ -27,7 +27,7 @@ function destroyTooltipContainer() {
 
 const nodeTooltipContent = ({ h, data }) => {
   const rows = [];
-  data.forEach(node => {
+  data.forEach((node) => {
     const title = h(
       'th',
       {
@@ -39,7 +39,7 @@ const nodeTooltipContent = ({ h, data }) => {
 
     rows.push(title);
 
-    node.props.forEach(prop => {
+    node.props.forEach((prop) => {
       const cells = [
         h('td', { style: { padding: '2px 4px' } }, `${prop.label}:`),
         h('td', { style: { margin: '2px 4px' } }, [
@@ -61,7 +61,7 @@ const nodeTooltipContent = ({ h, data }) => {
   return h('div', { style: { display: 'table' } }, rows);
 };
 
-export default function(coloring, translator, formatPercentage) {
+export default function (coloring, translator, formatPercentage) {
   return [
     {
       type: 'tooltip',
@@ -80,7 +80,7 @@ export default function(coloring, translator, formatPercentage) {
       },
       settings: {
         appendTo: () => document.querySelector(`#${TOOLTIP_CONTAINER_SELECTOR}`),
-        filter: nodes => nodes.filter(n => n.key === 'cells' || n.key === 'column-boxes'),
+        filter: (nodes) => nodes.filter((n) => n.key === 'cells' || n.key === 'column-boxes'),
         extract: ({ node, resources }) => {
           const share = formatPercentage(node.data.end.value - node.data.start.value);
           const localizedLabel = translator.get('properties.dataPoints.labelmode.share');

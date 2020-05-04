@@ -12,7 +12,7 @@ import {
   useTheme,
   useConstraints,
   useTranslator,
-} from '@nebula.js/supernova';
+} from '@nebula.js/stardust';
 
 import properties from './object-properties';
 import data from './data';
@@ -99,7 +99,7 @@ export default function supernova(env) {
         const restricted = restriction(hc);
 
         if (restricted === RESTRICTIONS.HasZeroOrNegativeValues) {
-          const filteredMatrix = hc.qDataPages[0].qMatrix.filter(row => row[2].qNum > 0);
+          const filteredMatrix = hc.qDataPages[0].qMatrix.filter((row) => row[2].qNum > 0);
           hc = {
             ...layout.qHyperCube,
             qDataPages: [
@@ -131,7 +131,7 @@ export default function supernova(env) {
           constraints,
         });
 
-        const formatPercentage = v =>
+        const formatPercentage = (v) =>
           `${(v * 100).toFixed(1)}%`.replace('.', localeInfo ? localeInfo.qDecimalSep : '.');
 
         pic.update({

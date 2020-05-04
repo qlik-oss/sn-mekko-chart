@@ -88,7 +88,7 @@ export default function columns({ constraints, style, hc, formatPercentage }) {
                     linkData({ node }) {
                       return node.data;
                     },
-                    label: d => {
+                    label: (d) => {
                       if (!d.data) {
                         return '';
                       }
@@ -99,7 +99,7 @@ export default function columns({ constraints, style, hc, formatPercentage }) {
                     linkData({ node }) {
                       return node.data;
                     },
-                    label: d => (d.data ? `${d.data.metric.label}` : ''),
+                    label: (d) => (d.data ? `${d.data.metric.label}` : ''),
                   },
                 ],
               },

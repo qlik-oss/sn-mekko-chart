@@ -87,7 +87,7 @@ export default function cells({ constraints, contraster, colorFill, hc, formatPe
                     linkData({ node }) {
                       return node.data;
                     },
-                    label: d => {
+                    label: (d) => {
                       if (!d.data) {
                         return '';
                       }

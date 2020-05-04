@@ -170,7 +170,7 @@ export default function ext(env) {
                         return t ? t.key : '';
                       },
                       items() {
-                        return env.sense.theme.getDataColorPalettes().map(p => ({
+                        return env.sense.theme.getDataColorPalettes().map((p) => ({
                           component: 'color-scale',
                           type: 'classes',
                           translation: p.translation,

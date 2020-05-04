@@ -37,7 +37,7 @@ function tooltipInteraction() {
   };
 }
 
-export default function({
+export default function ({
   layout,
   constraints,
   theme,
@@ -94,7 +94,7 @@ export default function({
       stack({
         key: REFS.SPAN_COLLECTION,
         field: 'qDimensionInfo/0',
-        trackBy: cell => cell.qElemNumber,
+        trackBy: (cell) => cell.qElemNumber,
         reduce: 'first',
         stackKey: () => -1,
       }),

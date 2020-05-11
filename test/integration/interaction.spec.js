@@ -24,7 +24,7 @@ describe('interaction', () => {
     this.timeout(10000);
     await page.click(selectors.columnLabels('Americas'));
     await page.click(selectors.columnLabels('Europe'));
-    await page.waitForSelector(selectors.confirm);
+    await page.waitForSelector(`${selectors.confirm}:not([disabled])`, { visible: true });
     await page.click(selectors.confirm);
     await page.waitForSelector(selectors.columnLabels('Asia'), { hidden: true });
 
@@ -33,7 +33,7 @@ describe('interaction', () => {
 
     await page.click(selectors.cellLabels('2012'));
 
-    await page.waitForSelector(selectors.confirm);
+    await page.waitForSelector(`${selectors.confirm}:not([disabled])`, { visible: true });
     await page.click(selectors.confirm);
 
     await page.waitForSelector(selectors.cellLabels('2013'), { hidden: true });
@@ -67,7 +67,7 @@ describe('interaction', () => {
     await page.waitForSelector(selectors.legendLabels('2011'), { visible: true });
     await page.click(selectors.legendLabels('2011'));
 
-    await page.waitForSelector(selectors.confirm, { visible: true });
+    await page.waitForSelector(`${selectors.confirm}:not([disabled])`, { visible: true });
     await page.click(selectors.confirm);
 
     await page.waitForSelector(selectors.legendLabels('2012'), { hidden: true });
@@ -86,7 +86,7 @@ describe('interaction', () => {
     await page.waitForSelector(selectors.columnLabels(), { visible: true });
     await page.tap(selectors.columnLabels('Europe'));
 
-    await page.waitForSelector(selectors.confirm, { visible: true });
+    await page.waitForSelector(`${selectors.confirm}:not([disabled])`, { visible: true });
     await page.tap(selectors.confirm);
 
     await page.waitForSelector(selectors.columnLabels('Asia'), { hidden: true });
@@ -97,7 +97,7 @@ describe('interaction', () => {
     await page.tap(selectors.cellLabels('2012'));
     await page.tap(selectors.cellLabels('2013'));
 
-    await page.waitForSelector(selectors.confirm, { visible: true });
+    await page.waitForSelector(`${selectors.confirm}:not([disabled])`, { visible: true });
     await page.tap(selectors.confirm);
 
     await page.waitForSelector(selectors.cellLabels('2011'), { hidden: true });

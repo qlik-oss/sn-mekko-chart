@@ -17,7 +17,7 @@ export default ({ flags, translator }) => ({
         min: 1,
         max: 1,
         description: () => {
-          if (flags && flags.isEnabled('REQ_LABELS')) {
+          if (flags.isEnabled('REQ_LABELS')) {
             return translator.get('Visualizations.Descriptions.Size');
           }
         },

@@ -6,7 +6,7 @@ export default ({ flags, translator }) => ({
         min: 2,
         max: 2,
         description: (properties, index) => {
-          if (flags && flags.isEnabled('REQ_LABELS')) {
+          if (flags.isEnabled('REQ_LABELS')) {
             return index === 0
             ? translator.get('Visualizations.Descriptions.Column')
             : translator.get('Visualizations.Descriptions.Cells');

@@ -49,7 +49,7 @@ export default function supernova(env) {
           }).update();
         },
       },
-      data,
+      data: data(env),
     },
     component: () => {
       const layout = useStaleLayout();

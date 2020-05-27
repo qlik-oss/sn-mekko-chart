@@ -8,9 +8,10 @@ export default ({ flags, translator }) => ({
         description: (properties, index) => {
           if (flags && flags.isEnabled('REQ_LABELS')) {
             return index === 0
-            ? translator.get('Visualizations.Descriptions.Column')
-            : translator.get('Visualizations.Descriptions.Cells');
+              ? translator.get('Visualizations.Descriptions.Column')
+              : translator.get('Visualizations.Descriptions.Cells');
           }
+          return '';
         },
       },
       measures: {
@@ -20,6 +21,7 @@ export default ({ flags, translator }) => ({
           if (flags && flags.isEnabled('REQ_LABELS')) {
             return translator.get('Visualizations.Descriptions.Size');
           }
+          return '';
         },
       },
     },

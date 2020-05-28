@@ -7,8 +7,8 @@ export default ({ translator }) => ({
         max: 2,
         description: (properties, index) => {
           return index === 0
-              ? translator.get('Visualizations.Descriptions.Column')
-              : translator.get('Visualizations.Descriptions.Cells');
+            ? translator.get('Visualizations.Descriptions.Column')
+            : translator.get('Visualizations.Descriptions.Cells');
         },
       },
       measures: {

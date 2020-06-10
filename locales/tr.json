@@ -1,0 +1,38 @@
+{
+  "Disclaimer.LimitedData": {
+    "value": "Şu anda sınırlı bir veri kümesi gösteriliyor.",
+    "comment": "Disclaimer for when a chart contains a limited data set."
+  },
+  "Disclaimer.NegativeOrZeroValues": {
+    "value": "Veri kümesi, bu grafikte gösterilemeyen negatif veya sıfır değerlerini içeriyor.",
+    "comment": "Disclaimer for when a chart can't display negative or zero values in the data set."
+  },
+  "Disclaimer.NoDataExist": {
+    "value": "Seçimler bu grafik için hiç veri oluşturmadı.",
+    "comment": "Disclaimer for when a chart contains no data at all due to selections."
+  },
+  "Disclaimer.OnlyNaNData": {
+    "value": "Yalnızca tanımsız değerleri içermesi nedeniyle grafik görüntülenmiyor.",
+    "comment": "Disclaimer for when a chart can not be displayed due to only NaN values in the data set."
+  },
+  "Disclaimer.OnlyNegativeOrZeroValues": {
+    "value": "Yalnızca negatif veya sıfır değerlerini içermesi nedeniyle grafik görüntülenmiyor.",
+    "comment": "Disclaimer for when a chart can't be displayed due to only negative or zero values in the data set."
+  },
+  "Cells": {
+    "value": "Hücreler",
+    "comment": "Label for a dimension that in the visualization is represented by cells (rnt 200527)"
+  },
+  "Column": {
+    "value": "Sütun",
+    "comment": "Label for a dimension that in the visualization is represented by columns (rnt 180424)"
+  },
+  "Size": {
+    "value": "Boyut",
+    "comment": "Noun. Label for a dimension or measure that in the visualization is represented by size (rnt 180424)"
+  },
+  "Share": {
+    "value": "Pay",
+    "comment": "Noun. Refers to percentage/part of a whole."
+  }
+}

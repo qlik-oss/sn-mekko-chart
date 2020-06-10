@@ -1,0 +1,38 @@
+{
+  "Disclaimer.LimitedData": {
+    "value": "В настоящее время отображается ограниченный набор данных.",
+    "comment": "Disclaimer for when a chart contains a limited data set."
+  },
+  "Disclaimer.NegativeOrZeroValues": {
+    "value": "Набор данных содержит отрицательные или нулевые значения, которые невозможно показать в этой диаграмме.",
+    "comment": "Disclaimer for when a chart can't display negative or zero values in the data set."
+  },
+  "Disclaimer.NoDataExist": {
+    "value": "В результате выборок данные для этой диаграммы не созданы.",
+    "comment": "Disclaimer for when a chart contains no data at all due to selections."
+  },
+  "Disclaimer.OnlyNaNData": {
+    "value": "Диаграмма не отображается, поскольку она содержит только неопределенные значения.",
+    "comment": "Disclaimer for when a chart can not be displayed due to only NaN values in the data set."
+  },
+  "Disclaimer.OnlyNegativeOrZeroValues": {
+    "value": "Диаграмма не отображается, поскольку она содержит только отрицательные или нулевые значения.",
+    "comment": "Disclaimer for when a chart can't be displayed due to only negative or zero values in the data set."
+  },
+  "Cells": {
+    "value": "Ячейки",
+    "comment": "Label for a dimension that in the visualization is represented by cells (rnt 200527)"
+  },
+  "Column": {
+    "value": "Столбец",
+    "comment": "Label for a dimension that in the visualization is represented by columns (rnt 180424)"
+  },
+  "Size": {
+    "value": "Размер",
+    "comment": "Noun. Label for a dimension or measure that in the visualization is represented by size (rnt 180424)"
+  },
+  "Share": {
+    "value": "Доля",
+    "comment": "Noun. Refers to percentage/part of a whole."
+  }
+}

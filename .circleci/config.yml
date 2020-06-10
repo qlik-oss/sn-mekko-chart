@@ -49,6 +49,10 @@ jobs:
           command: yarn run build
 
       - run:
+          name: Validate locales
+          command: yarn run validate:locale
+
+      - run:
           name: Lint
           command: yarn run lint
 

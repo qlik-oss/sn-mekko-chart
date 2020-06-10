@@ -1,0 +1,38 @@
+{
+  "Disclaimer.LimitedData": {
+    "value": "当前正显示有限的数据集。",
+    "comment": "Disclaimer for when a chart contains a limited data set."
+  },
+  "Disclaimer.NegativeOrZeroValues": {
+    "value": "数据集中包含无法在此图表中显示的负值或零值。",
+    "comment": "Disclaimer for when a chart can't display negative or zero values in the data set."
+  },
+  "Disclaimer.NoDataExist": {
+    "value": "选择未生成此图表的数据。",
+    "comment": "Disclaimer for when a chart contains no data at all due to selections."
+  },
+  "Disclaimer.OnlyNaNData": {
+    "value": "未显示图表，因为它仅包含未定义的值。",
+    "comment": "Disclaimer for when a chart can not be displayed due to only NaN values in the data set."
+  },
+  "Disclaimer.OnlyNegativeOrZeroValues": {
+    "value": "未显示图表，因为它仅包含负值或零值。",
+    "comment": "Disclaimer for when a chart can't be displayed due to only negative or zero values in the data set."
+  },
+  "Cells": {
+    "value": "单元格",
+    "comment": "Label for a dimension that in the visualization is represented by cells (rnt 200527)"
+  },
+  "Column": {
+    "value": "列",
+    "comment": "Label for a dimension that in the visualization is represented by columns (rnt 180424)"
+  },
+  "Size": {
+    "value": "大小",
+    "comment": "Noun. Label for a dimension or measure that in the visualization is represented by size (rnt 180424)"
+  },
+  "Share": {
+    "value": "份额",
+    "comment": "Noun. Refers to percentage/part of a whole."
+  }
+}

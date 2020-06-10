@@ -1,0 +1,38 @@
+{
+  "Disclaimer.LimitedData": {
+    "value": "目前顯示的是有限的資料集。",
+    "comment": "Disclaimer for when a chart contains a limited data set."
+  },
+  "Disclaimer.NegativeOrZeroValues": {
+    "value": "資料集包含無法在此圖表中顯示的負值或零值。",
+    "comment": "Disclaimer for when a chart can't display negative or zero values in the data set."
+  },
+  "Disclaimer.NoDataExist": {
+    "value": "此選項無法產生任何適用於此圖表的資料。",
+    "comment": "Disclaimer for when a chart contains no data at all due to selections."
+  },
+  "Disclaimer.OnlyNaNData": {
+    "value": "系統不會顯示圖表，因為該圖表僅包含未定義的值。",
+    "comment": "Disclaimer for when a chart can not be displayed due to only NaN values in the data set."
+  },
+  "Disclaimer.OnlyNegativeOrZeroValues": {
+    "value": "系統不會顯示圖表，因為該圖表僅包含負值或零值。",
+    "comment": "Disclaimer for when a chart can't be displayed due to only negative or zero values in the data set."
+  },
+  "Cells": {
+    "value": "儲存格",
+    "comment": "Label for a dimension that in the visualization is represented by cells (rnt 200527)"
+  },
+  "Column": {
+    "value": "資料行",
+    "comment": "Label for a dimension that in the visualization is represented by columns (rnt 180424)"
+  },
+  "Size": {
+    "value": "大小",
+    "comment": "Noun. Label for a dimension or measure that in the visualization is represented by size (rnt 180424)"
+  },
+  "Share": {
+    "value": "佔有率",
+    "comment": "Noun. Refers to percentage/part of a whole."
+  }
+}

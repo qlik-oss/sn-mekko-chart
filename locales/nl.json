@@ -1,0 +1,38 @@
+{
+  "Disclaimer.LimitedData": {
+    "value": "Momenteel wordt een beperkte gegevensverzameling getoond.",
+    "comment": "Disclaimer for when a chart contains a limited data set."
+  },
+  "Disclaimer.NegativeOrZeroValues": {
+    "value": "De gegevensverzameling bevat negatieve waarden of nulwaarden die niet kunnen worden weergegeven in deze grafiek.",
+    "comment": "Disclaimer for when a chart can't display negative or zero values in the data set."
+  },
+  "Disclaimer.NoDataExist": {
+    "value": "De selecties hebben geen gegevens voor de grafiek gegenereerd.",
+    "comment": "Disclaimer for when a chart contains no data at all due to selections."
+  },
+  "Disclaimer.OnlyNaNData": {
+    "value": "De grafiek wordt niet weergegeven omdat deze alleen ongedefinieerde waarden bevat.",
+    "comment": "Disclaimer for when a chart can not be displayed due to only NaN values in the data set."
+  },
+  "Disclaimer.OnlyNegativeOrZeroValues": {
+    "value": "De grafiek wordt niet weergegeven omdat het alleen negatieve waarden of nulwaarden bevat.",
+    "comment": "Disclaimer for when a chart can't be displayed due to only negative or zero values in the data set."
+  },
+  "Cells": {
+    "value": "Cellen",
+    "comment": "Label for a dimension that in the visualization is represented by cells (rnt 200527)"
+  },
+  "Column": {
+    "value": "Kolom",
+    "comment": "Label for a dimension that in the visualization is represented by columns (rnt 180424)"
+  },
+  "Size": {
+    "value": "Grootte",
+    "comment": "Noun. Label for a dimension or measure that in the visualization is represented by size (rnt 180424)"
+  },
+  "Share": {
+    "value": "Aandeel",
+    "comment": "Noun. Refers to percentage/part of a whole."
+  }
+}

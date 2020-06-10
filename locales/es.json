@@ -1,0 +1,38 @@
+{
+  "Disclaimer.LimitedData": {
+    "value": "Mostrando actualmente un conjunto limitado de datos.",
+    "comment": "Disclaimer for when a chart contains a limited data set."
+  },
+  "Disclaimer.NegativeOrZeroValues": {
+    "value": "El conjunto de datos contiene valores negativos o cero que no se pueden mostrar en este gráfico.",
+    "comment": "Disclaimer for when a chart can't display negative or zero values in the data set."
+  },
+  "Disclaimer.NoDataExist": {
+    "value": "Las selecciones no han generado datos para este gráfico.",
+    "comment": "Disclaimer for when a chart contains no data at all due to selections."
+  },
+  "Disclaimer.OnlyNaNData": {
+    "value": "El gráfico no se muestra porque solo contiene valores indefinidos.",
+    "comment": "Disclaimer for when a chart can not be displayed due to only NaN values in the data set."
+  },
+  "Disclaimer.OnlyNegativeOrZeroValues": {
+    "value": "El gráfico no se muestra porque sólo contiene valores negativos o valores cero.",
+    "comment": "Disclaimer for when a chart can't be displayed due to only negative or zero values in the data set."
+  },
+  "Cells": {
+    "value": "Celdas",
+    "comment": "Label for a dimension that in the visualization is represented by cells (rnt 200527)"
+  },
+  "Column": {
+    "value": "Columna",
+    "comment": "Label for a dimension that in the visualization is represented by columns (rnt 180424)"
+  },
+  "Size": {
+    "value": "Tamaño",
+    "comment": "Noun. Label for a dimension or measure that in the visualization is represented by size (rnt 180424)"
+  },
+  "Share": {
+    "value": "Cuota",
+    "comment": "Noun. Refers to percentage/part of a whole."
+  }
+}

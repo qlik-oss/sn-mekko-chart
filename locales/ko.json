@@ -1,0 +1,38 @@
+{
+  "Disclaimer.LimitedData": {
+    "value": "현재 제한된 데이터 집합을 표시하고 있습니다.",
+    "comment": "Disclaimer for when a chart contains a limited data set."
+  },
+  "Disclaimer.NegativeOrZeroValues": {
+    "value": "데이터 집합에 해당 차트에 표시할 수 없는 음수 값 또는 zero 값이 포함되어 있습니다.",
+    "comment": "Disclaimer for when a chart can't display negative or zero values in the data set."
+  },
+  "Disclaimer.NoDataExist": {
+    "value": "선택 내용으로 해당 차트에 대한 데이터가 생성되지 않았습니다.",
+    "comment": "Disclaimer for when a chart contains no data at all due to selections."
+  },
+  "Disclaimer.OnlyNaNData": {
+    "value": "정의되지 않은 값만 포함되어 있으므로 차트가 표시되지 않습니다.",
+    "comment": "Disclaimer for when a chart can not be displayed due to only NaN values in the data set."
+  },
+  "Disclaimer.OnlyNegativeOrZeroValues": {
+    "value": "음수 또는 zero 값만 포함되어 있으므로 차트가 표시되지 않습니다.",
+    "comment": "Disclaimer for when a chart can't be displayed due to only negative or zero values in the data set."
+  },
+  "Cells": {
+    "value": "셀",
+    "comment": "Label for a dimension that in the visualization is represented by cells (rnt 200527)"
+  },
+  "Column": {
+    "value": "열",
+    "comment": "Label for a dimension that in the visualization is represented by columns (rnt 180424)"
+  },
+  "Size": {
+    "value": "크기",
+    "comment": "Noun. Label for a dimension or measure that in the visualization is represented by size (rnt 180424)"
+  },
+  "Share": {
+    "value": "공유",
+    "comment": "Noun. Refers to percentage/part of a whole."
+  }
+}

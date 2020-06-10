@@ -12,6 +12,7 @@ import {
   useTheme,
   useConstraints,
   useTranslator,
+  useOptions,
 } from '@nebula.js/stardust';
 
 import properties from './object-properties';
@@ -31,11 +32,7 @@ import picassoColoringFn from './coloring/picasso';
 // import theme from './theme';
 
 export default function supernova(env) {
-  const picasso = picassojs({
-    renderer: {
-      prio: [env.sense ? 'canvas' : 'svg'],
-    },
-  });
+  const picasso = picassojs();
   picasso.use(picassoQ);
   picasso.use(plugin);
 
@@ -64,8 +61,14 @@ export default function supernova(env) {
       const localeInfo = appLayout.qLocaleInfo;
       const theme = useTheme();
 
+      const { renderer } = useOptions();
+
       useEffect(() => {
-        const p = picasso.chart({
+        const p = picasso({
+          renderer: {
+            prio: [renderer || 'canvas'],
+          },
+        }).chart({
           element,
           data: [],
           settings: {},

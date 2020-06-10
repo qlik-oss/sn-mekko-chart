@@ -10,11 +10,11 @@ const selectors = {
 const getLabels = (sel) => sel.map((r) => r.getAttribute('data-label'));
 
 describe('interaction', () => {
-  const content = '.nebulajs-sn[data-render-count="1"]';
+  const content = '.njs-viz[data-render-count="1"]';
   const app = encodeURIComponent(process.env.APP_ID || '/apps/Executive_Dashboard.qvf');
 
   beforeEach(async () => {
-    await page.goto(`${process.env.BASE_URL}/render/?app=${app}&cols=Region,Fiscal Year,=1`);
+    await page.goto(`${process.env.BASE_URL}/render/?app=${app}&render-config=x`);
     await page.waitForSelector(content, {
       timeout: 5000,
     });

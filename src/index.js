@@ -29,12 +29,16 @@ import REFS from './refs';
 import chartColorConfig from './coloring';
 
 import picassoColoringFn from './coloring/picasso';
-// import theme from './theme';
+import globeTrotter from '../locales/all';
 
 export default function supernova(env) {
   const picasso = picassojs();
   picasso.use(picassoQ);
   picasso.use(plugin);
+
+  Object.keys(globeTrotter).forEach((key) => {
+    env.translator.add(globeTrotter[key]);
+  });
 
   return {
     qae: {

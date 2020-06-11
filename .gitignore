@@ -11,3 +11,4 @@ coverage
 dist/
 core/*
 !core/package.json
+locales/all.js

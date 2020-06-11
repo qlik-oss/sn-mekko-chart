@@ -1,0 +1,38 @@
+{
+  "Disclaimer.LimitedData": {
+    "value": "Just nu visas en begränsad uppsättning data.",
+    "comment": "Disclaimer for when a chart contains a limited data set."
+  },
+  "Disclaimer.NegativeOrZeroValues": {
+    "value": "Datauppsättningen innehåller negativa värden eller nollvärden som inte kan visas i detta diagram.",
+    "comment": "Disclaimer for when a chart can't display negative or zero values in the data set."
+  },
+  "Disclaimer.NoDataExist": {
+    "value": "Urvalen genererade inga data för detta diagram.",
+    "comment": "Disclaimer for when a chart contains no data at all due to selections."
+  },
+  "Disclaimer.OnlyNaNData": {
+    "value": "Diagrammet visas inte eftersom det enbart innehåller odefinierade värden.",
+    "comment": "Disclaimer for when a chart can not be displayed due to only NaN values in the data set."
+  },
+  "Disclaimer.OnlyNegativeOrZeroValues": {
+    "value": "Diagrammet visas inte eftersom det enbart innehåller negativa eller nollvärden",
+    "comment": "Disclaimer for when a chart can't be displayed due to only negative or zero values in the data set."
+  },
+  "Cells": {
+    "value": "Celler",
+    "comment": "Label for a dimension that in the visualization is represented by cells (rnt 200527)"
+  },
+  "Column": {
+    "value": "Kolumn",
+    "comment": "Label for a dimension that in the visualization is represented by columns (rnt 180424)"
+  },
+  "Size": {
+    "value": "Storlek",
+    "comment": "Noun. Label for a dimension or measure that in the visualization is represented by size (rnt 180424)"
+  },
+  "Share": {
+    "value": "Andel",
+    "comment": "Noun. Refers to percentage/part of a whole."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "Share": {
+    "value": "Share",
+    "comment": "Noun. Refers to percentage/part of a whole."
+  },
+  "Disclaimer.LimitedData": {
+    "value": "Currently showing a limited data set.",
+    "comment": "Disclaimer for when a chart contains a limited data set."
+  },
+  "Disclaimer.OnlyNegativeOrZeroValues": {
+    "value": "The chart is not displayed because it contains only negative or zero values.",
+    "comment": "Disclaimer for when a chart can't be displayed due to only negative or zero values in the data set."
+  },
+  "Disclaimer.NegativeOrZeroValues": {
+    "value": "The data set contains negative or zero values that cannot be shown in this chart.",
+    "comment": "Disclaimer for when a chart can't display negative or zero values in the data set."
+  },
+  "Disclaimer.NoDataExist": {
+    "value": "The selections generated no data for this chart.",
+    "comment": "Disclaimer for when a chart contains no data at all due to selections."
+  },
+  "Disclaimer.OnlyNaNData": {
+    "value": "The chart is not displayed because it contains only undefined values.",
+    "comment": "Disclaimer for when a chart can not be displayed due to only NaN values in the data set."
+  },
+  "Cells": {
+    "value": "Cells",
+    "comment": "Label for a dimension that in the visualization is represented by cells (rnt 200527)"
+  },
+  "Column": {
+    "value": "Column",
+    "comment": "Label for a dimension that in the visualization is represented by columns (rnt 180424)"
+  },
+  "Size": {
+    "value": "Size",
+    "comment": "Noun. Label for a dimension or measure that in the visualization is represented by size (rnt 180424)"
+  }
+}

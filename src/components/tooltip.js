@@ -83,8 +83,8 @@ export default function (coloring, translator, formatPercentage) {
         filter: (nodes) => nodes.filter((n) => n.key === 'cells' || n.key === 'column-boxes'),
         extract: ({ node, resources }) => {
           const share = formatPercentage(node.data.end.value - node.data.start.value);
-          const localizedLabel = translator.get('properties.dataPoints.labelmode.share');
-          const SHARE_LABEL = localizedLabel !== 'properties.dataPoints.labelmode.share' ? localizedLabel : 'Share';
+          const localizedLabel = translator.get('Share');
+          const SHARE_LABEL = localizedLabel !== 'Share' ? localizedLabel : 'Share';
           const mField = resources.dataset().field('qMeasureInfo/0');
           const autoFormat = ['R', 'U'].indexOf(mField.raw().qNumFormat.qType) !== -1;
 

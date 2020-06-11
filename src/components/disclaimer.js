@@ -1,8 +1,27 @@
+import { RESTRICTIONS } from '../data-restrictions';
+
+function getTranslatedValue(restriction, translator) {
+  switch (restriction) {
+    case RESTRICTIONS.HasNoData:
+      return translator.get('Disclaimer.NoDataExist');
+    case RESTRICTIONS.HasOnlyNaNValues:
+      return translator.get('Disclaimer.OnlyNaNData');
+    case RESTRICTIONS.HasOnlyNegativeOrZeroValues:
+      return translator.get('Disclaimer.OnlyNegativeOrZeroValues');
+    case RESTRICTIONS.HasLimitedDataset:
+      return translator.get('Disclaimer.LimitedData');
+    case RESTRICTIONS.HasZeroOrNegativeValues:
+      return translator.get('Disclaimer.NegativeOrZeroValues');
+    default:
+      return '';
+  }
+}
+
 export default function disclaimer(config, translator) {
   if (!config) {
     return [];
   }
-  const t = translator.get(config.translation);
+  const t = getTranslatedValue(config, translator);
   if (config.type === 'disrupt') {
     return [
       {
@@ -10,7 +29,7 @@ export default function disclaimer(config, translator) {
         type: 'disclaimer',
         dock: 'center',
         settings: {
-          text: t !== config.translation ? t : config.label,
+          text: t || config.label,
         },
       },
     ];

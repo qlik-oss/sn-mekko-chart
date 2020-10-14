@@ -40,12 +40,12 @@
     "@nebula.js/stardust": "^1.0"
   },
   "devDependencies": {
-    "@after-work.js/aw": "6.0.13",
-    "@babel/cli": "7.11.5",
-    "@babel/core": "7.11.5",
-    "@babel/parser": "7.11.5",
-    "@babel/preset-env": "7.11.5",
-    "@babel/traverse": "7.11.5",
+    "@after-work.js/aw": "6.0.14",
+    "@babel/cli": "7.12.0",
+    "@babel/core": "7.12.0",
+    "@babel/parser": "7.12.0",
+    "@babel/preset-env": "7.12.0",
+    "@babel/traverse": "7.12.0",
     "@nebula.js/cli": "1.0.0",
     "@nebula.js/cli-build": "1.0.0",
     "@nebula.js/cli-serve": "1.0.1",
@@ -53,15 +53,15 @@
     "babel-plugin-istanbul": "6.0.0",
     "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.2.0",
-    "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-import": "2.22.0",
+    "eslint-config-prettier": "6.12.0",
+    "eslint-plugin-import": "2.22.1",
     "eslint-plugin-mocha": "6.3.0",
     "eslint-plugin-prettier": "3.1.4",
     "globby": "11.0.1",
     "mocha-junit-reporter": "1.23.3",
     "picasso-plugin-q": "0.34.0",
     "picasso.js": "0.34.0",
-    "prettier": "2.1.1",
+    "prettier": "2.1.2",
     "scriptappy-from-jsdoc": "0.7.0"
   }
 }

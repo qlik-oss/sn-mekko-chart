@@ -8532,15 +8532,15 @@ phin@^2.9.1:
   version "2.9.3"
   resolved "https://registry.yarnpkg.com/phin/-/phin-2.9.3.tgz#f9b6ac10a035636fb65dfc576aaaa17b8743125c"
 
-picasso-plugin-q@0.37.2:
-  version "0.37.2"
-  resolved "https://registry.yarnpkg.com/picasso-plugin-q/-/picasso-plugin-q-0.37.2.tgz#b09236e2568c86814092b175cdf8c3b492b47994"
-  integrity sha512-kmQjoDHagmCpbrb2S7mCEXO4FomWUAigdMi2rgWOkzq+rYMKam6sejRgt5BCUipnRLL5a9WUzfqRqJJ9FZACDA==
+picasso-plugin-q@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/picasso-plugin-q/-/picasso-plugin-q-1.2.1.tgz#acf5034005db92f12f72c597262a376f5d5f97bf"
+  integrity sha512-wc01i/9mm5jVAx2lnQ5HmLLJWvwHsgCJjoctoLObG9VwwH04leIRoqZ03lSkrIW0nGBzN7FUsod2dRE+dhDeig==
 
-picasso.js@0.37.2:
-  version "0.37.2"
-  resolved "https://registry.yarnpkg.com/picasso.js/-/picasso.js-0.37.2.tgz#955d976f8d3a25a464be09c3180e7e67da0e8024"
-  integrity sha512-PX8iNmU60Od4KG9i6MOqyylMZQ2yYcZ/YaI2rXU21VZM1EkQ2tEVwMpgjO1DXTZsV0rapR0ctYdBiCJHei0udA==
+picasso.js@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/picasso.js/-/picasso.js-1.2.1.tgz#845c9a2fedbb34428ce809bfa7874d83acfb7a5e"
+  integrity sha512-qIH/zCu2RtfXEamBV7j7QosSFhH69rAs1/tZ0AN+C8I6Qa/RNM7J6LqkxGIsWe92rOvQF1eduGVgXeEdyd5BMg==
 
 picomatch@^2.0.4, picomatch@^2.0.5:
   version "2.0.7"

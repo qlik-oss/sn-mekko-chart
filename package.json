@@ -59,8 +59,8 @@
     "eslint-plugin-prettier": "3.4.0",
     "globby": "11.0.4",
     "mocha-junit-reporter": "1.23.3",
-    "picasso-plugin-q": "0.37.2",
-    "picasso.js": "0.37.2",
+    "picasso-plugin-q": "1.2.2",
+    "picasso.js": "1.2.2",
     "prettier": "2.3.2",
     "scriptappy-from-jsdoc": "0.7.0"
   }

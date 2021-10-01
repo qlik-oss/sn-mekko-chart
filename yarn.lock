@@ -2465,10 +2465,10 @@
     import-cwd "3.0.0"
     yargs "17.0.1"
 
-"@nebula.js/stardust@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@nebula.js/stardust/-/stardust-1.7.0.tgz#475d8e3bd4e55cb074aeb7e374e5569a309ad105"
-  integrity sha512-d+KE2IKoLud27BZQ4eTJtFbPRLq2JqQmz8uZaQ/BYWA9CxmntlTxiDDcaJlzBgk3YFUxUpvz2yvBHWP/YmPpyg==
+"@nebula.js/stardust@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@nebula.js/stardust/-/stardust-2.0.0.tgz#372dd43c8444e8bb49bbe28e23f97a629d844507"
+  integrity sha512-sANEo9pTMxMLtg0H+xp34Z8v7/kirpOaE8gEkYamTlOthi2zSMeXzvp1BZSFcFCgwsQx+qREKd5l9ICauInqGA==
 
 "@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.2":
   version "2.1.8-no-fsevents.2"

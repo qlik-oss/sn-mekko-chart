@@ -20,10 +20,10 @@ aliases:
 jobs:
   build:
     docker:
-      - image: circleci/node:10.19.0
-      - image: qlikcore/engine:12.1050.0
+      - image: circleci/node:16.7-browsers
+      - image: qlikcore/engine:12.1126.0
         command: -S AcceptEULA=yes
-      - image: browserless/chrome:1.46.0-puppeteer-1.20.0
+      - image: browserless/chrome:1.48.0-puppeteer-1.20.0
 
     working_directory: ~/project
 

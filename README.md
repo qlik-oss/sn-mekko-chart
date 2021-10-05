@@ -1,8 +1,5 @@
 # sn-mekko-chart
 
-[![CircleCI](https://circleci.com/gh/qlik-oss/sn-mekko-chart.svg?style=shield)](https://circleci.com/gh/qlik-oss/sn-mekko-chart)
-[![Coverage Status](https://coveralls.io/repos/github/qlik-oss/sn-mekko-chart/badge.svg)](https://coveralls.io/github/qlik-oss/sn-mekko-chart)
-
 A basic mekko chart supernova aimed to be used in [nebula.js](https://github.com/qlik-oss/nebula.js).
 
 ![mekko chart preview](./assets/preview.gif)

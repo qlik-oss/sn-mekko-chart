@@ -69,7 +69,9 @@ jobs:
           name: Integration tests
           command: |
             DocId=$(curl -s --data-binary @data/apps/Executive_Dashboard.qvf http://localhost:9076/v1/apps/import | jq -r '.attributes.id')
-            APP_ID=$DocId yarn run test:integration --chrome.browserWSEndpoint "ws://localhost:3000" --no-launch
+            APP_ID=$DocId yarn run test:integration --mocha.bail false --chrome.browserWSEndpoint "ws://localhost:3000" --no-launch
+      - store_artifacts:
+          path: ./test/rendering/artifacts
 
       - store_test_results:
           path: coverage/junit

@@ -37,7 +37,7 @@
     "prepublishOnly": "rm -rf dist && npm run build"
   },
   "peerDependencies": {
-    "@nebula.js/stardust": "^2.0"
+    "@nebula.js/stardust": ">=1.7.0"
   },
   "devDependencies": {
     "@after-work.js/aw": "6.0.14",

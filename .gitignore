@@ -12,3 +12,4 @@ dist/
 core/*
 !core/package.json
 locales/all.js
+sn-mekko-chart-ext

@@ -5,7 +5,7 @@
     "description": "Mekko chart generic object definition",
     "version": "1.0.0",
     "license": "MIT",
-    "stability": "experimental",
+    "stability": "stable",
     "x-qlik-visibility": "public"
   },
   "entries": {

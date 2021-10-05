@@ -22,11 +22,12 @@
   "files": [
     "core",
     "dist",
-    "api-specifications"
+    "api-specifications",
+    "sn-mekko-chart-ext"
   ],
   "main": "./dist/sn-mekko-chart.js",
   "scripts": {
-    "build": "./tools/generate-all-locale.js && nebula build --core core",
+    "build": "./tools/generate-all-locale.js && nebula build --core core --mode='production' && nebula sense --partial true --output='sn-mekko-chart-ext' --sourcemap true",
     "lint": "eslint src test ./*.js",
     "lint:check": "eslint --print-config ./aw.config.js | eslint-config-prettier-check",
     "spec": "scriptappy-from-jsdoc -c ./spec-configs/props.conf.js",
@@ -48,6 +49,7 @@
     "@babel/traverse": "7.15.4",
     "@nebula.js/cli": "2.0.0",
     "@nebula.js/cli-build": "2.0.0",
+    "@nebula.js/cli-sense": "2.0.0",
     "@nebula.js/cli-serve": "2.0.0",
     "@nebula.js/stardust": "2.0.0",
     "babel-plugin-istanbul": "6.0.0",

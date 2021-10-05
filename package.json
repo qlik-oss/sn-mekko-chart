@@ -37,7 +37,7 @@
     "prepublishOnly": "rm -rf dist && npm run build"
   },
   "peerDependencies": {
-    "@nebula.js/stardust": "^1.7"
+    "@nebula.js/stardust": ">=1.7.0"
   },
   "devDependencies": {
     "@after-work.js/aw": "6.0.14",
@@ -49,7 +49,7 @@
     "@nebula.js/cli": "2.0.0",
     "@nebula.js/cli-build": "2.0.0",
     "@nebula.js/cli-serve": "1.7.0",
-    "@nebula.js/stardust": "1.7.0",
+    "@nebula.js/stardust": "2.0.0",
     "babel-plugin-istanbul": "6.0.0",
     "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.2.1",

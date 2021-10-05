@@ -48,7 +48,7 @@
     "@babel/traverse": "7.15.4",
     "@nebula.js/cli": "2.0.0",
     "@nebula.js/cli-build": "2.0.0",
-    "@nebula.js/cli-serve": "1.7.0",
+    "@nebula.js/cli-serve": "2.0.0",
     "@nebula.js/stardust": "2.0.0",
     "babel-plugin-istanbul": "6.0.0",
     "eslint": "6.8.0",

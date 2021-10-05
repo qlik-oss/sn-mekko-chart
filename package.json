@@ -46,7 +46,7 @@
     "@babel/parser": "7.15.7",
     "@babel/preset-env": "7.15.6",
     "@babel/traverse": "7.15.4",
-    "@nebula.js/cli": "1.7.0",
+    "@nebula.js/cli": "2.0.0",
     "@nebula.js/cli-build": "2.0.0",
     "@nebula.js/cli-serve": "1.7.0",
     "@nebula.js/stardust": "1.7.0",

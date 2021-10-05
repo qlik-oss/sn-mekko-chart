@@ -2547,10 +2547,10 @@
     rollup-plugin-terser "7.0.2"
     yargs "17.0.1"
 
-"@nebula.js/cli-create@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@nebula.js/cli-create/-/cli-create-1.7.0.tgz#e8921494f35c9640b9e4cd66136726d333eb6d14"
-  integrity sha512-IgvbZxU2tqzNfi0D9BMMgZOCncWgqWSW+M1320J8UKX3AA19/koxHJRO0RKzl4rID5pDahQEyjq8lKzVUXk0gA==
+"@nebula.js/cli-create@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@nebula.js/cli-create/-/cli-create-2.0.0.tgz#1949de75090dd2ffca84e28a95947801d9dbf471"
+  integrity sha512-EMJjvdlXJJyRr/UJTD+7KIDK2qJV81qG9iWofep49s5CL/gf7CA9hy3DtXsEQOh9ZtPTR3iKXgMsuvqQDZSJmg==
   dependencies:
     chalk "4.1.2"
     ejs "3.1.6"
@@ -2579,14 +2579,14 @@
     ws "8.0.0"
     yargs "17.0.1"
 
-"@nebula.js/cli@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@nebula.js/cli/-/cli-1.7.0.tgz#316944f27ba8a51401838403fbe53b41533d139d"
-  integrity sha512-VSBnkM5eZ6wwlHjV3Dj0V3Lki0xbd/qw5ilIDZgTOkrr1npgOPVbfhtOtDnypg/II2G5PahgZOHjmLlguMZ7oQ==
+"@nebula.js/cli@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@nebula.js/cli/-/cli-2.0.0.tgz#e49250f67500530e23923f7bf6018fb41a9828d2"
+  integrity sha512-TN+l1nn/JuS2TKVaVq0CI1nS/FxegPQsVPFRErnr+4gghTAMbJJCXi6LTVZ9sMD8ObvF4Jyk1FxCzJSSOF79oQ==
   dependencies:
-    "@nebula.js/cli-create" "^1.7.0"
+    "@nebula.js/cli-create" "^2.0.0"
     import-cwd "3.0.0"
-    yargs "17.0.1"
+    yargs "17.1.1"
 
 "@nebula.js/stardust@1.7.0":
   version "1.7.0"

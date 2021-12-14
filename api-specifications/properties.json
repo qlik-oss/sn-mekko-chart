@@ -3,7 +3,7 @@
   "info": {
     "name": "@nebula.js/sn-mekko-chart:properties",
     "description": "Mekko chart generic object definition",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "license": "MIT",
     "stability": "stable",
     "x-qlik-visibility": "public"
@@ -16,6 +16,8 @@
           "kind": "object",
           "entries": {
             "byDimension": {
+              "optional": true,
+              "defaultValue": "byDimensionConfig",
               "type": "#/definitions/byDimensionConfig"
             },
             "legend": {
@@ -39,16 +41,29 @@
           }
         },
         "footnote": {
+          "description": "Visualization footnote.",
           "optional": true,
           "defaultValue": "",
-          "type": "string"
+          "kind": "union",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "StringExpression"
+            }
+          ],
+          "type": "any"
         },
         "qHyperCubeDef": {
+          "description": "Extends `HyperCubeDef`, see Engine API: `HyperCubeDef`.",
+          "extends": [
+            {
+              "type": "HyperCubeDef"
+            }
+          ],
           "kind": "object",
           "entries": {
-            "qCalcCondition": {
-              "type": "NxCalcCond"
-            },
             "qSuppressMissing": {
               "defaultValue": true,
               "type": "boolean"
@@ -60,23 +75,43 @@
           }
         },
         "showTitles": {
+          "description": "Show title for the visualization.",
           "optional": true,
           "defaultValue": true,
           "type": "boolean"
         },
         "subtitle": {
+          "description": "Visualization subtitle.",
           "optional": true,
           "defaultValue": "",
-          "type": "string"
+          "kind": "union",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "StringExpression"
+            }
+          ],
+          "type": "any"
         },
         "title": {
+          "description": "Visualization title.",
           "optional": true,
           "defaultValue": "",
-          "type": "string"
+          "kind": "union",
+          "items": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "StringExpression"
+            }
+          ],
+          "type": "any"
         },
         "version": {
           "description": "Current version of this generic object definition",
-          "defaultValue": "1.0.0",
           "type": "string"
         }
       }
@@ -84,6 +119,7 @@
   },
   "definitions": {
     "byDimensionConfig": {
+      "description": "Configuration object for when mode is set to `byDimension`",
       "kind": "object",
       "entries": {
         "label": {

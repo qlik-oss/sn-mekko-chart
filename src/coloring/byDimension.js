@@ -4,6 +4,7 @@ const RX = /\/(qDimensions|qMeasures)\/(\d+)/;
 const RXA = /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeExpressions)\/(\d+)/;
 
 /**
+ * Configuration object for when mode is set to `byDimension`
  * @typedef {object}
  * @alias byDimensionConfig
  */

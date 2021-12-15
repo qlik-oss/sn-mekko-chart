@@ -41,7 +41,7 @@ In this example the first dimension (Region) is used to color each cell.
 ![mekko chart color by dimension](./assets/sn-mekko-chart-color-by-dim.png)
 
 ```js
-embedable.render({
+embeddable.render({
   element,
   type: 'mekko',
   fields: ['Region', 'Fiscal Year', '=Sum(Sales)'],

@@ -17,7 +17,7 @@ const embeddable = embed(app, {
   }]
 });
 
-embedable.render({
+embeddable.render({
   element,
   type: 'mekko',
   fields: ['Region', 'Fiscal Year', '=Sum(Sales)'],

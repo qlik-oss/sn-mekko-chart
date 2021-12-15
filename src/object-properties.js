@@ -8,13 +8,12 @@ const properties = {
    * Current version of this generic object definition
    * @type {string}
    */
-  version: '1.0.0',
+  version: process.env.PACKAGE_VERSION,
   /**
-   * @typedef
+   * Extends `HyperCubeDef`, see Engine API: `HyperCubeDef`.
+   * @extends {HyperCubeDef}
    */
   qHyperCubeDef: {
-    qDimensions: [],
-    qMeasures: [],
     qInitialDataFetch: [
       {
         qWidth: 3,
@@ -25,28 +24,30 @@ const properties = {
     qSuppressZero: true,
     /** @type {boolean} */
     qSuppressMissing: true,
-    /** @type {NxCalcCond} */
-    qCalcCondition: undefined,
   },
   /**
+   * Show title for the visualization.
    * @type {boolean=}
    */
   showTitles: true,
   /**
-   * @type {string=}
+   * Visualization title.
+   * @type {(string|StringExpression)=}
    */
   title: '',
   /**
-   * @type {string=}
+   * Visualization subtitle.
+   * @type {(string|StringExpression)=}
    */
   subtitle: '',
   /**
-   * @type {string=}
+   * Visualization footnote.
+   * @type {(string|StringExpression)=}
    */
   footnote: '',
   /**
-   * @typedef {object}
-   * @property {byDimensionConfig} byDimension
+   * @type {object}
+   * @property {byDimensionConfig} [byDimension=byDimensionConfig]
    */
   cellColor: {
     /**

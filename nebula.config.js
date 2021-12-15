@@ -1,3 +1,7 @@
+const path = require('path');
+
+const { version } = require(path.resolve(__dirname, './package.json')); // eslint-disable-line
+
 module.exports = {
   serve: {
     renderConfigs: [
@@ -11,5 +15,10 @@ module.exports = {
         },
       },
     ],
+  },
+  build: {
+    replacementStrings: {
+      'process.env.PACKAGE_VERSION': JSON.stringify(version),
+    },
   },
 };

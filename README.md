@@ -10,7 +10,7 @@ import { embed } from '@nebula.js/stardust';
 import mekko from '@nebula.js/sn-mekko-chart';
 
 // 'app' is an enigma app model
-const embedable = embed(app, {
+const embeddable = embed(app, {
   types: [{ // register the mekko chart
     name: 'mekko',
     load: () => Promise.resolve(mekko);

@@ -35,8 +35,11 @@
     "test:unit": "aw -c aw.config.js",
     "test:integration": "aw puppet --glob 'test/integration/**/*.spec.js'",
     "validate:locale": "node ./tools/validate-locale-strings.js",
-    "prepublishOnly": "rm -rf dist && npm run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "standard-version",
+    "prerelease": "git clean -dfx && yarn",
+    "postbump": "yarn build && yarn spec",
+    "precommit": "git add api-specifications/properties.json"
   },
   "peerDependencies": {
     "@nebula.js/stardust": ">=1.7.0"
@@ -68,6 +71,7 @@
     "picasso-plugin-q": "1.4.2",
     "picasso.js": "1.4.2",
     "prettier": "2.5.1",
-    "scriptappy-from-jsdoc": "0.7.0"
+    "scriptappy-from-jsdoc": "0.7.0",
+    "standard-version": "9.3.2"
   }
 }

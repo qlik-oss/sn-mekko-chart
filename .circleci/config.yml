@@ -135,13 +135,13 @@ workflows:
             - locale
       - unit-tests:
           requires:
-            - install
+            - locale
       - api-spec:
           requires:
             - install
       - lint:
           requires:
-            - install
+            - build
       - publish-dev:
           requires:
             - build
@@ -153,6 +153,9 @@ workflows:
             - api-spec
             - lint
           filters:
+            tags:
+              only:
+                - /v.*/
             branches:
               only:
                 - master

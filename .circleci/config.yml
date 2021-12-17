@@ -78,7 +78,7 @@ jobs:
               echo "Uploading coverage results to coveralls.io..."
               cat ./coverage/unit/lcov.info | npx coveralls
             fi
-      - store_test_results:
+      - store_artifacts:
           path: coverage/junit
 
   locale:

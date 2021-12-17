@@ -135,7 +135,7 @@ workflows:
             - locale
       - unit-tests:
           requires:
-            - locale
+            - build
       - api-spec:
           requires:
             - install

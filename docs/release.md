@@ -1,19 +1,24 @@
 # Releasing
 
-A release will do the following:
+A release consists of the following:
 
-* Bump the package version based on your commits
-* Generate a CHANGELOG.md
-* Create a new commit with the changed files
-* Create a tag with the new version
+* Bumping the package version based on your commits
+* Generating a CHANGELOG.md
+* Updating the specification
+* Creating a new commit with the changed files
+* Creating a tag with the new version
+* Pushing the release commit and tag to master
 
-## Step-by-step
+## Step-By-Step
 
-1. Make your current branch is master and is up-to-date
+1. Make sure your current branch is master and is up to date
 2. Run `yarn release`
-3. Run `git push --follow-tags origin master && npm publish`
+3. Verify that everything looks good
+4. Push the commit and tag `git push --follow-tags origin master`
+
+> **_NOTE:_** You should not publish manually to npm. As it will be done in CI.
 
 ### On release command failure
 
-1. Run `git tag` to make sure no tag was created.
+1. Run `git tag` to make sure a tag not was created.
 2. If a tag was created, delete it with `git tag -d <tag>`

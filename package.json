@@ -36,10 +36,14 @@
     "test:integration": "aw puppet --glob 'test/integration/**/*.spec.js'",
     "validate:locale": "node ./tools/validate-locale-strings.js",
     "prepare": "husky install",
-    "release": "standard-version",
-    "prerelease": "git clean -dfx && yarn",
-    "postbump": "yarn build && yarn spec",
-    "precommit": "git add api-specifications/properties.json"
+    "release": "standard-version"
+  },
+  "standard-version": {
+    "scripts": {
+      "prerelease": "git clean -dfx && yarn",
+      "postbump": "yarn build && yarn spec",
+      "precommit": "git add api-specifications/properties.json"
+    }
   },
   "peerDependencies": {
     "@nebula.js/stardust": ">=1.7.0"

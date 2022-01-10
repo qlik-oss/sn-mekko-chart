@@ -11,7 +11,7 @@ A release consists of the following:
 ## Step-By-Step
 
 1. On master branch run `git clean -dfx && yarn` to make sure depenencies are up-to-date
-2. Run `npm version [major | minor | patch] -m "chore(release): %s"`. Use semver string based on conventional commits since last release. Ex: `npm version patch -m "chore(release): %s"`
+2. Run `npm version [major | minor | patch] -m "chore(release): v%s"`. Use semver string based on conventional commits since last release. Ex: `npm version patch -m "chore(release): v%s"`
 3. Run `git push && git push --tags` to push commit and tag.
 
 > **_NOTE:_** You should not publish manually to npm. As it will be done in CI.

@@ -1,6 +1,6 @@
 {
   "name": "@nebula.js/sn-mekko-chart",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Compare the share of values using variable width of stacked bars",
   "license": "MIT",
   "author": "QlikTech International AB",

@@ -35,7 +35,9 @@
     "test:unit": "aw -c aw.config.js",
     "test:integration": "aw puppet --glob 'test/integration/**/*.spec.js'",
     "validate:locale": "node ./tools/validate-locale-strings.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "preversion": "yarn build",
+    "version": "yarn spec && git add api-specifications"
   },
   "peerDependencies": {
     "@nebula.js/stardust": ">=1.7.0"

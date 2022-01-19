@@ -167,11 +167,12 @@ workflows:
           requires:
             - build
       - api-spec:
-          context: api-compliance
           requires:
             - install
       - api-goverance:
+          context: api-compliance
           requires:
+            - install
             - api-spec
       - lint:
           requires:
@@ -185,6 +186,7 @@ workflows:
             - locale
             - unit-tests
             - api-spec
+            - api-goverance
             - lint
           filters:
             branches:

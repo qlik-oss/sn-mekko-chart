@@ -66,13 +66,16 @@ jobs:
             git diff --exit-code --name-only ./api-specifications/properties.json
 
   api-governance:
-    <<: *defaults
+    machine: true
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:16.7
     steps:
       - attach_workspace:
           at: ~/project
       - run:
           name: Qlik docker login
-          command: echo $DOCKER_TOKEN | docker login --username "$DOCKER_USER" --password-stdin
+          command: echo $DOCKER_TOKEN | docker login -u "$DOCKER_USER" --password-stdin
       - run:
           name: Prepare API Compliance
           command: |

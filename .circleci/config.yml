@@ -72,6 +72,9 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
+          name: Login for Docker
+          command: echo $QLIK_DOCKER_DEV_PASSWORD | docker login -u $QLIK_DOCKER_DEV_USERNAME --password-stdin $QLIK_DOCKER_DEV_REGISTRY
+      - run:
           name: Prepare API Compliance
           command: |
             docker pull ghcr.io/qlik-download/api-compliance

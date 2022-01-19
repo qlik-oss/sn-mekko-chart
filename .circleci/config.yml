@@ -65,15 +65,15 @@ jobs:
             yarn run spec
             git diff --exit-code --name-only ./api-specifications/properties.json
 
-  api-goverance:
+  api-governance:
+    machine: true
     <<: *defaults
     steps:
-      - checkout
       - attach_workspace:
           at: ~/project
       - run:
           name: Qlik docker login
-          command: echo $DOCKER_TOKEN | docker login -u "$DOCKER_USER" --password-stdin
+          command: echo $DOCKER_TOKEN | docker login --username "$DOCKER_USER" --password-stdin
       - run:
           name: Prepare API Compliance
           command: |

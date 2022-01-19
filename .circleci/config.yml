@@ -68,6 +68,7 @@ jobs:
   api-goverance:
     <<: *defaults
     steps:
+      - checkout
       - attach_workspace:
           at: ~/project
       - run:
@@ -164,6 +165,7 @@ workflows:
           requires:
             - build
       - api-spec:
+          context: api-compliance
           requires:
             - install
       - api-goverance:

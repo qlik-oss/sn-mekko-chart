@@ -68,9 +68,8 @@ jobs:
   api-governance:
     machine: true
     working_directory: ~/project
-    docker:
-      - image: circleci/node:16.7
     steps:
+      - checkout
       - attach_workspace:
           at: ~/project
       - run:

@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/project
   docker:
-        - image: circleci/node:16.7
+    - image: circleci/node:16.7
 
 aliases:
   - &restore_yarn_cache
@@ -64,6 +64,34 @@ jobs:
           command: |
             yarn run spec
             git diff --exit-code --name-only ./api-specifications/properties.json
+
+  api-governance:
+    machine: true
+    working_directory: ~/project
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Prepare API Compliance
+          command: |
+            docker pull ghcr.io/qlik-download/api-compliance
+            docker create -v /specs --name specs alpine:3.4 /bin/true
+            docker cp ./api-specifications/properties.json specs:/specs
+
+      - run:
+          name: Run API Compliance
+          command: >
+            VER=v$(cat ./package.json | jq -r '.version')
+
+            docker run --volumes-from specs
+            -e SPEC_PATHS="6fb76a59-8ce3-4170-a739-e3a02d303602@/specs/properties.json"
+            -e COMMIT_SHA="$CIRCLE_SHA1"
+            -e RELEASE_TAG="$VER"
+            -e CREDENTIALS_S3_SECRETKEY="$APICULTURIST_S3"
+            -e CREDENTIALS_GITHUB="$APICULTURIST_GITHUB"
+            -e CREDENTIALS_COLONY="$APICULTURIST_TOKEN"
+            ghcr.io/qlik-download/api-compliance
 
   unit-tests:
     <<: *defaults
@@ -139,6 +167,11 @@ workflows:
       - api-spec:
           requires:
             - install
+      - api-governance:
+          context: api-compliance
+          requires:
+            - install
+            - api-spec
       - lint:
           requires:
             - build
@@ -151,6 +184,7 @@ workflows:
             - locale
             - unit-tests
             - api-spec
+            - api-governance
             - lint
           filters:
             branches:

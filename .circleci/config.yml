@@ -83,7 +83,6 @@ jobs:
           name: Run API Compliance
           command: >
             VER=v$(cat ./package.json | jq -r '.version')
-            echo $VER
 
             docker run --volumes-from specs
             -e SPEC_PATHS="6fb76a59-8ce3-4170-a739-e3a02d303602@/specs/properties.json"

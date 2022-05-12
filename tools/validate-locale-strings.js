@@ -67,7 +67,7 @@ const validateFile = (file) => {
 
 const validate = () => {
   const SRC_FOLDER = path.resolve(__dirname, '../src');
-  const sourceFiles = globby.sync([`${SRC_FOLDER}/**/*.js`, `!${SRC_FOLDER}/**/*.spec.js`]);
+  const sourceFiles = globby.sync([`${SRC_FOLDER}/**/*.js`, `!${SRC_FOLDER}/**/*.spec.js`, `!${SRC_FOLDER}/ext.js`]);
 
   sourceFiles.forEach((file) => validateFile(file));
 

@@ -18,6 +18,96 @@ const addons = {
 };
 
 export default function ext(env) {
+  const { translator } = env;
+  const label = (data) => {
+    if (data.cellColor.mode === 'auto') {
+      return translator.get('Simple.Color.Auto', translator.get('properties.colorMode.byDimension'));
+    }
+    return translator.get('Common.Custom');
+  };
+  const onAutoChange = (data, handler, properties) => {
+    // TODO - store old value
+    const c = coloring({
+      properties,
+    });
+    c.colorBy({
+      mode: data.cellColor.mode === 'auto' ? 'auto' : 'byDimension',
+    });
+  };
+  const simpleAuto = {
+    ref: 'cellColor.mode',
+    type: 'string',
+    component: 'switch',
+    schemaIgnore: true,
+    convertFunctions: {
+      get(getter, def, args) {
+        return args.properties.cellColor.mode === 'auto';
+      },
+      set(value, setter, def, args) {
+        args.properties.cellColor.mode = value ? 'auto' : 'byDimension';
+      },
+    },
+    label,
+    change: onAutoChange,
+  };
+
+  const getLabel = (data, args) => {
+    if (data.cellColor.byDimension.type === 'libraryId') {
+      const libId = data.cellColor.byDimension.typeValue;
+      const { qDimensionInfo } = args.layout.qHyperCube;
+      for (let i = 0; i < qDimensionInfo.length; i++) {
+        const { qAttrDimInfo } = qDimensionInfo[i];
+        if (qAttrDimInfo) {
+          for (let j = 0; j < qAttrDimInfo.length; j++) {
+            if (qAttrDimInfo[j].libraryId === libId) return qAttrDimInfo[j].qFallbackTitle;
+          }
+        }
+      }
+      return '';
+    }
+    const s = data.cellColor.byDimension.typeValue;
+    if (s && s.charAt(0) === '=') return s.substring(1);
+    return s;
+  };
+
+  const byDimensionOptions = (data, handler, args) => {
+    if (
+      data.cellColor.mode === 'byDimension' &&
+      data.qHyperCubeDef &&
+      data.qHyperCubeDef.qDimensions &&
+      data.qHyperCubeDef.qDimensions.length
+    ) {
+      const options = data.qHyperCubeDef.qDimensions.map((d, index) => ({
+        value: index,
+        label: translator.get('properties.colorBy.currentDimension', index + 1),
+      }));
+      if (data.cellColor.byDimension.type !== 'index') {
+        options.push({
+          value: data.cellColor.byDimension.typeValue,
+          label: getLabel(data, args),
+        });
+      }
+      return options;
+    }
+    return [];
+  };
+
+  const colorByDimension = {
+    ref: 'cellColor.byDimension.typeValue',
+    schemaIgnore: true,
+    type: 'number',
+    component: 'dropdown',
+    options: byDimensionOptions,
+    defaultValue: -1,
+    translation: 'properties.colorBy.selectDimension',
+    libraryItemType: 'dimension',
+    show(data) {
+      return data.cellColor.mode === 'byDimension';
+    },
+    change(data) {
+      data.cellColor.byDimension.type = 'index';
+    },
+  };
   return {
     definition: {
       type: 'items',
@@ -62,15 +152,7 @@ export default function ext(env) {
                         translation: 'Common.Custom',
                         value: 'byDimension',
                       },
-                      change(data, handler, properties) {
-                        // TODO - store old value
-                        const c = coloring({
-                          properties,
-                        });
-                        c.colorBy({
-                          mode: data.cellColor.mode === 'auto' ? 'auto' : 'byDimension',
-                        });
-                      },
+                      change: onAutoChange,
                     },
                     dimensionDropdown: {
                       component: 'color-by-dropdown',
@@ -179,6 +261,18 @@ export default function ext(env) {
                         }));
                       },
                     },
+                  },
+                },
+                simpleColors: {
+                  classification: {
+                    section: 'color',
+                    tags: ['simple'],
+                    exclusive: true,
+                  },
+                  type: 'items',
+                  items: {
+                    simpleAuto,
+                    colorByDimension,
                   },
                 },
                 legend: {

@@ -77,10 +77,10 @@ jobs:
           command: |
             set -x
             if [ -n "${CIRCLE_TAG}" ]; then
-              version=${CIRCLE_TAG#v}
+                version=${CIRCLE_TAG#v}
             else
-              version=$(git describe --tags --abbrev=7 --match "v*")
-              version=${version#v}
+                version=$(git describe --tags --abbrev=7 --match "v*")
+                version=${version#v}
             fi
             echo "$version" > ./version.txt
             echo "Building $version"
@@ -94,7 +94,7 @@ jobs:
       - run:
           name: Run API Compliance
           command: >
-            VER=v$(cat ./version.txt')
+            VER=$(cat ./version.txt)
 
             docker run --volumes-from specs
             -e SPEC_PATHS="6fb76a59-8ce3-4170-a739-e3a02d303602@/specs/properties.json"

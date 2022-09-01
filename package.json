@@ -44,11 +44,11 @@
   },
   "devDependencies": {
     "@after-work.js/aw": "6.0.14",
-    "@babel/cli": "7.18.9",
-    "@babel/core": "7.18.9",
-    "@babel/parser": "7.18.9",
-    "@babel/preset-env": "7.18.9",
-    "@babel/traverse": "7.18.9",
+    "@babel/cli": "7.18.10",
+    "@babel/core": "7.18.13",
+    "@babel/parser": "7.18.13",
+    "@babel/preset-env": "7.18.10",
+    "@babel/traverse": "7.18.13",
     "@commitlint/cli": "15.0.0",
     "@commitlint/config-conventional": "15.0.0",
     "@nebula.js/cli": "2.13.0",
@@ -66,8 +66,8 @@
     "globby": "11.1.0",
     "husky": "7.0.4",
     "mocha-junit-reporter": "1.23.3",
-    "picasso-plugin-q": "1.6.0",
-    "picasso.js": "1.6.0",
+    "picasso-plugin-q": "1.6.4",
+    "picasso.js": "1.6.4",
     "prettier": "2.7.1",
     "scriptappy-from-jsdoc": "0.7.0"
   }

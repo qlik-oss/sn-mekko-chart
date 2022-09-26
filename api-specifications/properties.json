@@ -3,7 +3,7 @@
   "info": {
     "name": "@nebula.js/sn-mekko-chart:properties",
     "description": "Mekko chart generic object definition",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "license": "MIT",
     "stability": "stable",
     "x-qlik-visibility": "public"

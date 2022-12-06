@@ -1,4 +1,5 @@
 import coloring from './coloring';
+import getStylingPanelDefinition from './styling-panel-definition';
 
 const addons = {
   type: 'items',
@@ -91,7 +92,8 @@ export default function ext(env) {
     }
     return [];
   };
-
+  const stylingPanelEnabled = env.flags.isEnabled('SENSECLIENT_IM_2022_STYLINGPANEL_MEKKOCHART');
+  const bkgOptionsEnabled = env.flags.isEnabled('SENSECLIENT_IM_2022_MEKKO_BG');
   const colorByDimension = {
     ref: 'cellColor.byDimension.typeValue',
     schemaIgnore: true,
@@ -131,6 +133,14 @@ export default function ext(env) {
         settings: {
           uses: 'settings',
           items: {
+            presentation: stylingPanelEnabled && {
+              type: 'items',
+              translation: 'properties.presentation',
+              grouped: true,
+              items: {
+                styleEditor: getStylingPanelDefinition(bkgOptionsEnabled),
+              },
+            },
             colorsAndLegend: {
               type: 'items',
               translation: 'properties.colorsAndLegend',

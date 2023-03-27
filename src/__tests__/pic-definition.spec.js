@@ -36,6 +36,11 @@ describe('pic-definition', () => {
     picassoColoring,
     env,
     layout: {},
+    flags: {
+      isEnabled: () => {
+        return true;
+      },
+    },
   };
   describe('components', () => {
     it('should contain axis', () => {
@@ -186,6 +191,11 @@ describe('pic-definition', () => {
       },
       env,
       layout: {},
+      flags: {
+        isEnabled: () => {
+          return true;
+        },
+      },
     }).interactions;
     expect(c).to.eql(['legint']);
   });

@@ -24,4 +24,16 @@ describe('cells', () => {
     });
     expect(c[0].brush.trigger).to.eql([]);
   });
+
+  it('should have valueLabelStyle', () => {
+    const c = cells({
+      ...param,
+      constraints: {},
+      hc: { qDimensionInfo: [{}, { qLocked: true }] },
+      valueLabelStyle: {
+        fontFamily: 'MyFontFamily',
+      },
+    });
+    expect(c[1].settings.sources[0].strategy.settings.fontFamily).to.eql('MyFontFamily');
+  });
 });

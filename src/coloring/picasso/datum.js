@@ -5,7 +5,7 @@ const rgba = (uint) =>
     ','
   )})`;
 
-export default function ({ hc, coloring, scales, key }, measureIdx = 0) {
+export default function datum({ hc, coloring, scales, key }, measureIdx = 0) {
   let fillField;
   let fillData;
   const datumPropKey = key;

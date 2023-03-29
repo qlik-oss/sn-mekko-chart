@@ -11,7 +11,7 @@ function isOthers(d) {
   return d.datum.value === -3;
 }
 
-export default function ({ coloring, scales, key }) {
+export default function fill({ coloring, scales, key }) {
   const { nil, others, primary } = coloring;
   let fn;
 

@@ -61,7 +61,7 @@ const nodeTooltipContent = ({ h, data }) => {
   return h('div', { style: { display: 'table' } }, rows);
 };
 
-export default function (coloring, translator, formatPercentage) {
+export default function tooltip(coloring, translator, formatPercentage) {
   return [
     {
       type: 'tooltip',

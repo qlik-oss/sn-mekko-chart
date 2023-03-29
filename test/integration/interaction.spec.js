@@ -42,7 +42,7 @@ describe('interaction', () => {
     expect(rects).to.eql(['2012', '2012']);
   });
 
-  it('should show tooltip for column "Europe" and data cell "Americas 2012"', async function run() {
+  it('should show tooltip for column "Europe" and data cell "Americas 2012"', async () => {
     // hover column "Europe"
     await page.hover(selectors.columnLabels('Europe'));
     await page.waitForSelector('.pic-tooltip', { visible: true });

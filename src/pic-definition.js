@@ -37,7 +37,7 @@ function tooltipInteraction() {
   };
 }
 
-export default function ({
+export default function picDefinition({
   layout,
   constraints,
   theme,

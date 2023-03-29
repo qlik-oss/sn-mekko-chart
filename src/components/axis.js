@@ -1,15 +1,15 @@
 export default function axis(layout, flags) {
   const axisComponent = flags.isEnabled('CLIENT_IM_2022')
-    ? (layout.components || []).find((c) => c.key === 'axis').axis
+    ? (layout.components || []).find((c) => c.key === 'axis')
     : {};
   const labelStyle =
-    axisComponent.label && axisComponent.label.name
+    axisComponent && axisComponent.axis && axisComponent.axis.label && axisComponent.axis.label.name
       ? {
           settings: {
             labels: {
-              fontSize: axisComponent.label.name.fontSize,
-              fontFamily: axisComponent.label.name.fontFamily,
-              fill: axisComponent.label.name.fontColor.color,
+              fontSize: axisComponent.axis.label.name.fontSize,
+              fontFamily: axisComponent.axis.label.name.fontFamily,
+              fill: axisComponent.axis.label.name.fontColor.color,
             },
           },
         }

@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/project
   docker:
-    - image: circleci/node:16.7
+    - image: cimg/node:lts
 
 aliases:
   - &restore_yarn_cache

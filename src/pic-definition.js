@@ -85,7 +85,9 @@ export default function ({
       ? {
           fontFamily: valueLabel.label.value.fontFamily,
           fontSize: parseFloat(valueLabel.label.value.fontSize),
-          fill: valueLabel.label.value.fontColor.color,
+          fill: valueLabel.label.value.fontColor
+            ? valueLabel.label.value.fontColor.color
+            : theme.getStyle('object.mekkochart', 'label.value.color', 'color'),
         }
       : {};
   return {
@@ -130,7 +132,7 @@ export default function ({
     palettes: picassoColoring.palettes(),
     components: [
       ...leg.components,
-      ...axis(layout, flags),
+      ...axis(layout, flags, theme),
       ...cells({
         constraints,
         contraster,

@@ -1,4 +1,4 @@
-export default function axis(layout, flags) {
+export default function axis(layout, flags, theme) {
   const axisComponent = flags.isEnabled('CLIENT_IM_2022')
     ? (layout.components || []).find((c) => c.key === 'axis')
     : {};
@@ -9,7 +9,9 @@ export default function axis(layout, flags) {
             labels: {
               fontSize: axisComponent.axis.label.name.fontSize,
               fontFamily: axisComponent.axis.label.name.fontFamily,
-              fill: axisComponent.axis.label.name.fontColor.color,
+              fill: axisComponent.axis.label.name.fontColor
+                ? axisComponent.axis.label.name.fontColor.color
+                : theme.getStyle('object.mekkochart', 'axis.label.name.color', 'color'),
             },
           },
         }

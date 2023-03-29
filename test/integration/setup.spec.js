@@ -12,6 +12,7 @@ if (!process.env.BASE_URL) {
     process.env.BASE_URL = s.url;
 
     page.on('pageerror', (e) => {
+      // eslint-disable-next-line no-console
       console.log('Error:', e.message, e.stack);
     });
   });

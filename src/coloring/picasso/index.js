@@ -12,7 +12,7 @@ import datumProps from './datum';
  * @param {picasso} resources.picasso
  * @returns {coloring}
  */
-function coloringFn(resources) {
+export default function coloringFn(resources) {
   let inputCache = {};
   let calculatedCache = {};
 
@@ -173,5 +173,3 @@ function coloringFn(resources) {
 
   return c;
 }
-
-export { coloringFn as default };

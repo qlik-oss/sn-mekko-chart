@@ -1,4 +1,21 @@
-export default function axis() {
+export default function axis(layout, flags, theme) {
+  const axisComponent = flags.isEnabled('CLIENT_IM_2022')
+    ? (layout.components || []).find((c) => c.key === 'axis')
+    : {};
+  const labelStyle =
+    axisComponent && axisComponent.axis && axisComponent.axis.label && axisComponent.axis.label.name
+      ? {
+          settings: {
+            labels: {
+              fontSize: axisComponent.axis.label.name.fontSize,
+              fontFamily: axisComponent.axis.label.name.fontFamily,
+              fill: axisComponent.axis.label.name.fontColor
+                ? axisComponent.axis.label.name.fontColor.color
+                : theme.getStyle('object', 'axis.label', 'color'),
+            },
+          },
+        }
+      : {};
   return [
     {
       key: 'y-axis',
@@ -12,6 +29,7 @@ export default function axis() {
         type: 'd3-number',
         format: '.0%',
       },
+      ...labelStyle,
     },
     {
       key: 'x-axis',
@@ -25,6 +43,7 @@ export default function axis() {
         type: 'd3-number',
         format: '.0%',
       },
+      ...labelStyle,
     },
   ];
 }

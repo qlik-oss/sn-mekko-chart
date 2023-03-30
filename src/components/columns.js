@@ -1,6 +1,6 @@
 import REFS from '../refs';
 
-export default function columns({ constraints, style, hc, formatPercentage }) {
+export default function columns({ constraints, style, hc, formatPercentage, valueLabelStyle }) {
   const isLocked = hc.qDimensionInfo[0].qLocked;
   return [
     {
@@ -83,6 +83,7 @@ export default function columns({ constraints, style, hc, formatPercentage }) {
             strategy: {
               type: 'rows',
               settings: {
+                ...valueLabelStyle,
                 labels: [
                   {
                     linkData({ node }) {

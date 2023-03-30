@@ -1,3 +1,4 @@
+import { fontResolver as createFontResolver } from 'qlik-chart-modules';
 import coloring from './coloring';
 import getStylingPanelDefinition from './styling-panel-definition';
 
@@ -94,6 +95,16 @@ export default function ext(env) {
   };
   const stylingPanelEnabled = env.flags.isEnabled('SENSECLIENT_IM_2022_STYLINGPANEL_MEKKOCHART');
   const bkgOptionsEnabled = env.flags.isEnabled('SENSECLIENT_IM_2022_MEKKO_BG');
+  const chartStylingEnabled = env.flags.isEnabled('CLIENT_IM_2022');
+  const chartId = 'object.mekkochart';
+  const fontResolver = createFontResolver({
+    theme: env.sense.theme,
+    translator,
+    config: {
+      id: chartId,
+      paths: ['axis.label.name', 'label.value'],
+    },
+  });
   const colorByDimension = {
     ref: 'cellColor.byDimension.typeValue',
     schemaIgnore: true,
@@ -138,7 +149,13 @@ export default function ext(env) {
               translation: 'properties.presentation',
               grouped: true,
               items: {
-                styleEditor: getStylingPanelDefinition(bkgOptionsEnabled),
+                styleEditor: getStylingPanelDefinition(
+                  bkgOptionsEnabled,
+                  chartStylingEnabled,
+                  env.sense.theme,
+                  fontResolver,
+                  chartId
+                ),
               },
             },
             colorsAndLegend: {

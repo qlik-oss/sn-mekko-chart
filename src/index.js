@@ -162,6 +162,7 @@ export default function supernova(env) {
             translator,
             constraints,
             formatPercentage,
+            flags: env.flags,
           }),
         });
       }, [layout, pic, constraints, theme.name(), translator.language()]);

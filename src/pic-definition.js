@@ -46,6 +46,7 @@ export default function picDefinition({
   picassoColoring,
   translator,
   formatPercentage,
+  flags,
 }) {
   let picassoStyle;
 
@@ -78,6 +79,17 @@ export default function picDefinition({
   });
 
   const allowTooltip = !constraints.passive;
+  const valueLabel = flags.isEnabled('CLIENT_IM_2022') ? (layout.components || []).find((c) => c.key === 'value') : {};
+  const valueLabelStyle =
+    valueLabel && valueLabel.label && valueLabel.label.value
+      ? {
+          fontFamily: valueLabel.label.value.fontFamily,
+          fontSize: parseFloat(valueLabel.label.value.fontSize),
+          fill: valueLabel.label.value.fontColor
+            ? valueLabel.label.value.fontColor.color
+            : theme.getStyle('object', 'label.value', 'color'),
+        }
+      : {};
   return {
     strategy: {
       layoutModes: {
@@ -120,19 +132,21 @@ export default function picDefinition({
     palettes: picassoColoring.palettes(),
     components: [
       ...leg.components,
-      ...axis(),
+      ...axis(layout, flags, theme),
       ...cells({
         constraints,
         contraster,
         colorFill,
         hc: layout.qHyperCube,
         formatPercentage,
+        valueLabelStyle,
       }),
       ...columns({
         constraints,
         style: picassoStyle,
         hc: layout.qHyperCube,
         formatPercentage,
+        valueLabelStyle,
       }),
       ...(allowTooltip ? tooltip(picassoColoring.settings(), translator, formatPercentage) : []),
       ...disclaimer(restricted, translator),

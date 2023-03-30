@@ -1,6 +1,6 @@
 import REFS from '../refs';
 
-export default function cells({ constraints, contraster, colorFill, hc, formatPercentage }) {
+export default function cells({ constraints, contraster, colorFill, hc, formatPercentage, valueLabelStyle }) {
   const isLocked = hc.qDimensionInfo[1].qLocked;
   return [
     {
@@ -79,8 +79,9 @@ export default function cells({ constraints, contraster, colorFill, hc, formatPe
             strategy: {
               type: 'rows',
               settings: {
+                ...valueLabelStyle,
                 fill(d) {
-                  return contraster.getBestContrastColor(d.node.attrs.fill);
+                  return valueLabelStyle.fill || contraster.getBestContrastColor(d.node.attrs.fill);
                 },
                 labels: [
                   {

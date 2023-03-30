@@ -87,7 +87,7 @@ export default function picDefinition({
           fontSize: parseFloat(valueLabel.label.value.fontSize),
           fill: valueLabel.label.value.fontColor
             ? valueLabel.label.value.fontColor.color
-            : theme.getStyle('object.mekkochart', 'label.value.color', 'color'),
+            : theme.getStyle('object', 'label.value', 'color'),
         }
       : {};
   return {

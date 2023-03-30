@@ -11,7 +11,7 @@ export default function axis(layout, flags, theme) {
               fontFamily: axisComponent.axis.label.name.fontFamily,
               fill: axisComponent.axis.label.name.fontColor
                 ? axisComponent.axis.label.name.fontColor.color
-                : theme.getStyle('object.mekkochart', 'axis.label.name.color', 'color'),
+                : theme.getStyle('object', 'axis.label', 'color'),
             },
           },
         }

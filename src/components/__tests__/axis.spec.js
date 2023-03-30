@@ -20,9 +20,7 @@ describe('axis', () => {
     ],
   };
   const flags = {
-    isEnabled: () => {
-      return true;
-    },
+    isEnabled: () => true,
   };
 
   it('should not have valueLabelStyle on when layout does not have components', () => {

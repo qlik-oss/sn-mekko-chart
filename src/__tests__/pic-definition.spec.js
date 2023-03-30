@@ -37,9 +37,7 @@ describe('pic-definition', () => {
     env,
     layout: {},
     flags: {
-      isEnabled: () => {
-        return true;
-      },
+      isEnabled: () => true,
     },
   };
   describe('components', () => {
@@ -192,9 +190,7 @@ describe('pic-definition', () => {
       env,
       layout: {},
       flags: {
-        isEnabled: () => {
-          return true;
-        },
+        isEnabled: () => true,
       },
     }).interactions;
     expect(c).to.eql(['legint']);

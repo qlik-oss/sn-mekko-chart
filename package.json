@@ -42,7 +42,7 @@
     "version": "yarn spec && git add api-specifications"
   },
   "peerDependencies": {
-    "@nebula.js/stardust": ">=1.7.0"
+    "@nebula.js/stardust": ">=3.3.0"
   },
   "devDependencies": {
     "@after-work.js/aw": "6.0.14",

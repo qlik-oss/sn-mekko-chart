@@ -39,6 +39,9 @@ describe('pic-definition', () => {
     flags: {
       isEnabled: () => true,
     },
+    theme: {
+      getStyle: () => {},
+    },
   };
   describe('components', () => {
     it('should contain axis', () => {
@@ -191,6 +194,9 @@ describe('pic-definition', () => {
       layout: {},
       flags: {
         isEnabled: () => true,
+      },
+      theme: {
+        getStyle: () => {},
       },
     }).interactions;
     expect(c).to.eql(['legint']);

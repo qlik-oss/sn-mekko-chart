@@ -153,7 +153,7 @@ export default function coloringFn(resources) {
      * @param {string} [cfg.styleReference='object.legend']
      * @returns {object}
      */
-    legend({ eventName, key } = {}) {
+    legend({ eventName, key, styleOptions } = {}) {
       return legend(
         {
           eventName,
@@ -162,6 +162,7 @@ export default function coloringFn(resources) {
         {
           legendConfig: chartColorModel.getLegendSettings(),
           scaleKey: inputCache.key,
+          styleOptions,
           coloring: getSettings(),
           hc: inputCache.hc,
           scales: this.scales(),

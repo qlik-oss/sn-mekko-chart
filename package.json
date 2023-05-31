@@ -73,6 +73,6 @@
     "picasso.js": "2.2.3",
     "prettier": "2.8.8",
     "scriptappy-from-jsdoc": "0.7.0",
-    "qlik-chart-modules": "0.54.0"
+    "qlik-chart-modules": "0.55.0"
   }
 }

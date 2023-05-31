@@ -20,7 +20,7 @@ const addons = {
 };
 
 export default function ext(env) {
-  const { translator } = env;
+  const { translator, flags } = env;
   const label = (data) => {
     if (data.cellColor.mode === 'auto') {
       return translator.get('Simple.Color.Auto', translator.get('properties.colorMode.byDimension'));
@@ -93,13 +93,14 @@ export default function ext(env) {
     }
     return [];
   };
-  const stylingPanelEnabled = env.flags.isEnabled('SENSECLIENT_IM_2022_STYLINGPANEL_MEKKOCHART');
-  const bkgOptionsEnabled = env.flags.isEnabled('SENSECLIENT_IM_2022_MEKKO_BG');
-  const chartStylingEnabled = env.flags.isEnabled('CLIENT_IM_2022');
+  const stylingPanelEnabled = flags.isEnabled('SENSECLIENT_IM_2022_STYLINGPANEL_MEKKOCHART');
+  const bkgOptionsEnabled = flags.isEnabled('SENSECLIENT_IM_2022_MEKKO_BG');
+  const chartStylingEnabled = flags.isEnabled('CLIENT_IM_2022');
   const chartId = 'object.mekkochart';
   const fontResolver = createFontResolver({
     theme: env.sense.theme,
     translator,
+    flags,
     config: {
       id: chartId,
       paths: ['axis.label.name', 'label.value'],

@@ -95,7 +95,7 @@ export default function ext(env) {
   };
   const stylingPanelEnabled = flags.isEnabled('SENSECLIENT_IM_2022_STYLINGPANEL_MEKKOCHART');
   const bkgOptionsEnabled = flags.isEnabled('SENSECLIENT_IM_2022_MEKKO_BG');
-  const chartStylingEnabled = flags.isEnabled('CLIENT_IM_2022');
+
   const chartId = 'object.mekkochart';
   const fontResolver = createFontResolver({
     theme: env.sense.theme,
@@ -103,7 +103,7 @@ export default function ext(env) {
     flags,
     config: {
       id: chartId,
-      paths: ['axis.label.name', 'label.value'],
+      paths: ['axis.label.name', 'label.value', 'legend.title', 'legend.label'],
     },
   });
   const colorByDimension = {
@@ -152,7 +152,7 @@ export default function ext(env) {
               items: {
                 styleEditor: getStylingPanelDefinition(
                   bkgOptionsEnabled,
-                  chartStylingEnabled,
+                  env.flags,
                   env.sense.theme,
                   fontResolver,
                   chartId

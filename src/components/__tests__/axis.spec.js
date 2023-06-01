@@ -1,38 +1,22 @@
 import axis from '../axis';
 
 describe('axis', () => {
-  const layout = {
-    components: [
-      {
-        key: 'axis',
-        axis: {
-          label: {
-            name: {
-              fontFamily: 'MyFontFamily',
-              fontSize: '12px',
-              fontColor: {
-                color: 'black',
-              },
-            },
-          },
-        },
-      },
-    ],
-  };
-  const flags = {
-    isEnabled: () => true,
+  const axisLabelStyle = {
+    fontSize: '12px',
+    fontFamily: 'MyFontFamily',
+    fill: 'black',
   };
 
   it('should not have valueLabelStyle on when layout does not have components', () => {
-    const a = axis({}, flags);
+    const a = axis({});
     const yAxis = a.find((x) => x.key === 'y-axis');
-    expect(yAxis.settings).to.eql(undefined);
+    expect(yAxis.settings.labels).to.eql({});
     const xAxis = a.find((x) => x.key === 'x-axis');
-    expect(xAxis.settings).to.eql(undefined);
+    expect(xAxis.settings.labels).to.eql({});
   });
 
   it('should have valueLabelStyle on y-axis', () => {
-    const a = axis(layout, flags);
+    const a = axis(axisLabelStyle);
     const yAxis = a.find((x) => x.key === 'y-axis');
     expect(yAxis.settings.labels.fontFamily).to.eql('MyFontFamily');
     expect(yAxis.settings.labels.fontSize).to.eql('12px');
@@ -40,7 +24,7 @@ describe('axis', () => {
   });
 
   it('should have valueLabelStyle on x-axis', () => {
-    const a = axis(layout, flags);
+    const a = axis(axisLabelStyle);
     const xAxis = a.find((x) => x.key === 'x-axis');
     expect(xAxis.settings.labels.fontFamily).to.eql('MyFontFamily');
     expect(xAxis.settings.labels.fontSize).to.eql('12px');

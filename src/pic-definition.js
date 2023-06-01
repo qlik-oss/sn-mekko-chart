@@ -8,6 +8,7 @@ import scales from './scales';
 import stack from './stack';
 
 import REFS from './refs';
+import { getAxisLabelStyle, getLegendLabelStyle, getLegendTitleStyle, getValueLabelStyle } from './styling-utils';
 
 function tooltipInteraction() {
   return {
@@ -76,20 +77,14 @@ export default function picDefinition({
   const leg = picassoColoring.legend({
     key: 'color-legend',
     eventName: 'ev',
+    styleOptions: {
+      title: getLegendTitleStyle(theme, layout, flags),
+      label: getLegendLabelStyle(theme, layout, flags),
+    },
   });
-
+  const axisLabelStyle = getAxisLabelStyle(theme, layout, flags);
+  const valueLabelStyle = getValueLabelStyle(theme, layout, flags);
   const allowTooltip = !constraints.passive;
-  const valueLabel = flags.isEnabled('CLIENT_IM_2022') ? (layout.components || []).find((c) => c.key === 'value') : {};
-  const valueLabelStyle =
-    valueLabel && valueLabel.label && valueLabel.label.value
-      ? {
-          fontFamily: valueLabel.label.value.fontFamily,
-          fontSize: parseFloat(valueLabel.label.value.fontSize),
-          fill: valueLabel.label.value.fontColor
-            ? valueLabel.label.value.fontColor.color
-            : theme.getStyle('object', 'label.value', 'color'),
-        }
-      : {};
   return {
     strategy: {
       layoutModes: {
@@ -132,7 +127,7 @@ export default function picDefinition({
     palettes: picassoColoring.palettes(),
     components: [
       ...leg.components,
-      ...axis(layout, flags, theme),
+      ...axis(axisLabelStyle),
       ...cells({
         constraints,
         contraster,

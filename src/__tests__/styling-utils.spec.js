@@ -7,26 +7,28 @@ import {
 } from '../styling-utils';
 
 describe('Label styling definition', () => {
-  const path = 'example.path';
-  const chartId = 'mekkochart';
-  const mockFontResolver = {
-    getOptions: () => {
-      ['font1', 'font2', 'font3'];
-    },
-    getDefaultValue: () => {
-      'defaultValue';
-    },
-  };
-  const mockTheme = {
-    getStyle: () => {
-      'green';
-    },
-  };
-  const definition = labelStylingDefinition(path, mockFontResolver, chartId, mockTheme);
+  it('should get correct label styling definition refs', () => {
+    const path = 'example.path';
+    const chartId = 'mekkochart';
+    const mockFontResolver = {
+      getOptions: () => {
+        ['font1', 'font2', 'font3'];
+      },
+      getDefaultValue: () => {
+        'defaultValue';
+      },
+    };
+    const mockTheme = {
+      getStyle: () => {
+        'green';
+      },
+    };
+    const definition = labelStylingDefinition(path, mockFontResolver, chartId, mockTheme);
 
-  expect(definition.fontFamilyItem.ref).equal('example.path.fontFamily');
-  expect(definition.fontWrapperItem.items.fontSizeItem.ref).equal('example.path.fontSize');
-  expect(definition.fontWrapperItem.items.fontColorItem.ref).equal('example.path.fontColor');
+    expect(definition.fontFamilyItem.ref).equal('example.path.fontFamily');
+    expect(definition.fontWrapperItem.items.fontSizeItem.ref).equal('example.path.fontSize');
+    expect(definition.fontWrapperItem.items.fontColorItem.ref).equal('example.path.fontColor');
+  });
 });
 
 describe('Styling options', () => {

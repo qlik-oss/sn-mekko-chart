@@ -14,7 +14,7 @@ export const legendShow = (legendProps, hc, coloring) => {
 export function catLegend(componentConfig, opts) {
   const { key } = componentConfig;
 
-  const { scaleKey, scales, coloring, hc, constraints } = opts;
+  const { scaleKey, scales, coloring, hc, constraints, styleOptions } = opts;
 
   const s = `${scaleKey}Legend`;
 
@@ -30,12 +30,20 @@ export function catLegend(componentConfig, opts) {
     settings: {
       item: {
         show: (d) => d.datum.value !== -2,
+        label: {
+          fontSize: styleOptions.label.fontSize,
+          fontFamily: styleOptions.label.fontFamily,
+          fill: styleOptions.label.color,
+        },
       },
       title: {
         wordBreak: 'break-word',
         maxLines: 2,
         text: coloring.label || '',
         show: opts.legendConfig.showTitle !== false,
+        fontSize: styleOptions.title.fontSize,
+        fontFamily: styleOptions.title.fontFamily,
+        fill: styleOptions.title.color,
       },
       navigation: {
         disabled: constraints.active,

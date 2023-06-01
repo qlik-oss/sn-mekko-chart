@@ -47,19 +47,19 @@
   "devDependencies": {
     "@after-work.js/aw": "6.0.14",
     "@babel/cli": "7.21.5",
-    "@babel/core": "7.21.5",
-    "@babel/parser": "7.21.5",
-    "@babel/preset-env": "7.21.5",
-    "@babel/traverse": "7.21.5",
-    "@commitlint/cli": "17.6.1",
-    "@commitlint/config-conventional": "17.6.1",
+    "@babel/core": "7.22.1",
+    "@babel/parser": "7.22.4",
+    "@babel/preset-env": "7.22.4",
+    "@babel/traverse": "7.22.4",
+    "@commitlint/cli": "17.6.5",
+    "@commitlint/config-conventional": "17.6.5",
     "@nebula.js/cli": "3.3.0",
     "@nebula.js/cli-build": "3.3.0",
     "@nebula.js/cli-sense": "3.3.0",
     "@nebula.js/cli-serve": "3.3.0",
     "@nebula.js/stardust": "3.3.0",
     "babel-plugin-istanbul": "6.1.1",
-    "eslint": "8.39.0",
+    "eslint": "8.41.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-import": "2.27.5",
@@ -73,6 +73,6 @@
     "picasso.js": "2.2.3",
     "prettier": "2.8.8",
     "scriptappy-from-jsdoc": "0.7.0",
-    "qlik-chart-modules": "0.54.0"
+    "qlik-chart-modules": "0.56.0"
   }
 }

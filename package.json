@@ -1,6 +1,6 @@
 {
   "name": "@nebula.js/sn-mekko-chart",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Compare the share of values using variable width of stacked bars",
   "license": "MIT",
   "author": "QlikTech International AB",
@@ -72,7 +72,7 @@
     "picasso-plugin-q": "2.2.3",
     "picasso.js": "2.2.3",
     "prettier": "2.8.8",
-    "scriptappy-from-jsdoc": "0.7.0",
-    "qlik-chart-modules": "0.56.0"
+    "qlik-chart-modules": "0.56.0",
+    "scriptappy-from-jsdoc": "0.7.0"
   }
 }

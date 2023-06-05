@@ -18,10 +18,8 @@ const used = [];
 const warnings = {};
 let errors = 0;
 
-const warn = (s) =>
-  console.warn(`\x1b[43m\x1b[30m WARN \x1b[0m \x1b[1m\x1b[33m ${s}\x1b[0m`);
-const err = (s) =>
-  console.error(`\x1b[41m\x1b[30m ERR  \x1b[0m \x1b[1m\x1b[31m ${s}\x1b[0m`);
+const warn = (s) => console.warn(`\x1b[43m\x1b[30m WARN \x1b[0m \x1b[1m\x1b[33m ${s}\x1b[0m`);
+const err = (s) => console.error(`\x1b[41m\x1b[30m ERR  \x1b[0m \x1b[1m\x1b[31m ${s}\x1b[0m`);
 
 function useString(id) {
   if (used.indexOf(id) !== -1) {
@@ -69,11 +67,7 @@ const validateFile = (file) => {
 
 const validate = () => {
   const SRC_FOLDER = path.resolve(__dirname, "../src");
-  const sourceFiles = globby.sync([
-    `${SRC_FOLDER}/**/*.js`,
-    `!${SRC_FOLDER}/**/*.spec.js`,
-    `!${SRC_FOLDER}/ext.js`,
-  ]);
+  const sourceFiles = globby.sync([`${SRC_FOLDER}/**/*.js`, `!${SRC_FOLDER}/**/*.spec.js`, `!${SRC_FOLDER}/ext.js`]);
 
   sourceFiles.forEach((file) => validateFile(file));
 

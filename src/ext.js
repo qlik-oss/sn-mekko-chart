@@ -23,10 +23,7 @@ export default function ext(env) {
   const { translator, flags } = env;
   const label = (data) => {
     if (data.cellColor.mode === "auto") {
-      return translator.get(
-        "Simple.Color.Auto",
-        translator.get("properties.colorMode.byDimension")
-      );
+      return translator.get("Simple.Color.Auto", translator.get("properties.colorMode.byDimension"));
     }
     return translator.get("Common.Custom");
   };
@@ -64,8 +61,7 @@ export default function ext(env) {
         const { qAttrDimInfo } = qDimensionInfo[i];
         if (qAttrDimInfo) {
           for (let j = 0; j < qAttrDimInfo.length; j++) {
-            if (qAttrDimInfo[j].libraryId === libId)
-              return qAttrDimInfo[j].qFallbackTitle;
+            if (qAttrDimInfo[j].libraryId === libId) return qAttrDimInfo[j].qFallbackTitle;
           }
         }
       }
@@ -97,9 +93,7 @@ export default function ext(env) {
     }
     return [];
   };
-  const stylingPanelEnabled = flags.isEnabled(
-    "SENSECLIENT_IM_2022_STYLINGPANEL_MEKKOCHART"
-  );
+  const stylingPanelEnabled = flags.isEnabled("SENSECLIENT_IM_2022_STYLINGPANEL_MEKKOCHART");
   const bkgOptionsEnabled = flags.isEnabled("SENSECLIENT_IM_2022_MEKKO_BG");
 
   const chartId = "object.mekkochart";
@@ -286,18 +280,13 @@ export default function ext(env) {
                         return t ? t.key : "";
                       },
                       items() {
-                        return env.sense.theme
-                          .getDataColorPalettes()
-                          .map((p) => ({
-                            component: "color-scale",
-                            type: "classes",
-                            translation: p.translation,
-                            value: p.key,
-                            colors:
-                              p.type === "pyramid"
-                                ? p.colors[p.colors.length - 1]
-                                : p.colors,
-                          }));
+                        return env.sense.theme.getDataColorPalettes().map((p) => ({
+                          component: "color-scale",
+                          type: "classes",
+                          translation: p.translation,
+                          value: p.key,
+                          colors: p.type === "pyramid" ? p.colors[p.colors.length - 1] : p.colors,
+                        }));
                       },
                     },
                   },

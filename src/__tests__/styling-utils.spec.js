@@ -23,20 +23,11 @@ describe("Label styling definition", () => {
         "green";
       },
     };
-    const definition = labelStylingDefinition(
-      path,
-      mockFontResolver,
-      chartId,
-      mockTheme
-    );
+    const definition = labelStylingDefinition(path, mockFontResolver, chartId, mockTheme);
 
     expect(definition.fontFamilyItem.ref).equal("example.path.fontFamily");
-    expect(definition.fontWrapperItem.items.fontSizeItem.ref).equal(
-      "example.path.fontSize"
-    );
-    expect(definition.fontWrapperItem.items.fontColorItem.ref).equal(
-      "example.path.fontColor"
-    );
+    expect(definition.fontWrapperItem.items.fontSizeItem.ref).equal("example.path.fontSize");
+    expect(definition.fontWrapperItem.items.fontColorItem.ref).equal("example.path.fontColor");
   });
 });
 

@@ -12,12 +12,7 @@ const getStylingItems = (flags, theme, fontResolver, chartId) => {
           component: "items",
           ref: "components",
           key: "axis",
-          items: labelStylingDefinition(
-            "axis.label.name",
-            fontResolver,
-            chartId,
-            theme
-          ),
+          items: labelStylingDefinition("axis.label.name", fontResolver, chartId, theme),
         },
       },
     };
@@ -30,12 +25,7 @@ const getStylingItems = (flags, theme, fontResolver, chartId) => {
           component: "items",
           ref: "components",
           key: "value",
-          items: labelStylingDefinition(
-            "label.value",
-            fontResolver,
-            chartId,
-            theme
-          ),
+          items: labelStylingDefinition("label.value", fontResolver, chartId, theme),
         },
       },
     };
@@ -50,12 +40,7 @@ const getStylingItems = (flags, theme, fontResolver, chartId) => {
           component: "items",
           ref: "components",
           key: "legend",
-          items: labelStylingDefinition(
-            "legend.title",
-            fontResolver,
-            chartId,
-            theme
-          ),
+          items: labelStylingDefinition("legend.title", fontResolver, chartId, theme),
         },
       },
     };
@@ -68,12 +53,7 @@ const getStylingItems = (flags, theme, fontResolver, chartId) => {
           component: "items",
           ref: "components",
           key: "legend",
-          items: labelStylingDefinition(
-            "legend.label",
-            fontResolver,
-            chartId,
-            theme
-          ),
+          items: labelStylingDefinition("legend.label", fontResolver, chartId, theme),
         },
       },
     };
@@ -83,13 +63,7 @@ const getStylingItems = (flags, theme, fontResolver, chartId) => {
   return Object.keys(items).length > 0 ? items : undefined;
 };
 
-const getStylingPanelDefinition = (
-  bkgOptionsEnabled,
-  flags,
-  theme,
-  fontResolver,
-  chartId
-) => ({
+const getStylingPanelDefinition = (bkgOptionsEnabled, flags, theme, fontResolver, chartId) => ({
   component: "styling-panel",
   chartTitle: "Object.MekkoChart",
   translation: "LayerStyleEditor.component.styling",

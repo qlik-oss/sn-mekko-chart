@@ -31,8 +31,6 @@ describe("columns", () => {
         fontFamily: "MyFontFamily",
       },
     });
-    expect(c[1].settings.sources[0].strategy.settings.fontFamily).to.eql(
-      "MyFontFamily"
-    );
+    expect(c[1].settings.sources[0].strategy.settings.fontFamily).to.eql("MyFontFamily");
   });
 });

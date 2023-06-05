@@ -1,13 +1,6 @@
 import REFS from "./refs";
 
-export default function stack({
-  key,
-  field,
-  trackBy,
-  reduce,
-  stackKey = (d) => d.series.value,
-  props = {},
-}) {
+export default function stack({ key, field, trackBy, reduce, stackKey = (d) => d.series.value, props = {} }) {
   return {
     key,
     data: {

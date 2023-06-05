@@ -2,10 +2,8 @@ import { findFields, removeRole } from "../roles/roles";
 
 import { getByDimensionSettings, setByDimension } from "./byDimension";
 
-const DIMENSION_RX =
-  /(qDimensions|qDimensionInfo)\/\d+(\/(qAttributeDimensions|qAttrDimInfo)\/\d+)?$/;
-const MEASURE_RX =
-  /(qMeasures|qMeasureInfo)\/\d+(\/(qAttributeExpressions|qAttrExprInfo)\/\d+)?$/;
+const DIMENSION_RX = /(qDimensions|qDimensionInfo)\/\d+(\/(qAttributeDimensions|qAttrDimInfo)\/\d+)?$/;
+const MEASURE_RX = /(qMeasures|qMeasureInfo)\/\d+(\/(qAttributeExpressions|qAttrExprInfo)\/\d+)?$/;
 
 /**
  * @typedef {object}
@@ -39,10 +37,7 @@ export default function coloring({ properties, layout, theme }) {
       }
       // verify that the current settings are valid
       const hc = properties.qHyperCubeDef;
-      const colorByField = findFields(
-        (f) => f.roles && f.roles.filter((r) => r.role === "color").length > 0,
-        hc
-      )[0];
+      const colorByField = findFields((f) => f.roles && f.roles.filter((r) => r.role === "color").length > 0, hc)[0];
 
       const { mode } = properties.cellColor;
 
@@ -77,20 +72,13 @@ export default function coloring({ properties, layout, theme }) {
       const hc = layout ? layout.qHyperCube : properties.qHyperCubeDef;
       const colorProps = layout ? layout.cellColor : properties.cellColor;
 
-      const colorByField = findFields(
-        (f) => f.roles && f.roles.filter((r) => r.role === "color").length > 0,
-        hc
-      )[0];
-      let fieldPath = colorByField
-        ? colorByField.path.replace(/^\//, "")
-        : "qDimensionInfo/1";
+      const colorByField = findFields((f) => f.roles && f.roles.filter((r) => r.role === "color").length > 0, hc)[0];
+      let fieldPath = colorByField ? colorByField.path.replace(/^\//, "") : "qDimensionInfo/1";
       let definition = colorByField ? colorByField.definition : null;
 
       if (!colorByField || colorProps.mode === "auto") {
         fieldPath = "qDimensionInfo/1";
-        definition = layout
-          ? layout.qHyperCube.qDimensionInfo[1]
-          : properties.qHyperCubeDef.qDimensions[0];
+        definition = layout ? layout.qHyperCube.qDimensionInfo[1] : properties.qHyperCubeDef.qDimensions[0];
       }
 
       const fieldType = getFieldType(fieldPath);

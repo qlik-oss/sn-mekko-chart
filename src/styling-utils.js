@@ -40,9 +40,7 @@ export const labelStylingDefinition = (path, fontResolver, chartId, theme) => {
 };
 
 export const getAxisLabelStyle = (theme, layout, flags) => {
-  const axis = flags.isEnabled("CLIENT_IM_2022")
-    ? (layout.components || []).find((c) => c.key === "axis")
-    : {};
+  const axis = flags.isEnabled("CLIENT_IM_2022") ? (layout.components || []).find((c) => c.key === "axis") : {};
   return axis && axis.axis && axis.axis.label && axis.axis.label.name
     ? {
         fontSize: axis.axis.label.name.fontSize,
@@ -55,9 +53,7 @@ export const getAxisLabelStyle = (theme, layout, flags) => {
 };
 
 export const getValueLabelStyle = (theme, layout, flags) => {
-  const valueLabel = flags.isEnabled("CLIENT_IM_2022")
-    ? (layout.components || []).find((c) => c.key === "value")
-    : {};
+  const valueLabel = flags.isEnabled("CLIENT_IM_2022") ? (layout.components || []).find((c) => c.key === "value") : {};
   return valueLabel && valueLabel.label && valueLabel.label.value
     ? {
         fontFamily: valueLabel.label.value.fontFamily,
@@ -70,40 +66,24 @@ export const getValueLabelStyle = (theme, layout, flags) => {
 };
 
 export const getLegendTitleStyle = (theme, layout, flags) => {
-  const legend = flags.isEnabled("CLIENT_IM_3051")
-    ? (layout.components || []).find((c) => c.key === "legend")
-    : {};
+  const legend = flags.isEnabled("CLIENT_IM_3051") ? (layout.components || []).find((c) => c.key === "legend") : {};
   const title = legend && legend.legend && legend.legend.title;
   const style = {
-    fontFamily:
-      (title && title.fontFamily) ||
-      theme.getStyle("object", "legend.title", "fontFamily"),
-    fontSize:
-      (title && title.fontSize) ||
-      theme.getStyle("object", "legend.title", "fontSize"),
-    color:
-      (title && title.fontColor && title.fontColor.color) ||
-      theme.getStyle("object", "legend.title", "color"),
+    fontFamily: (title && title.fontFamily) || theme.getStyle("object", "legend.title", "fontFamily"),
+    fontSize: (title && title.fontSize) || theme.getStyle("object", "legend.title", "fontSize"),
+    color: (title && title.fontColor && title.fontColor.color) || theme.getStyle("object", "legend.title", "color"),
   };
 
   return style;
 };
 
 export const getLegendLabelStyle = (theme, layout, flags) => {
-  const legend = flags.isEnabled("CLIENT_IM_3051")
-    ? (layout.components || []).find((c) => c.key === "legend")
-    : {};
+  const legend = flags.isEnabled("CLIENT_IM_3051") ? (layout.components || []).find((c) => c.key === "legend") : {};
   const label = legend && legend.legend && legend.legend.label;
   const style = {
-    fontFamily:
-      (label && label.fontFamily) ||
-      theme.getStyle("object", "legend.label", "fontFamily"),
-    fontSize:
-      (label && label.fontSize) ||
-      theme.getStyle("object", "legend.label", "fontSize"),
-    color:
-      (label && label.fontColor && label.fontColor.color) ||
-      theme.getStyle("object", "legend.label", "color"),
+    fontFamily: (label && label.fontFamily) || theme.getStyle("object", "legend.label", "fontFamily"),
+    fontSize: (label && label.fontSize) || theme.getStyle("object", "legend.label", "fontSize"),
+    color: (label && label.fontColor && label.fontColor.color) || theme.getStyle("object", "legend.label", "color"),
   };
 
   return style;

@@ -82,13 +82,7 @@ export function byDimensionData({ hc, source, coloring, persistence }) {
  * @param {string} [p.key] identifier
  * @param {string} [p.source] Alternative source to apply on the scale. Defaults to the first entry in the picasso data array if not specified
  */
-export default function colorScales({
-  hc,
-  coloring,
-  key,
-  source,
-  picasso,
-} = {}) {
+export default function colorScales({ hc, coloring, key, source, picasso } = {}) {
   const scales = {};
   const scaleKey = key;
   if (coloring) {
@@ -101,11 +95,7 @@ export default function colorScales({
       range:
         coloring.explicit && typeof coloring.explicit.range === "function"
           ? coloring.explicit.range
-          : [
-              ...((coloring.explicit || {}).range || []),
-              coloring.others,
-              coloring.nil,
-            ],
+          : [...((coloring.explicit || {}).range || []), coloring.others, coloring.nil],
     };
     if (coloring.mode === "field") {
       if (coloring.fieldType === "dimension") {
@@ -127,10 +117,7 @@ export default function colorScales({
           domain: coloring.domain,
           explicit,
           type: "categorical-color",
-          label: (d) =>
-            d.datum.text && d.datum.text.value
-              ? d.datum.text.value
-              : d.datum.label,
+          label: (d) => (d.datum.text && d.datum.text.value ? d.datum.text.value : d.datum.label),
         };
 
         scales[scaleKey] = s;

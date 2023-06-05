@@ -1,12 +1,6 @@
 import REFS from "../refs";
 
-export default function columns({
-  constraints,
-  style,
-  hc,
-  formatPercentage,
-  valueLabelStyle,
-}) {
+export default function columns({ constraints, style, hc, formatPercentage, valueLabelStyle }) {
   const isLocked = hc.qDimensionInfo[0].qLocked;
   return [
     {
@@ -17,8 +11,7 @@ export default function columns({
         minimumLayoutMode: "HEIGHT_SMALL",
       },
       preferredSize: () => {
-        const fontSize =
-          style && style["$font-size"] ? parseInt(style["$font-size"], 10) : 12;
+        const fontSize = style && style["$font-size"] ? parseInt(style["$font-size"], 10) : 12;
         return fontSize * 4;
       },
       data: {
@@ -50,9 +43,7 @@ export default function columns({
             scale: "m",
             fn(d) {
               const ss = d.resources.scale("b");
-              return d.resources.scale("m")(
-                ss.datum(d.datum.value).start.value
-              );
+              return d.resources.scale("m")(ss.datum(d.datum.value).start.value);
             },
           },
           binEnd: {
@@ -102,9 +93,7 @@ export default function columns({
                       if (!d.data) {
                         return "";
                       }
-                      return `${d.data.series.label} (${formatPercentage(
-                        d.data.end.value - d.data.start.value
-                      )})`;
+                      return `${d.data.series.label} (${formatPercentage(d.data.end.value - d.data.start.value)})`;
                     },
                   },
                   {

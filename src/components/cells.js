@@ -1,13 +1,6 @@
 import REFS from "../refs";
 
-export default function cells({
-  constraints,
-  contraster,
-  colorFill,
-  hc,
-  formatPercentage,
-  valueLabelStyle,
-}) {
+export default function cells({ constraints, contraster, colorFill, hc, formatPercentage, valueLabelStyle }) {
   const isLocked = hc.qDimensionInfo[1].qLocked;
   return [
     {
@@ -43,17 +36,13 @@ export default function cells({
             scale: "m",
             fn(d) {
               const sBand = d.resources.scale("b");
-              return d.resources.scale("m")(
-                sBand.datum(d.datum.series.value).start.value
-              );
+              return d.resources.scale("m")(sBand.datum(d.datum.series.value).start.value);
             },
           },
           binEnd: {
             fn(d) {
               const ss = d.resources.scale("b");
-              return d.resources.scale("m")(
-                ss.datum(d.datum.series.value).end.value
-              );
+              return d.resources.scale("m")(ss.datum(d.datum.series.value).end.value);
             },
           },
         },
@@ -92,10 +81,7 @@ export default function cells({
               settings: {
                 ...valueLabelStyle,
                 fill(d) {
-                  return (
-                    valueLabelStyle.fill ||
-                    contraster.getBestContrastColor(d.node.attrs.fill)
-                  );
+                  return valueLabelStyle.fill || contraster.getBestContrastColor(d.node.attrs.fill);
                 },
                 labels: [
                   {
@@ -106,17 +92,14 @@ export default function cells({
                       if (!d.data) {
                         return "";
                       }
-                      return `${d.data.label} (${formatPercentage(
-                        d.data.end.value - d.data.start.value
-                      )})`;
+                      return `${d.data.label} (${formatPercentage(d.data.end.value - d.data.start.value)})`;
                     },
                   },
                   {
                     linkData({ node }) {
                       return node.data;
                     },
-                    label: ({ formatter, data }) =>
-                      data ? `${formatter("metric")(data.metric.value)}` : "",
+                    label: ({ formatter, data }) => (data ? `${formatter("metric")(data.metric.value)}` : ""),
                   },
                 ],
               },

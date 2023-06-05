@@ -3,11 +3,7 @@ const path = require("path");
 const pkg = require(path.resolve(__dirname, "../package.json")); // eslint-disable-line
 
 module.exports = {
-  glob: [
-    "./src/object-properties.js",
-    "./src/coloring/index.js",
-    "./src/coloring/byDimension.js",
-  ],
+  glob: ["./src/object-properties.js", "./src/coloring/index.js", "./src/coloring/byDimension.js"],
   package: path.resolve(__dirname, "../package.json"),
   api: {
     stability: "stable",

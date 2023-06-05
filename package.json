@@ -39,6 +39,13 @@
     "preversion": "yarn build",
     "version": "yarn spec && git add api-specifications"
   },
+  "prettier": "@qlik/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@qlik/eslint-config",
+      "@qlik/eslint-config/jest"
+    ]
+  },
   "devDependencies": {
     "@after-work.js/aw": "6.0.14",
     "@babel/cli": "7.21.5",
@@ -53,6 +60,7 @@
     "@nebula.js/cli-sense": "4.2.0",
     "@nebula.js/cli-serve": "3.3.0",
     "@nebula.js/stardust": "3.3.0",
+    "@qlik/eslint-config": "^0.2.0",
     "@qlik/prettier-config": "^0.1.2",
     "babel-plugin-istanbul": "6.1.1",
     "eslint": "8.41.0",

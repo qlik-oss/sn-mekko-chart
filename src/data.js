@@ -5,8 +5,7 @@ export default ({ translator }) => ({
       dimensions: {
         min: 2,
         max: 2,
-        description: (properties, index) =>
-          index === 0 ? translator.get("Column") : translator.get("Cells"),
+        description: (properties, index) => (index === 0 ? translator.get("Column") : translator.get("Cells")),
       },
       measures: {
         min: 1,

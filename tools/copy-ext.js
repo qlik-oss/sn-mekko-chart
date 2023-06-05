@@ -4,13 +4,7 @@ const os = require("os");
 const fs = require("fs-extra");
 
 function copyExt() {
-  const targetPath = [
-    os.homedir(),
-    "Qlik",
-    "Sense",
-    "Extensions",
-    "sn-mekko-chart-ext",
-  ];
+  const targetPath = [os.homedir(), "Qlik", "Sense", "Extensions", "sn-mekko-chart-ext"];
   if (os.platform() === "win32") {
     targetPath.splice(1, 0, "Documents");
   }

@@ -12,9 +12,7 @@ function calculateState(c, settings) {
   };
 
   const textRect = c.renderer.measureText(struct);
-  const preferredSize = /px$/.test(c.style.text.lineHeight)
-    ? parseInt(c.style.text.lineHeight, 10)
-    : textRect.height;
+  const preferredSize = /px$/.test(c.style.text.lineHeight) ? parseInt(c.style.text.lineHeight, 10) : textRect.height;
 
   return {
     textRect,

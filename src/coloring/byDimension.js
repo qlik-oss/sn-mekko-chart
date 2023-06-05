@@ -1,8 +1,7 @@
 import { addRole } from "../roles/roles";
 
 const RX = /\/(qDimensions|qMeasures)\/(\d+)/;
-const RXA =
-  /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeExpressions)\/(\d+)/;
+const RXA = /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeExpressions)\/(\d+)/;
 
 /**
  * Configuration object for when mode is set to `byDimension`
@@ -44,10 +43,7 @@ const byDimension = {
  */
 export function setByDimension(properties, byDimensionConfig, update) {
   const dimensions = properties.qHyperCubeDef.qDimensions;
-  const defaultTargetPath = `/qDimensions/${Math.max(
-    0,
-    dimensions.length - 1
-  )}`;
+  const defaultTargetPath = `/qDimensions/${Math.max(0, dimensions.length - 1)}`;
 
   const config = byDimensionConfig || {
     type: "index",
@@ -104,12 +100,7 @@ export function setByDimension(properties, byDimensionConfig, update) {
   };
 }
 
-export function getByDimensionSettings({
-  layout,
-  theme,
-  definition,
-  fieldPath,
-}) {
+export function getByDimensionSettings({ layout, theme, definition, fieldPath }) {
   if (definition.qError || (definition.qSize && definition.qSize.qcy === 0)) {
     return {
       invalid: true,
@@ -131,10 +122,7 @@ export function getByDimensionSettings({
     ...theme.getDataColorSpecials(),
 
     // for tooltips and legend
-    label:
-      c.type === "expression"
-        ? c.label || definition.qFallbackTitle
-        : definition.qFallbackTitle,
+    label: c.type === "expression" ? c.label || definition.qFallbackTitle : definition.qFallbackTitle,
 
     locked: definition.qLocked || false,
   };

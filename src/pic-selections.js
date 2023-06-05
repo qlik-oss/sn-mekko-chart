@@ -12,9 +12,7 @@ const KEYS = {
 const instances = [];
 let expando = 0;
 const confirmOrCancelSelection = (e) => {
-  const active = instances.filter(
-    (a) => a.selections && a.selections.isActive()
-  );
+  const active = instances.filter((a) => a.selections && a.selections.isActive());
   if (!active.length) {
     return;
   }
@@ -46,10 +44,7 @@ const removeListeners = (emitter, listeners) => {
   });
 };
 
-export default function picSelections(
-  { selections, brush, picassoQ } = {},
-  { path = "/qHyperCubeDef" } = {}
-) {
+export default function picSelections({ selections, brush, picassoQ } = {}, { path = "/qHyperCubeDef" } = {}) {
   if (!selections) {
     return {
       layout: () => {},

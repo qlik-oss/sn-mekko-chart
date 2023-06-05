@@ -8,12 +8,7 @@ import scales from "./scales";
 import stack from "./stack";
 
 import REFS from "./refs";
-import {
-  getAxisLabelStyle,
-  getLegendLabelStyle,
-  getLegendTitleStyle,
-  getValueLabelStyle,
-} from "./styling-utils";
+import { getAxisLabelStyle, getLegendLabelStyle, getLegendTitleStyle, getValueLabelStyle } from "./styling-utils";
 
 function tooltipInteraction() {
   return {
@@ -59,8 +54,7 @@ export default function picDefinition({
   if (theme) {
     try {
       picassoStyle = {
-        "$font-family":
-          theme.getStyle("", "", "fontFamily") || "'QlikView Sans', sans-serif",
+        "$font-family": theme.getStyle("", "", "fontFamily") || "'QlikView Sans', sans-serif",
         "$font-color": theme.getStyle("", "", "color"),
         "$font-size": theme.getStyle("", "", "fontSize"),
         "$font-size--l": theme.getStyle("object", "legend.title", "fontSize"), // props.object.legend.title.fontSize,
@@ -149,15 +143,10 @@ export default function picDefinition({
         formatPercentage,
         valueLabelStyle,
       }),
-      ...(allowTooltip
-        ? tooltip(picassoColoring.settings(), translator, formatPercentage)
-        : []),
+      ...(allowTooltip ? tooltip(picassoColoring.settings(), translator, formatPercentage) : []),
       ...disclaimer(restricted, translator),
     ],
-    interactions: [
-      ...leg.interactions,
-      allowTooltip ? tooltipInteraction() : false,
-    ].filter(Boolean),
+    interactions: [...leg.interactions, allowTooltip ? tooltipInteraction() : false].filter(Boolean),
     style: picassoStyle,
   };
 }

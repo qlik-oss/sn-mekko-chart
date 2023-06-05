@@ -5,9 +5,7 @@ function action(e, { chart, key }) {
     y: coord.clientY,
   };
 
-  const comps = chart
-    .componentsFromPoint(p)
-    .some((c) => c.key === `${key}-cat`);
+  const comps = chart.componentsFromPoint(p).some((c) => c.key === `${key}-cat`);
 
   if (!comps || !e.target) {
     return;
@@ -15,15 +13,10 @@ function action(e, { chart, key }) {
 
   const { target } = e;
 
-  if (
-    target.hasAttribute("data-action") &&
-    target.hasAttribute("data-component-key")
-  ) {
+  if (target.hasAttribute("data-action") && target.hasAttribute("data-component-key")) {
     // clicked on one of the buttons
     e.preventDefault();
-    chart
-      .component(target.getAttribute("data-component-key"))
-      .emit(target.getAttribute("data-action"));
+    chart.component(target.getAttribute("data-component-key")).emit(target.getAttribute("data-action"));
     return;
   }
 

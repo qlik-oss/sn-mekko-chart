@@ -4,13 +4,11 @@ export const RESTRICTIONS = {
     type: "disrupt",
   },
   HasOnlyNaNValues: {
-    label:
-      "The chart is not displayed because it contains only undefined values.",
+    label: "The chart is not displayed because it contains only undefined values.",
     type: "disrupt",
   },
   HasOnlyNegativeOrZeroValues: {
-    label:
-      "The chart is not displayed because it contains only negative or zero values.",
+    label: "The chart is not displayed because it contains only negative or zero values.",
     type: "disrupt",
   },
   HasLimitedDataset: {
@@ -18,8 +16,7 @@ export const RESTRICTIONS = {
     type: "note",
   },
   HasZeroOrNegativeValues: {
-    label:
-      "The data set contains negative or zero values that cannot be shown in this chart.",
+    label: "The data set contains negative or zero values that cannot be shown in this chart.",
     type: "note",
   },
 };

@@ -1,5 +1,4 @@
-const RXA =
-  /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeExpressions)\/(\d+)/;
+const RXA = /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeExpressions)\/(\d+)/;
 
 export function findFields(needle, hc) {
   const found = [];
@@ -22,11 +21,7 @@ export function findFields(needle, hc) {
       targets[1].forEach((af) => {
         const attrArr = arr[i][af] || [];
         for (let j = 0; j < attrArr.length; j++) {
-          if (
-            needle(
-              typeof attrArr[j].qDef === "object" ? attrArr[j].qDef : attrArr[j]
-            )
-          ) {
+          if (needle(typeof attrArr[j].qDef === "object" ? attrArr[j].qDef : attrArr[j])) {
             found.push({
               path: `/${f}/${i}/${af}/${j}`,
               definition: attrArr[j],
@@ -65,10 +60,7 @@ export function removeRoleFrom(definition, role) {
 }
 
 export function removeRole(hc, role) {
-  const existing = findFields(
-    (f) => f.roles && f.roles.filter((r) => r.role === role).length > 0,
-    hc
-  );
+  const existing = findFields((f) => f.roles && f.roles.filter((r) => r.role === role).length > 0, hc);
 
   existing
     .sort()

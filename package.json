@@ -29,7 +29,7 @@
     "format": "prettier --write '**'",
     "format:check": "prettier --check '**'",
     "lint": "eslint src test ./*.js",
-    "lint:check": "eslint --print-config ./aw.config.js | eslint-config-prettier-check",
+    "lint:check": "eslint --print-config ./aw.config.js",
     "prepare": "husky install",
     "spec": "scriptappy-from-jsdoc -c ./spec-configs/props.conf.js",
     "start": "nebula serve --type mekkochart",
@@ -42,9 +42,12 @@
   "prettier": "@qlik/prettier-config",
   "eslintConfig": {
     "extends": [
-      "@qlik/eslint-config",
-      "@qlik/eslint-config/jest"
-    ]
+      "@qlik/eslint-config"
+    ],
+    "rules": {
+      "no-param-reassign": 0,
+      "no-unused-expressions": 0
+    }
   },
   "devDependencies": {
     "@after-work.js/aw": "6.0.14",
@@ -64,11 +67,6 @@
     "@qlik/prettier-config": "^0.1.2",
     "babel-plugin-istanbul": "6.1.1",
     "eslint": "8.41.0",
-    "eslint-config-airbnb-base": "15.0.0",
-    "eslint-config-prettier": "8.8.0",
-    "eslint-plugin-import": "2.27.5",
-    "eslint-plugin-mocha": "10.1.0",
-    "eslint-plugin-prettier": "4.2.1",
     "fs-extra": "11.1.1",
     "globby": "11.1.0",
     "husky": "8.0.3",

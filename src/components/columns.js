@@ -1,17 +1,24 @@
-import REFS from '../refs';
+import REFS from "../refs";
 
-export default function columns({ constraints, style, hc, formatPercentage, valueLabelStyle }) {
+export default function columns({
+  constraints,
+  style,
+  hc,
+  formatPercentage,
+  valueLabelStyle,
+}) {
   const isLocked = hc.qDimensionInfo[0].qLocked;
   return [
     {
-      type: 'box',
-      key: 'column-boxes',
+      type: "box",
+      key: "column-boxes",
       layout: {
-        dock: 'top',
-        minimumLayoutMode: 'HEIGHT_SMALL',
+        dock: "top",
+        minimumLayoutMode: "HEIGHT_SMALL",
       },
       preferredSize: () => {
-        const fontSize = style && style['$font-size'] ? parseInt(style['$font-size'], 10) : 12;
+        const fontSize =
+          style && style["$font-size"] ? parseInt(style["$font-size"], 10) : 12;
         return fontSize * 4;
       },
       data: {
@@ -24,12 +31,12 @@ export default function columns({ constraints, style, hc, formatPercentage, valu
                 ? []
                 : [
                     {
-                      contexts: ['selection'],
+                      contexts: ["selection"],
                     },
                   ],
               consume: [
                 {
-                  context: 'selection',
+                  context: "selection",
                   style: {
                     inactive: { opacity: 0.4 },
                   },
@@ -40,35 +47,37 @@ export default function columns({ constraints, style, hc, formatPercentage, valu
       settings: {
         major: {
           binStart: {
-            scale: 'm',
+            scale: "m",
             fn(d) {
-              const ss = d.resources.scale('b');
-              return d.resources.scale('m')(ss.datum(d.datum.value).start.value);
+              const ss = d.resources.scale("b");
+              return d.resources.scale("m")(
+                ss.datum(d.datum.value).start.value
+              );
             },
           },
           binEnd: {
             fn(d) {
-              const ss = d.resources.scale('b');
-              return d.resources.scale('m')(ss.datum(d.datum.value).end.value);
+              const ss = d.resources.scale("b");
+              return d.resources.scale("m")(ss.datum(d.datum.value).end.value);
             },
           },
         },
         minor: { start: 0, end: 1 },
         box: {
-          fill: 'rgba(100, 0, 0, 0.0)',
+          fill: "rgba(100, 0, 0, 0.0)",
           strokeWidth: 0,
         },
       },
     },
     {
-      type: 'labels',
-      key: 'column-labels',
-      dock: '@column-boxes',
+      type: "labels",
+      key: "column-labels",
+      dock: "@column-boxes",
       displayOrder: 2,
       brush: {
         consume: [
           {
-            context: 'selection',
+            context: "selection",
             style: {
               inactive: { opacity: 0.6 },
             },
@@ -78,10 +87,10 @@ export default function columns({ constraints, style, hc, formatPercentage, valu
       settings: {
         sources: [
           {
-            component: 'column-boxes',
-            selector: 'rect',
+            component: "column-boxes",
+            selector: "rect",
             strategy: {
-              type: 'rows',
+              type: "rows",
               settings: {
                 ...valueLabelStyle,
                 labels: [
@@ -91,16 +100,18 @@ export default function columns({ constraints, style, hc, formatPercentage, valu
                     },
                     label: (d) => {
                       if (!d.data) {
-                        return '';
+                        return "";
                       }
-                      return `${d.data.series.label} (${formatPercentage(d.data.end.value - d.data.start.value)})`;
+                      return `${d.data.series.label} (${formatPercentage(
+                        d.data.end.value - d.data.start.value
+                      )})`;
                     },
                   },
                   {
                     linkData({ node }) {
                       return node.data;
                     },
-                    label: (d) => (d.data ? `${d.data.metric.label}` : ''),
+                    label: (d) => (d.data ? `${d.data.metric.label}` : ""),
                   },
                 ],
               },

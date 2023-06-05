@@ -2,16 +2,11 @@
   "name": "@nebula.js/sn-mekko-chart",
   "version": "1.3.0",
   "description": "Compare the share of values using variable width of stacked bars",
-  "license": "MIT",
-  "author": "QlikTech International AB",
   "keywords": [
     "qlik",
     "nebula",
     "stardust"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "bugs": {
     "url": "https://github.com/qlik-oss/sn-mekko-chart/issues"
   },
@@ -19,30 +14,30 @@
     "type": "git",
     "url": "https://github.com/qlik-oss/sn-mekko-chart.git"
   },
+  "license": "MIT",
+  "author": "QlikTech International AB",
+  "main": "./dist/sn-mekko-chart.js",
   "files": [
     "core",
     "dist",
     "api-specifications",
     "sn-mekko-chart-ext"
   ],
-  "main": "./dist/sn-mekko-chart.js",
-  "systemjs": "./dist/sn-mekko-chart.systemjs.js",
   "scripts": {
     "build": "./tools/generate-all-locale.js && nebula build --core core --mode='production' && nebula sense --partial true --output='sn-mekko-chart-ext' --sourcemap true",
     "copy:ext": "node ./tools/copy-ext.js",
+    "format": "prettier --write '**'",
+    "format:check": "prettier --check '**'",
     "lint": "eslint src test ./*.js",
     "lint:check": "eslint --print-config ./aw.config.js | eslint-config-prettier-check",
+    "prepare": "husky install",
     "spec": "scriptappy-from-jsdoc -c ./spec-configs/props.conf.js",
     "start": "nebula serve --type mekkochart",
-    "test:unit": "aw -c aw.config.js",
     "test:integration": "aw puppet --glob 'test/integration/**/*.spec.js'",
+    "test:unit": "aw -c aw.config.js",
     "validate:locale": "node ./tools/validate-locale-strings.js",
-    "prepare": "husky install",
     "preversion": "yarn build",
     "version": "yarn spec && git add api-specifications"
-  },
-  "peerDependencies": {
-    "@nebula.js/stardust": ">=1.7.0"
   },
   "devDependencies": {
     "@after-work.js/aw": "6.0.14",
@@ -58,6 +53,7 @@
     "@nebula.js/cli-sense": "4.2.0",
     "@nebula.js/cli-serve": "3.3.0",
     "@nebula.js/stardust": "3.3.0",
+    "@qlik/prettier-config": "^0.1.2",
     "babel-plugin-istanbul": "6.1.1",
     "eslint": "8.41.0",
     "eslint-config-airbnb-base": "15.0.0",
@@ -74,5 +70,12 @@
     "prettier": "2.8.8",
     "qlik-chart-modules": "0.56.0",
     "scriptappy-from-jsdoc": "0.7.0"
-  }
+  },
+  "peerDependencies": {
+    "@nebula.js/stardust": ">=1.7.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "systemjs": "./dist/sn-mekko-chart.systemjs.js"
 }

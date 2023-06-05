@@ -1,4 +1,4 @@
-import { legendConfig } from './coloring';
+import { legendConfig } from "./coloring";
 /**
  * @typedef {object}
  * @entry
@@ -34,17 +34,17 @@ const properties = {
    * Visualization title.
    * @type {(string|StringExpression)=}
    */
-  title: '',
+  title: "",
   /**
    * Visualization subtitle.
    * @type {(string|StringExpression)=}
    */
-  subtitle: '',
+  subtitle: "",
   /**
    * Visualization footnote.
    * @type {(string|StringExpression)=}
    */
-  footnote: '',
+  footnote: "",
   /**
    * @type {object}
    * @property {byDimensionConfig} [byDimension=byDimensionConfig]
@@ -53,7 +53,7 @@ const properties = {
     /**
      * @type {'auto'|'byDimension'}
      */
-    mode: 'auto',
+    mode: "auto",
     /**
      * @type {legendConfig}
      */

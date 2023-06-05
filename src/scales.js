@@ -1,4 +1,4 @@
-import REFS from './refs';
+import REFS from "./refs";
 
 export default function scales() {
   return {
@@ -14,7 +14,7 @@ export default function scales() {
           key: REFS.SPAN_COLLECTION,
         },
       },
-      type: 'band',
+      type: "band",
     },
     m: {
       data: {

@@ -2,11 +2,11 @@
 
 A release consists of the following:
 
-* Bumping the package version based on your commits
-* Updating the specification
-* Creating a new commit with the changed files
-* Creating a tag with the new version
-* Pushing the release commit and tag to master
+- Bumping the package version based on your commits
+- Updating the specification
+- Creating a new commit with the changed files
+- Creating a tag with the new version
+- Pushing the release commit and tag to master
 
 ## Step-By-Step
 

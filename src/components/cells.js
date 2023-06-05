@@ -1,11 +1,18 @@
-import REFS from '../refs';
+import REFS from "../refs";
 
-export default function cells({ constraints, contraster, colorFill, hc, formatPercentage, valueLabelStyle }) {
+export default function cells({
+  constraints,
+  contraster,
+  colorFill,
+  hc,
+  formatPercentage,
+  valueLabelStyle,
+}) {
   const isLocked = hc.qDimensionInfo[1].qLocked;
   return [
     {
-      type: 'box',
-      key: 'cells',
+      type: "box",
+      key: "cells",
       data: {
         collection: REFS.CELL_COLLECTION,
       },
@@ -16,12 +23,12 @@ export default function cells({ constraints, contraster, colorFill, hc, formatPe
                 ? []
                 : [
                     {
-                      contexts: ['selection'],
+                      contexts: ["selection"],
                     },
                   ],
               consume: [
                 {
-                  context: 'selection',
+                  context: "selection",
                   style: {
                     inactive: { opacity: 0.4 },
                   },
@@ -33,22 +40,26 @@ export default function cells({ constraints, contraster, colorFill, hc, formatPe
         major: {
           ref: REFS.SERIES,
           binStart: {
-            scale: 'm',
+            scale: "m",
             fn(d) {
-              const sBand = d.resources.scale('b');
-              return d.resources.scale('m')(sBand.datum(d.datum.series.value).start.value);
+              const sBand = d.resources.scale("b");
+              return d.resources.scale("m")(
+                sBand.datum(d.datum.series.value).start.value
+              );
             },
           },
           binEnd: {
             fn(d) {
-              const ss = d.resources.scale('b');
-              return d.resources.scale('m')(ss.datum(d.datum.series.value).end.value);
+              const ss = d.resources.scale("b");
+              return d.resources.scale("m")(
+                ss.datum(d.datum.series.value).end.value
+              );
             },
           },
         },
         minor: {
-          scale: 'y',
-          ref: 'end',
+          scale: "y",
+          ref: "end",
         },
         box: {
           fill: colorFill,
@@ -56,14 +67,14 @@ export default function cells({ constraints, contraster, colorFill, hc, formatPe
       },
     },
     {
-      type: 'labels',
-      key: 'cell-labels',
-      dock: '@cells',
+      type: "labels",
+      key: "cell-labels",
+      dock: "@cells",
       displayOrder: 2,
       brush: {
         consume: [
           {
-            context: 'selection',
+            context: "selection",
             // data: [''],
             style: {
               inactive: { opacity: 0.6 },
@@ -74,14 +85,17 @@ export default function cells({ constraints, contraster, colorFill, hc, formatPe
       settings: {
         sources: [
           {
-            component: 'cells',
-            selector: 'rect',
+            component: "cells",
+            selector: "rect",
             strategy: {
-              type: 'rows',
+              type: "rows",
               settings: {
                 ...valueLabelStyle,
                 fill(d) {
-                  return valueLabelStyle.fill || contraster.getBestContrastColor(d.node.attrs.fill);
+                  return (
+                    valueLabelStyle.fill ||
+                    contraster.getBestContrastColor(d.node.attrs.fill)
+                  );
                 },
                 labels: [
                   {
@@ -90,16 +104,19 @@ export default function cells({ constraints, contraster, colorFill, hc, formatPe
                     },
                     label: (d) => {
                       if (!d.data) {
-                        return '';
+                        return "";
                       }
-                      return `${d.data.label} (${formatPercentage(d.data.end.value - d.data.start.value)})`;
+                      return `${d.data.label} (${formatPercentage(
+                        d.data.end.value - d.data.start.value
+                      )})`;
                     },
                   },
                   {
                     linkData({ node }) {
                       return node.data;
                     },
-                    label: ({ formatter, data }) => (data ? `${formatter('metric')(data.metric.value)}` : ''),
+                    label: ({ formatter, data }) =>
+                      data ? `${formatter("metric")(data.metric.value)}` : "",
                   },
                 ],
               },

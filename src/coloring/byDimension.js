@@ -1,7 +1,8 @@
-import { addRole } from '../roles/roles';
+import { addRole } from "../roles/roles";
 
 const RX = /\/(qDimensions|qMeasures)\/(\d+)/;
-const RXA = /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeExpressions)\/(\d+)/;
+const RXA =
+  /\/(qDimensions|qMeasures)\/(\d+)\/(qAttributeDimensions|qAttributeExpressions)\/(\d+)/;
 
 /**
  * Configuration object for when mode is set to `byDimension`
@@ -28,7 +29,7 @@ const byDimension = {
   /**
    * @type {string=}
    */
-  scheme: '',
+  scheme: "",
 };
 
 /**
@@ -43,20 +44,23 @@ const byDimension = {
  */
 export function setByDimension(properties, byDimensionConfig, update) {
   const dimensions = properties.qHyperCubeDef.qDimensions;
-  const defaultTargetPath = `/qDimensions/${Math.max(0, dimensions.length - 1)}`;
+  const defaultTargetPath = `/qDimensions/${Math.max(
+    0,
+    dimensions.length - 1
+  )}`;
 
   const config = byDimensionConfig || {
-    type: 'index',
+    type: "index",
     typeValue: Math.max(0, dimensions.length - 1),
   };
 
-  if (config.type === 'index' && config.typeValue > dimensions.length - 1) {
+  if (config.type === "index" && config.typeValue > dimensions.length - 1) {
     // reset dimension index to one that exits in the cube
     config.typeValue = Math.max(0, dimensions.length - 1);
   }
 
   let targetPath;
-  if (config.type === 'index') {
+  if (config.type === "index") {
     targetPath = `/qDimensions/${config.typeValue}`;
   } else {
     targetPath = `${defaultTargetPath}/qAttributeDimensions/0`;
@@ -66,7 +70,7 @@ export function setByDimension(properties, byDimensionConfig, update) {
     const m = RXA.exec(targetPath);
     if (m) {
       const def =
-        config.type === 'libraryId'
+        config.type === "libraryId"
           ? {
               qLibraryId: config.typeValue,
               libraryId: config.typeValue, // add custom property since qLibraryId is not returned in attr dimension/measure in layout
@@ -82,13 +86,13 @@ export function setByDimension(properties, byDimensionConfig, update) {
         ...def,
         qAttribute: true,
         qSortBy: { qSortByAscii: 1 },
-        roles: [{ role: 'color' }],
+        roles: [{ role: "color" }],
       });
     } else {
       // add role only
       const mx = RX.exec(targetPath);
       if (mx) {
-        addRole(properties.qHyperCubeDef[mx[1]][+mx[2]], 'color');
+        addRole(properties.qHyperCubeDef[mx[1]][+mx[2]], "color");
       }
     }
   }
@@ -100,7 +104,12 @@ export function setByDimension(properties, byDimensionConfig, update) {
   };
 }
 
-export function getByDimensionSettings({ layout, theme, definition, fieldPath }) {
+export function getByDimensionSettings({
+  layout,
+  theme,
+  definition,
+  fieldPath,
+}) {
   if (definition.qError || (definition.qSize && definition.qSize.qcy === 0)) {
     return {
       invalid: true,
@@ -110,19 +119,22 @@ export function getByDimensionSettings({ layout, theme, definition, fieldPath })
   const pals = theme.getDataColorPalettes();
   const c = (layout.cellColor && layout.cellColor.byDimension) || {};
   return {
-    mode: 'field',
+    mode: "field",
     field: fieldPath,
-    fieldType: 'dimension',
+    fieldType: "dimension",
     persistent: c.persistent,
 
-    type: 'categorical',
+    type: "categorical",
 
     // references values in a theme
     palette: pals.filter((p) => p.key === c.scheme)[0] || pals[0],
     ...theme.getDataColorSpecials(),
 
     // for tooltips and legend
-    label: c.type === 'expression' ? c.label || definition.qFallbackTitle : definition.qFallbackTitle,
+    label:
+      c.type === "expression"
+        ? c.label || definition.qFallbackTitle
+        : definition.qFallbackTitle,
 
     locked: definition.qLocked || false,
   };

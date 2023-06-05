@@ -1,24 +1,24 @@
-const path = require('path');
+const path = require("path");
 
-const { version } = require(path.resolve(__dirname, './package.json')); // eslint-disable-line
+const { version } = require(path.resolve(__dirname, "./package.json")); // eslint-disable-line
 
 module.exports = {
   serve: {
     renderConfigs: [
       {
-        id: 'x',
+        id: "x",
         render: {
           options: {
-            renderer: 'svg',
+            renderer: "svg",
           },
-          fields: ['Region', 'Fiscal Year', '=1'],
+          fields: ["Region", "Fiscal Year", "=1"],
         },
       },
     ],
   },
   build: {
     replacementStrings: {
-      'process.env.PACKAGE_VERSION': JSON.stringify(version),
+      "process.env.PACKAGE_VERSION": JSON.stringify(version),
     },
   },
 };

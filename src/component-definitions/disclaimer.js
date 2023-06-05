@@ -1,18 +1,20 @@
 function calculateState(c, settings) {
   const struct = {
-    type: 'text',
+    type: "text",
     text: settings.text,
     x: 0,
     y: 0,
     dx: 0,
     dy: 0,
-    anchor: 'left',
-    baseline: 'alphabetical',
+    anchor: "left",
+    baseline: "alphabetical",
     ...c.style.text,
   };
 
   const textRect = c.renderer.measureText(struct);
-  const preferredSize = /px$/.test(c.style.text.lineHeight) ? parseInt(c.style.text.lineHeight, 10) : textRect.height;
+  const preferredSize = /px$/.test(c.style.text.lineHeight)
+    ? parseInt(c.style.text.lineHeight, 10)
+    : textRect.height;
 
   return {
     textRect,
@@ -22,16 +24,16 @@ function calculateState(c, settings) {
 }
 
 const component = {
-  require: ['renderer', 'chart'],
+  require: ["renderer", "chart"],
   defaultSettings: {
     layout: {
-      dock: 'bottom',
+      dock: "bottom",
       displayOrder: 0,
       prioOrder: 0,
     },
     settings: {},
     style: {
-      text: '$title',
+      text: "$title",
     },
   },
 
@@ -60,8 +62,8 @@ const component = {
     struct.y = padTop + rect.height / 2 + state.textRect.height / 3;
     struct.maxWidth = rect.width;
 
-    if (dock === 'center') {
-      struct.anchor = 'middle';
+    if (dock === "center") {
+      struct.anchor = "middle";
       struct.x = rect.width / 2;
     }
 
@@ -71,5 +73,5 @@ const component = {
 };
 
 export default function plugin(picasso) {
-  picasso.component('disclaimer', component);
+  picasso.component("disclaimer", component);
 }

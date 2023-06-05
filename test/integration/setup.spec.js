@@ -1,4 +1,4 @@
-const serve = require('@nebula.js/cli-serve'); // eslint-disable-line
+const serve = require("@nebula.js/cli-serve"); // eslint-disable-line
 
 if (!process.env.BASE_URL) {
   let s;
@@ -11,9 +11,9 @@ if (!process.env.BASE_URL) {
 
     process.env.BASE_URL = s.url;
 
-    page.on('pageerror', (e) => {
+    page.on("pageerror", (e) => {
       // eslint-disable-next-line no-console
-      console.log('Error:', e.message, e.stack);
+      console.log("Error:", e.message, e.stack);
     });
   });
 

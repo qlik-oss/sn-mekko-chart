@@ -1,8 +1,8 @@
-import palettes from './palettes';
-import scales from './scales';
-import colorFn from './fill';
-import legend from './legend';
-import datumProps from './datum';
+import datumProps from "./datum";
+import colorFn from "./fill";
+import legend from "./legend";
+import palettes from "./palettes";
+import scales from "./scales";
 
 /**
  * Creates a new coloring model
@@ -45,7 +45,7 @@ export default function coloringFn(resources) {
       chartColorModel = inputCache.chartColorModel; // eslint-disable-line
 
       if (!inputCache.key) {
-        throw new Error('Missing key');
+        throw new Error("Missing key");
       }
     },
 
@@ -137,8 +137,8 @@ export default function coloringFn(resources) {
     data() {
       return [
         {
-          key: 'dummy',
-          data: [['field'], ['a']],
+          key: "dummy",
+          data: [["field"], ["a"]],
         },
       ];
     },

@@ -8,7 +8,7 @@ LICENSE
 core
 dist/
 node_modules
-properties.json
+api-specifications/properties.json
 yarn.lock
 commit-msg
 *.html

@@ -1,19 +1,19 @@
-import axis from './components/axis';
-import cells from './components/cells';
-import columns from './components/columns';
-import tooltip from './components/tooltip';
-import disclaimer from './components/disclaimer';
+import axis from "./components/axis";
+import cells from "./components/cells";
+import columns from "./components/columns";
+import disclaimer from "./components/disclaimer";
+import tooltip from "./components/tooltip";
 
-import scales from './scales';
-import stack from './stack';
+import scales from "./scales";
+import stack from "./stack";
 
-import REFS from './refs';
-import { getAxisLabelStyle, getLegendLabelStyle, getLegendTitleStyle, getValueLabelStyle } from './styling-utils';
+import REFS from "./refs";
+import { getAxisLabelStyle, getLegendLabelStyle, getLegendTitleStyle, getValueLabelStyle } from "./styling-utils";
 
 function tooltipInteraction() {
   return {
-    key: 'tooltip',
-    type: 'native',
+    key: "tooltip",
+    type: "native",
     events: {
       mousemove(e) {
         const bounds = this.chart.element.getBoundingClientRect();
@@ -25,14 +25,14 @@ function tooltipInteraction() {
         let shapes = [];
 
         shapes = this.chart.shapesAt(p, {
-          components: [{ key: 'cells' }, { key: 'column-boxes' }],
-          propagation: 'stop',
+          components: [{ key: "cells" }, { key: "column-boxes" }],
+          propagation: "stop",
         });
 
-        this.chart.component('tool').emit('show', e, { nodes: shapes });
+        this.chart.component("tool").emit("show", e, { nodes: shapes });
       },
       mouseleave() {
-        this.chart.component('tool').emit('hide');
+        this.chart.component("tool").emit("hide");
       },
     },
   };
@@ -54,17 +54,17 @@ export default function picDefinition({
   if (theme) {
     try {
       picassoStyle = {
-        '$font-family': theme.getStyle('', '', 'fontFamily') || "'QlikView Sans', sans-serif",
-        '$font-color': theme.getStyle('', '', 'color'),
-        '$font-size': theme.getStyle('', '', 'fontSize'),
-        '$font-size--l': theme.getStyle('object', 'legend.title', 'fontSize'), // props.object.legend.title.fontSize,
-        '$guide-color': theme.getStyle('object', 'axis.line.major', 'color'), // props.object.axis.line.major.color,
+        "$font-family": theme.getStyle("", "", "fontFamily") || "'QlikView Sans', sans-serif",
+        "$font-color": theme.getStyle("", "", "color"),
+        "$font-size": theme.getStyle("", "", "fontSize"),
+        "$font-size--l": theme.getStyle("object", "legend.title", "fontSize"), // props.object.legend.title.fontSize,
+        "$guide-color": theme.getStyle("object", "axis.line.major", "color"), // props.object.axis.line.major.color,
       };
     } catch (e) {
       /* empty */
     }
   }
-  if (restricted && restricted.type === 'disrupt') {
+  if (restricted && restricted.type === "disrupt") {
     return {
       components: disclaimer(restricted, translator),
       ...(picassoStyle ? { style: picassoStyle } : {}), // ugly way to avoid setting style: undefined
@@ -75,8 +75,8 @@ export default function picDefinition({
   const colorFill = picassoColoring.color();
 
   const leg = picassoColoring.legend({
-    key: 'color-legend',
-    eventName: 'ev',
+    key: "color-legend",
+    eventName: "ev",
     styleOptions: {
       title: getLegendTitleStyle(theme, layout, flags),
       label: getLegendLabelStyle(theme, layout, flags),
@@ -100,14 +100,14 @@ export default function picDefinition({
     collections: [
       stack({
         key: REFS.SPAN_COLLECTION,
-        field: 'qDimensionInfo/0',
+        field: "qDimensionInfo/0",
         trackBy: (cell) => cell.qElemNumber,
-        reduce: 'first',
+        reduce: "first",
         stackKey: () => -1,
       }),
       stack({
         key: REFS.CELL_COLLECTION,
-        field: 'qDimensionInfo/1',
+        field: "qDimensionInfo/1",
         props: {
           ...colorDatum,
         },
@@ -120,7 +120,7 @@ export default function picDefinition({
     formatters: {
       metric: {
         data: {
-          field: 'qMeasureInfo/0',
+          field: "qMeasureInfo/0",
         },
       },
     },

@@ -1,7 +1,7 @@
 export function persistByElemNo(field, num) {
   return {
     range: ({ resources, data }) => {
-      const palette = resources.theme.palette('categorical', num);
+      const palette = resources.theme.palette("categorical", num);
       return data.items.map((v) => palette[v.value % palette.length]);
     },
     valueAccessor: field.value,
@@ -11,7 +11,7 @@ export function persistByElemNo(field, num) {
 export function persistByRow(field, num) {
   return {
     range: ({ resources, data }) => {
-      const palette = resources.theme.palette('categorical', num);
+      const palette = resources.theme.palette("categorical", num);
       return data.items.map((v) => palette[v.row.value % palette.length]);
     },
     valueAccessor: field.value,
@@ -21,7 +21,7 @@ export function persistByRow(field, num) {
 export function getPersistenceSettings({ coloring, hc, picasso, localeInfo }) {
   const shouldPersistByElemNo = coloring.persistent;
 
-  const pic = picasso.data('q')({ data: hc, config: { localeInfo } });
+  const pic = picasso.data("q")({ data: hc, config: { localeInfo } });
 
   const f = pic.field(coloring.field);
 
@@ -45,7 +45,7 @@ export function byDimensionData({ hc, source, coloring, persistence }) {
       extract: [
         {
           // this dummy is only here in order to reset the expando when tracking row numbers during paging
-          source: 'dummy',
+          source: "dummy",
           field: 0,
           // this filter method will be called from picasso when datasets are extract
           filter: () => {
@@ -57,12 +57,12 @@ export function byDimensionData({ hc, source, coloring, persistence }) {
           source,
           field: coloring.field,
           trackBy: persistence.valueAccessor,
-          reduce: 'first',
+          reduce: "first",
           props: {
             row: {
               reduce: () => ret.expando++,
             },
-            text: { value: (v) => v.qText, reduce: 'first' },
+            text: { value: (v) => v.qText, reduce: "first" },
           },
         },
       ],
@@ -89,16 +89,16 @@ export default function colorScales({ hc, coloring, key, source, picasso } = {})
     const explicit = {
       override: true,
       domain:
-        coloring.explicit && typeof coloring.explicit.domain === 'function'
+        coloring.explicit && typeof coloring.explicit.domain === "function"
           ? coloring.explicit.domain
           : [...((coloring.explicit || {}).domain || []), -3, -2],
       range:
-        coloring.explicit && typeof coloring.explicit.range === 'function'
+        coloring.explicit && typeof coloring.explicit.range === "function"
           ? coloring.explicit.range
           : [...((coloring.explicit || {}).range || []), coloring.others, coloring.nil],
     };
-    if (coloring.mode === 'field') {
-      if (coloring.fieldType === 'dimension') {
+    if (coloring.mode === "field") {
+      if (coloring.fieldType === "dimension") {
         const persistence = getPersistenceSettings({
           hc,
           coloring,
@@ -116,13 +116,13 @@ export default function colorScales({ hc, coloring, key, source, picasso } = {})
           range: persistence.range || coloring.range,
           domain: coloring.domain,
           explicit,
-          type: 'categorical-color',
+          type: "categorical-color",
           label: (d) => (d.datum.text && d.datum.text.value ? d.datum.text.value : d.datum.label),
         };
 
         scales[scaleKey] = s;
       } else {
-        throw new Error('UNUSED FIELD'); // FIXME
+        throw new Error("UNUSED FIELD"); // FIXME
       }
     }
   }

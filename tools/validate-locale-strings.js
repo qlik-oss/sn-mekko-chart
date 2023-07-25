@@ -1,13 +1,13 @@
 #! /usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const globby = require('globby');
+const fs = require("fs");
+const path = require("path");
+const globby = require("globby");
 
-const parser = require('@babel/parser');
-const traverse = require('@babel/traverse').default;
+const parser = require("@babel/parser");
+const traverse = require("@babel/traverse").default;
 
-const vars = require('./merge-all-locale')();
+const vars = require("./merge-all-locale")();
 
 const ids = {};
 Object.keys(vars).forEach((key) => {
@@ -28,30 +28,30 @@ function useString(id) {
 
   used.push(id);
 
-  if (typeof ids[id] === 'undefined') {
+  if (typeof ids[id] === "undefined") {
     err(`String '${id}' does not exist in locale registry`);
     errors++;
   }
 }
 
 const validateFile = (file) => {
-  const code = fs.readFileSync(file, 'utf8');
+  const code = fs.readFileSync(file, "utf8");
   const ast = parser.parse(code, {
-    sourceType: 'module',
+    sourceType: "module",
   });
   traverse(ast, {
     CallExpression(nodePath) {
-      if (!nodePath.get('callee').isMemberExpression()) {
+      if (!nodePath.get("callee").isMemberExpression()) {
         return;
       }
       if (
         nodePath.node.callee.object &&
-        nodePath.node.callee.object.name === 'translator' &&
+        nodePath.node.callee.object.name === "translator" &&
         nodePath.node.callee.property &&
-        nodePath.node.callee.property.name === 'get'
+        nodePath.node.callee.property.name === "get"
       ) {
         const { type, value } = nodePath.node.arguments[0];
-        if (type === 'StringLiteral') {
+        if (type === "StringLiteral") {
           useString(value, nodePath);
         } else {
           const s = `${file}:${nodePath.node.loc.start.line}:${nodePath.node.loc.start.column}`;
@@ -66,7 +66,7 @@ const validateFile = (file) => {
 };
 
 const validate = () => {
-  const SRC_FOLDER = path.resolve(__dirname, '../src');
+  const SRC_FOLDER = path.resolve(__dirname, "../src");
   const sourceFiles = globby.sync([`${SRC_FOLDER}/**/*.js`, `!${SRC_FOLDER}/**/*.spec.js`, `!${SRC_FOLDER}/ext.js`]);
 
   sourceFiles.forEach((file) => validateFile(file));

@@ -1,6 +1,6 @@
-import cells from '../cells';
+import cells from "../cells";
 
-describe('cells', () => {
+describe("cells", () => {
   const param = {
     constraints: {
       passive: true,
@@ -11,12 +11,12 @@ describe('cells', () => {
     },
   };
 
-  it('should contain empty brush config when passive and active constraints', () => {
+  it("should contain empty brush config when passive and active constraints", () => {
     const c = cells(param);
     expect(c[0].brush).to.eql({});
   });
 
-  it('should not have any brush trigger when dimension is locked', () => {
+  it("should not have any brush trigger when dimension is locked", () => {
     const c = cells({
       ...param,
       constraints: {},
@@ -25,15 +25,15 @@ describe('cells', () => {
     expect(c[0].brush.trigger).to.eql([]);
   });
 
-  it('should have valueLabelStyle', () => {
+  it("should have valueLabelStyle", () => {
     const c = cells({
       ...param,
       constraints: {},
       hc: { qDimensionInfo: [{}, { qLocked: true }] },
       valueLabelStyle: {
-        fontFamily: 'MyFontFamily',
+        fontFamily: "MyFontFamily",
       },
     });
-    expect(c[1].settings.sources[0].strategy.settings.fontFamily).to.eql('MyFontFamily');
+    expect(c[1].settings.sources[0].strategy.settings.fontFamily).to.eql("MyFontFamily");
   });
 });

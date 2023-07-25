@@ -3,10 +3,10 @@
 // --- enable keyboard accessibility ---
 // pressing enter (escape) key should confirm (cancel) selections
 const KEYS = {
-  ENTER: 'Enter',
-  ESCAPE: 'Escape',
-  IE11_ESC: 'Esc',
-  SHIFT: 'Shift',
+  ENTER: "Enter",
+  ESCAPE: "Escape",
+  IE11_ESC: "Esc",
+  SHIFT: "Shift",
 };
 
 const instances = [];
@@ -24,11 +24,11 @@ const confirmOrCancelSelection = (e) => {
 };
 
 const setup = () => {
-  document.addEventListener('keyup', confirmOrCancelSelection);
+  document.addEventListener("keyup", confirmOrCancelSelection);
 };
 
 const teardown = () => {
-  document.removeEventListener('keyup', confirmOrCancelSelection);
+  document.removeEventListener("keyup", confirmOrCancelSelection);
 };
 // ------------------------------------------------------
 
@@ -44,7 +44,7 @@ const removeListeners = (emitter, listeners) => {
   });
 };
 
-export default function picSelections({ selections, brush, picassoQ } = {}, { path = '/qHyperCubeDef' } = {}) {
+export default function picSelections({ selections, brush, picassoQ } = {}, { path = "/qHyperCubeDef" } = {}) {
   if (!selections) {
     return {
       layout: () => {},
@@ -59,7 +59,7 @@ export default function picSelections({ selections, brush, picassoQ } = {}, { pa
   const valueInterceptor = (added) => {
     const brushes = brush.brushes();
     brushes.forEach((b) => {
-      if (b.type === 'range') {
+      if (b.type === "range") {
         // has range selections
         brush.clear([]);
       } else if (added[0] && added[0].key !== b.id) {
@@ -71,7 +71,7 @@ export default function picSelections({ selections, brush, picassoQ } = {}, { pa
   };
 
   const rangeInterceptor = (a) => {
-    const v = brush.brushes().filter((b) => b.type === 'value');
+    const v = brush.brushes().filter((b) => b.type === "value");
     if (v.length) {
       // has dimension values selected
       brush.clear([]);
@@ -80,14 +80,14 @@ export default function picSelections({ selections, brush, picassoQ } = {}, { pa
     return a;
   };
 
-  brush.intercept('set-ranges', rangeInterceptor);
-  brush.intercept('toggle-ranges', rangeInterceptor);
+  brush.intercept("set-ranges", rangeInterceptor);
+  brush.intercept("toggle-ranges", rangeInterceptor);
 
-  brush.intercept('toggle-values', valueInterceptor);
-  brush.intercept('set-values', valueInterceptor);
-  brush.intercept('add-values', valueInterceptor);
+  brush.intercept("toggle-values", valueInterceptor);
+  brush.intercept("set-values", valueInterceptor);
+  brush.intercept("add-values", valueInterceptor);
 
-  brush.on('start', () => selections.begin(path));
+  brush.on("start", () => selections.begin(path));
 
   const selectionListeners = {
     activate: () => {
@@ -99,7 +99,7 @@ export default function picSelections({ selections, brush, picassoQ } = {}, { pa
   };
   addListeners(selections, selectionListeners);
 
-  brush.on('update', () => {
+  brush.on("update", () => {
     const generated = picassoQ.selections(brush, {}, layout);
     generated.forEach((s) => selections.select(s));
   });

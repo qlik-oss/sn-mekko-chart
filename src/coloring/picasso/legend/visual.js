@@ -1,9 +1,9 @@
 export const legendShow = (legendProps, hc, coloring) => {
   if (
     coloring.invalid ||
-    coloring.type === 'color' ||
-    (coloring.mode === 'measure' && hc.qMeasureInfo.length <= 1) ||
-    coloring.mode === 'dimension'
+    coloring.type === "color" ||
+    (coloring.mode === "measure" && hc.qMeasureInfo.length <= 1) ||
+    coloring.mode === "dimension"
   ) {
     return false;
   }
@@ -19,12 +19,12 @@ export function catLegend(componentConfig, opts) {
   const s = `${scaleKey}Legend`;
 
   return {
-    type: 'legend-cat',
+    type: "legend-cat",
     key: `${key}-cat`,
     scale: s in scales ? s : scaleKey,
     show: legendShow(opts.legendConfig, hc, coloring),
     layout: {
-      minimumLayoutMode: 'MEDIUM',
+      minimumLayoutMode: "MEDIUM",
       dock: opts.legendConfig.dock,
     },
     settings: {
@@ -37,9 +37,9 @@ export function catLegend(componentConfig, opts) {
         },
       },
       title: {
-        wordBreak: 'break-word',
+        wordBreak: "break-word",
         maxLines: 2,
-        text: coloring.label || '',
+        text: coloring.label || "",
         show: opts.legendConfig.showTitle !== false,
         fontSize: styleOptions.title.fontSize,
         fontFamily: styleOptions.title.fontFamily,
@@ -54,15 +54,15 @@ export function catLegend(componentConfig, opts) {
         !coloring.locked && !constraints.active && !constraints.select
           ? [
               {
-                contexts: ['selection'],
-                data: ['', key],
+                contexts: ["selection"],
+                data: ["", key],
               },
             ]
           : [],
       consume: [
         {
-          context: 'selection',
-          data: ['', key],
+          context: "selection",
+          data: ["", key],
           style: {
             inactive: {
               opacity: 0.3,
@@ -75,7 +75,7 @@ export function catLegend(componentConfig, opts) {
 }
 
 export default function legend(componentConfig, opts) {
-  if (opts.coloring.type === 'categorical') {
+  if (opts.coloring.type === "categorical") {
     return catLegend(componentConfig, opts);
   }
   return false;

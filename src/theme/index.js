@@ -1,4 +1,4 @@
-import def from './default';
+import def from "./default";
 
 export default function theme(custom) {
   let uiPalette;
@@ -9,11 +9,11 @@ export default function theme(custom) {
   };
 
   return {
-    palettes(type, key = '') {
+    palettes(type, key = "") {
       const pals = [];
-      if (type === 'qualitative') {
+      if (type === "qualitative") {
         pals.push(...this.dataPalettes());
-      } else if (type === 'scale') {
+      } else if (type === "scale") {
         pals.push(...this.dataScales());
       } else {
         pals.push(...this.dataPalettes(), ...this.dataScales());
@@ -56,10 +56,10 @@ export default function theme(custom) {
       const pals = [];
       t.palettes.ui.forEach((s) => {
         pals.push({
-          key: 'ui',
+          key: "ui",
           name: s.name,
           translation: s.translation,
-          type: 'row',
+          type: "row",
           colors: s.colors,
         });
       });
@@ -73,16 +73,16 @@ export default function theme(custom) {
       };
     },
     uiColor(c) {
-      if (c.index < 0 || typeof c.index === 'undefined') {
+      if (c.index < 0 || typeof c.index === "undefined") {
         return c.color;
       }
-      if (typeof uiPalette === 'undefined') {
+      if (typeof uiPalette === "undefined") {
         uiPalette = this.uiPalettes()[0] || false;
       }
       if (!uiPalette) {
         return c.color;
       }
-      if (typeof uiPalette.colors[c.index] === 'undefined') {
+      if (typeof uiPalette.colors[c.index] === "undefined") {
         return c.color;
       }
       return uiPalette.colors[c.index];

@@ -27,7 +27,7 @@ function luminance(colStr) {
 
 const MAX_SIZE = 1000;
 
-export default function colorFn({ dark = '#404040', light = '#ffffff' } = {}) {
+export default function colorFn({ dark = "#404040", light = "#ffffff" } = {}) {
   let cache = {};
   let n = 0;
 

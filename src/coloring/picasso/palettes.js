@@ -3,7 +3,7 @@ export default function palettes({ coloring } = {}) {
 
   if (coloring.palette) {
     pals.push({
-      key: 'categorical',
+      key: "categorical",
       colors: coloring.palette.colors,
     });
   }

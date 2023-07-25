@@ -1,4 +1,4 @@
-import REFS from './refs';
+import REFS from "./refs";
 
 export default function stack({ key, field, trackBy, reduce, stackKey = (d) => d.series.value, props = {} }) {
   return {
@@ -7,9 +7,9 @@ export default function stack({ key, field, trackBy, reduce, stackKey = (d) => d
       extract: {
         field,
         props: {
-          [REFS.SERIES]: { field: 'qDimensionInfo/0' },
-          metric: { field: 'qMeasureInfo/0', reduce: 'sum' },
-          end: { field: 'qMeasureInfo/0', reduce: 'sum' },
+          [REFS.SERIES]: { field: "qDimensionInfo/0" },
+          metric: { field: "qMeasureInfo/0", reduce: "sum" },
+          end: { field: "qMeasureInfo/0", reduce: "sum" },
           ...props,
         },
         // optional
@@ -19,7 +19,7 @@ export default function stack({ key, field, trackBy, reduce, stackKey = (d) => d
       stack: {
         stackKey,
         value: (d) => d.end.value,
-        offset: 'expand',
+        offset: "expand",
       },
     },
   };

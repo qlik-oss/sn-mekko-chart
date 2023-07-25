@@ -4,24 +4,24 @@ export function findFields(needle, hc) {
   const found = [];
   const targets = hc.qDimensions
     ? [
-        ['qDimensions', 'qMeasures'],
-        ['qAttributeDimensions', 'qAttributeExpressions'],
+        ["qDimensions", "qMeasures"],
+        ["qAttributeDimensions", "qAttributeExpressions"],
       ]
     : [
-        ['qDimensionInfo', 'qMeasureInfo'],
-        ['qAttrDimInfo', 'qAttrExprInfo'],
+        ["qDimensionInfo", "qMeasureInfo"],
+        ["qAttrDimInfo", "qAttrExprInfo"],
       ];
 
   targets[0].forEach((f) => {
     const arr = hc[f] || [];
     for (let i = 0; i < arr.length; i++) {
-      if (needle(typeof arr[i].qDef === 'object' ? arr[i].qDef : arr[i])) {
+      if (needle(typeof arr[i].qDef === "object" ? arr[i].qDef : arr[i])) {
         found.push({ path: `/${f}/${i}`, definition: arr[i] });
       }
       targets[1].forEach((af) => {
         const attrArr = arr[i][af] || [];
         for (let j = 0; j < attrArr.length; j++) {
-          if (needle(typeof attrArr[j].qDef === 'object' ? attrArr[j].qDef : attrArr[j])) {
+          if (needle(typeof attrArr[j].qDef === "object" ? attrArr[j].qDef : attrArr[j])) {
             found.push({
               path: `/${f}/${i}/${af}/${j}`,
               definition: attrArr[j],
@@ -36,7 +36,7 @@ export function findFields(needle, hc) {
 }
 
 export function addRole(definition, role) {
-  const d = typeof definition.qDef === 'object' ? definition.qDef : definition;
+  const d = typeof definition.qDef === "object" ? definition.qDef : definition;
   if (!d.roles) {
     d.roles = [];
   }
@@ -47,7 +47,7 @@ export function addRole(definition, role) {
 }
 
 export function removeRoleFrom(definition, role) {
-  const d = typeof definition.qDef === 'object' ? definition.qDef : definition;
+  const d = typeof definition.qDef === "object" ? definition.qDef : definition;
   if (!d.roles) {
     return;
   }

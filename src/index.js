@@ -1,35 +1,35 @@
-import picassojs from 'picasso.js';
-import picassoQ from 'picasso-plugin-q';
+import picassoQ from "picasso-plugin-q";
+import picassojs from "picasso.js";
 
 import {
-  useElement,
-  useEffect,
-  useState,
-  useStaleLayout,
-  useSelections,
-  useRect,
   useAppLayout,
-  useTheme,
   useConstraints,
-  useTranslator,
+  useEffect,
+  useElement,
   useOptions,
-} from '@nebula.js/stardust';
+  useRect,
+  useSelections,
+  useStaleLayout,
+  useState,
+  useTheme,
+  useTranslator,
+} from "@nebula.js/stardust";
 
-import properties from './object-properties';
-import data from './data';
-import picSelections from './pic-selections';
-import definition from './pic-definition';
-import contrasterFn from './coloring/contraster';
-import ext from './ext';
-import plugin from './component-definitions/disclaimer';
+import contrasterFn from "./coloring/contraster";
+import plugin from "./component-definitions/disclaimer";
+import data from "./data";
+import ext from "./ext";
+import properties from "./object-properties";
+import definition from "./pic-definition";
+import picSelections from "./pic-selections";
 
-import { restriction, RESTRICTIONS } from './data-restrictions';
-import REFS from './refs';
+import { restriction, RESTRICTIONS } from "./data-restrictions";
+import REFS from "./refs";
 
-import chartColorConfig from './coloring';
+import chartColorConfig from "./coloring";
 
-import picassoColoringFn from './coloring/picasso';
-import globeTrotter from '../locales/all';
+import globeTrotter from "../locales/all";
+import picassoColoringFn from "./coloring/picasso";
 
 export default function supernova(env) {
   const picasso = picassojs();
@@ -70,7 +70,7 @@ export default function supernova(env) {
       useEffect(() => {
         const p = picasso({
           renderer: {
-            prio: [renderer || 'canvas'],
+            prio: [renderer || "canvas"],
           },
         }).chart({
           element,
@@ -79,7 +79,7 @@ export default function supernova(env) {
         });
         const s = picSelections({
           selections,
-          brush: p.brush('selection'),
+          brush: p.brush("selection"),
           picassoQ,
         });
 
@@ -132,20 +132,20 @@ export default function supernova(env) {
 
         picassoColoring.config({
           key: REFS.CELL_COLOR,
-          source: 'qHyperCube',
+          source: "qHyperCube",
           hc,
           chartColorModel: c,
           constraints,
         });
 
         const formatPercentage = (v) =>
-          `${(v * 100).toFixed(1)}%`.replace('.', localeInfo ? localeInfo.qDecimalSep : '.');
+          `${(v * 100).toFixed(1)}%`.replace(".", localeInfo ? localeInfo.qDecimalSep : ".");
 
         pic.update({
           data: [
             {
-              type: 'q',
-              key: 'qHyperCube',
+              type: "q",
+              key: "qHyperCube",
               data: hc,
               config: {
                 localeInfo,

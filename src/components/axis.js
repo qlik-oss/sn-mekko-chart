@@ -1,32 +1,32 @@
 export default function axis(axisLabelStyle) {
   return [
     {
-      key: 'y-axis',
-      type: 'axis',
+      key: "y-axis",
+      type: "axis",
       layout: {
-        minimumLayoutMode: 'WIDTH_MEDIUM',
-        dock: 'left',
+        minimumLayoutMode: "WIDTH_MEDIUM",
+        dock: "left",
       },
-      scale: 'y',
+      scale: "y",
       formatter: {
-        type: 'd3-number',
-        format: '.0%',
+        type: "d3-number",
+        format: ".0%",
       },
       settings: {
         labels: axisLabelStyle,
       },
     },
     {
-      key: 'x-axis',
-      type: 'axis',
+      key: "x-axis",
+      type: "axis",
       layout: {
-        minimumLayoutMode: 'HEIGHT_MEDIUM',
-        dock: 'bottom',
+        minimumLayoutMode: "HEIGHT_MEDIUM",
+        dock: "bottom",
       },
-      scale: 'm',
+      scale: "m",
       formatter: {
-        type: 'd3-number',
-        format: '.0%',
+        type: "d3-number",
+        format: ".0%",
       },
       settings: {
         labels: axisLabelStyle,

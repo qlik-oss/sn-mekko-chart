@@ -43,12 +43,12 @@ In this example the first dimension (Region) is used to color each cell.
 ```js
 embeddable.render({
   element,
-  type: 'mekko',
-  fields: ['Region', 'Fiscal Year', '=Sum(Sales)'],
+  type: "mekko",
+  fields: ["Region", "Fiscal Year", "=Sum(Sales)"],
   properties: {
     cellColor: {
-      mode: 'byDimension',
-      byDimension: { type: 'index', typeValue: 0 },
+      mode: "byDimension",
+      byDimension: { type: "index", typeValue: 0 },
     },
   },
 });

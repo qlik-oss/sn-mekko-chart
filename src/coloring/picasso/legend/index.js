@@ -1,5 +1,5 @@
-import component from './visual';
-import tap from './event-tap';
+import tap from "./event-tap";
+import component from "./visual";
 
 export default function legend(componentConfig, config) {
   const components = [];
@@ -8,7 +8,7 @@ export default function legend(componentConfig, config) {
 
   components.push(c);
 
-  if (c && c.type === 'legend-cat') {
+  if (c && c.type === "legend-cat") {
     interactions.push(tap(componentConfig));
   }
 

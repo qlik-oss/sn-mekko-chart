@@ -1,8 +1,8 @@
 module.exports = {
   coverage: true,
   mocks: [],
-  glob: 'src/**/*.spec.js',
+  glob: "src/**/*.spec.js",
   nyc: {
-    reportDir: 'coverage/unit',
+    reportDir: "coverage/unit",
   },
 };

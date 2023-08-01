@@ -62,7 +62,7 @@
     "@nebula.js/cli-build": "4.2.0",
     "@nebula.js/cli-sense": "4.2.0",
     "@nebula.js/cli-serve": "3.3.0",
-    "@nebula.js/stardust": "3.3.0",
+    "@nebula.js/stardust": "4.2.4",
     "@qlik/eslint-config": "^0.2.0",
     "@qlik/prettier-config": "^0.1.2",
     "babel-plugin-istanbul": "6.1.1",
@@ -78,7 +78,7 @@
     "scriptappy-from-jsdoc": "0.7.0"
   },
   "peerDependencies": {
-    "@nebula.js/stardust": ">=1.7.0"
+    "@nebula.js/stardust": ">=4.2.4"
   },
   "publishConfig": {
     "access": "public"

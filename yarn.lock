@@ -3512,12 +3512,12 @@
     import-cwd "3.0.0"
     yargs "17.7.2"
 
-"@nebula.js/stardust@3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@nebula.js/stardust/-/stardust-3.3.0.tgz#8705317fa655049432e04c296e98b9dc85c1ca78"
-  integrity sha512-BSKQJLzbT6NZB4ceE9KXWPjScZ73GwRjfpi8W4qcKgFrM6gOV68nXkdnGOrqA/OEzQPE1esXKX9/wqr+7/mOlQ==
+"@nebula.js/stardust@4.2.4":
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/@nebula.js/stardust/-/stardust-4.2.4.tgz#a730e06ea8fa33e5d060e068dbfa222792f0ebc0"
+  integrity sha512-2fegujOD6A6bCGThFI/Qgx+pwprb0dmcPXSZJi8d1SQiHwEjpxfLHBMdUXE0J+QrvdsZyhT4gtvkjTcp2q6BHA==
   dependencies:
-    "@types/qlik-engineapi" "12.67.12"
+    "@types/qlik-engineapi" "12.67.13"
 
 "@nebula.js/stardust@^4.2.0":
   version "4.2.0"
@@ -4021,11 +4021,6 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
-
-"@types/qlik-engineapi@12.67.12":
-  version "12.67.12"
-  resolved "https://registry.yarnpkg.com/@types/qlik-engineapi/-/qlik-engineapi-12.67.12.tgz#454966501cc48f5cd5092b3f4022c8a82ab681fa"
-  integrity sha512-b5F9+pikUXCahd8phenSZfTddQXlmnw+VMPPtuOB6J3GNNEZG/o0dYFOMeAo1VuFgLaD3R/Ew/+dn4QG7cpPNw==
 
 "@types/qlik-engineapi@12.67.13":
   version "12.67.13"

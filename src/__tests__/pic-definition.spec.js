@@ -17,7 +17,7 @@ const mock = ({
       ["**/scales.js", () => scales],
       ["**/stack.js", () => stack],
     ],
-    ["../pic-definition"]
+    ["../pic-definition"],
   );
 
 describe("pic-definition", () => {

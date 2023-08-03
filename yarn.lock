@@ -3611,7 +3611,7 @@
     picocolors "^1.0.0"
     tslib "^2.5.0"
 
-"@qlik/eslint-config@^0.2.0":
+"@qlik/eslint-config@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@qlik/eslint-config/-/eslint-config-0.2.0.tgz#bb54174824db22a4aae0bfb450b7c6189eecf9ed"
   integrity sha512-ATodH6FamOdG+9w8x20veBNre7AzhoJDJ27rVGPzfrUfpBIENku4P0F7IZssYUgYiUQ3k5Z0FoeTivgXhrPjzw==
@@ -3634,7 +3634,7 @@
     svelte "^3.59.1"
     typescript "^5.0.4"
 
-"@qlik/prettier-config@^0.1.2":
+"@qlik/prettier-config@0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@qlik/prettier-config/-/prettier-config-0.1.2.tgz#58a9c6b0114fb7fe0936137ac171950769be3d01"
   integrity sha512-4sZKqTmkRQx82X1XghzKhDSuGqiVCPGu9ADgnCyEMnKP141rJrVUoL9yWek2Tn4x9dR9OgXObfIOJBZUlmfl3w==

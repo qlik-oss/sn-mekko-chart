@@ -13,7 +13,7 @@ describe("cells", () => {
 
   it("should contain empty brush config when passive and active constraints", () => {
     const c = cells(param);
-    expect(c[0].brush).to.eql({});
+    expect(c[0].brush).toEqual({});
   });
 
   it("should not have any brush trigger when dimension is locked", () => {
@@ -22,7 +22,7 @@ describe("cells", () => {
       constraints: {},
       hc: { qDimensionInfo: [{}, { qLocked: true }] },
     });
-    expect(c[0].brush.trigger).to.eql([]);
+    expect(c[0].brush.trigger).toEqual([]);
   });
 
   it("should have valueLabelStyle", () => {
@@ -34,6 +34,6 @@ describe("cells", () => {
         fontFamily: "MyFontFamily",
       },
     });
-    expect(c[1].settings.sources[0].strategy.settings.fontFamily).to.eql("MyFontFamily");
+    expect(c[1].settings.sources[0].strategy.settings.fontFamily).toEqual("MyFontFamily");
   });
 });

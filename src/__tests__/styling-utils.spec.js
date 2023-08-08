@@ -25,9 +25,9 @@ describe("Label styling definition", () => {
     };
     const definition = labelStylingDefinition(path, mockFontResolver, chartId, mockTheme);
 
-    expect(definition.fontFamilyItem.ref).equal("example.path.fontFamily");
-    expect(definition.fontWrapperItem.items.fontSizeItem.ref).equal("example.path.fontSize");
-    expect(definition.fontWrapperItem.items.fontColorItem.ref).equal("example.path.fontColor");
+    expect(definition.fontFamilyItem.ref).toEqual("example.path.fontFamily");
+    expect(definition.fontWrapperItem.items.fontSizeItem.ref).toEqual("example.path.fontSize");
+    expect(definition.fontWrapperItem.items.fontColorItem.ref).toEqual("example.path.fontColor");
   });
 });
 
@@ -61,9 +61,9 @@ describe("Styling options", () => {
     };
     layout.components = [component];
     const style = getAxisLabelStyle(theme, layout, flags);
-    expect(style.fontFamily).eql("aLabelFont, sans-serif");
-    expect(style.fontSize).eql("2000");
-    expect(style.fill).eql("green");
+    expect(style.fontFamily).toEqual("aLabelFont, sans-serif");
+    expect(style.fontSize).toEqual("2000");
+    expect(style.fill).toEqual("green");
   });
 
   it("should get corrext getValueLabelStyle", () => {
@@ -79,9 +79,9 @@ describe("Styling options", () => {
     };
     layout.components = [component];
     const style = getValueLabelStyle(theme, layout, flags);
-    expect(style.fontFamily).eql("vLabelFont, sans-serif");
-    expect(style.fontSize).eql(3000);
-    expect(style.fill).eql("blue");
+    expect(style.fontFamily).toEqual("vLabelFont, sans-serif");
+    expect(style.fontSize).toEqual(3000);
+    expect(style.fill).toEqual("blue");
   });
 
   it("should get corrext getLegendTitleStyle", () => {
@@ -97,9 +97,9 @@ describe("Styling options", () => {
     };
     layout.components = [component];
     const style = getLegendTitleStyle(theme, layout, flags);
-    expect(style.fontFamily).eql("lTitleFont, sans-serif");
-    expect(style.fontSize).eql("4000");
-    expect(style.color).eql("purple");
+    expect(style.fontFamily).toEqual("lTitleFont, sans-serif");
+    expect(style.fontSize).toEqual("4000");
+    expect(style.color).toEqual("purple");
   });
 
   it("should get corrext getLegendLabelStyle", () => {
@@ -115,8 +115,8 @@ describe("Styling options", () => {
     };
     layout.components = [component];
     const style = getLegendLabelStyle(theme, layout, flags);
-    expect(style.fontFamily).eql("lLabelFont, sans-serif");
-    expect(style.fontSize).eql("5000");
-    expect(style.color).eql("yellow");
+    expect(style.fontFamily).toEqual("lLabelFont, sans-serif");
+    expect(style.fontSize).toEqual("5000");
+    expect(style.color).toEqual("yellow");
   });
 });

@@ -110,13 +110,20 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
-      - name: Unit tests
-        uses: paambaati/codeclimate-action@v5.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
-          coverageCommand: yarn test:unit --ci --coverage --reporters="github-actions" --reporters="summary"
+      - run:
+          name: Unit tests
+          command: |
+            ./test/cc-bin/cc-test-reporter before-build
+            yarn test:unit -ci --reporters=default --reporters=jest-junit --coverage
+            ./test/cc-bin/cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
+      - store_artifacts:
+          path: ./reports/junit
+      - store_artifacts:
+          path: coverage
 
   locale:
     <<: *defaults

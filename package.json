@@ -29,7 +29,6 @@
     "format": "prettier --write '**'",
     "format:check": "prettier --check '**'",
     "lint": "eslint src test ./*.js",
-    "lint:check": "eslint src test ./*js",
     "prepare": "husky install",
     "spec": "scriptappy-from-jsdoc -c ./spec-configs/props.conf.js",
     "start": "nebula serve --type mekkochart",

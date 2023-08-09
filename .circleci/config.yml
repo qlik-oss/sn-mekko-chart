@@ -112,14 +112,12 @@ jobs:
           at: ~/project
       - run:
           name: Unit tests
-          command: |
-            npx aw -c aw.config.js --mocha.bail false --mocha.reporter mocha-junit-reporter --mocha.reporterOptions.mochaFile ./coverage/junit/junit.xml
-            if [ ! -z "$COVERALLS_REPO_TOKEN" ]; then
-              echo "Uploading coverage results to coveralls.io..."
-              cat ./coverage/unit/lcov.info | npx coveralls
-            fi
-      - store_artifacts:
-          path: coverage/junit
+          uses: paambaati/codeclimate-action@v5.0.0
+          env:
+            CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          with:
+            coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
+            coverageCommand: yarn test:unit --ci --coverage --reporters="github-actions" --reporters="summary"
 
   locale:
     <<: *defaults

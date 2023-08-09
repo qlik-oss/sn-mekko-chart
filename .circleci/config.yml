@@ -110,14 +110,13 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
-      - run:
-          name: Unit tests
-          uses: paambaati/codeclimate-action@v5.0.0
-          env:
-            CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          with:
-            coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
-            coverageCommand: yarn test:unit --ci --coverage --reporters="github-actions" --reporters="summary"
+      - name: Unit tests
+        uses: paambaati/codeclimate-action@v5.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
+          coverageCommand: yarn test:unit --ci --coverage --reporters="github-actions" --reporters="summary"
 
   locale:
     <<: *defaults

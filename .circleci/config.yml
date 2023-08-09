@@ -114,14 +114,10 @@ jobs:
           name: Unit tests
           command: |
             ./test/cc-bin/cc-test-reporter before-build
-            yarn test:unit -ci --reporters=default --reporters=jest-junit --coverage
+            yarn test:unit -ci --reporters=default --coverage
             ./test/cc-bin/cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
-      - store_test_results:
-          path: ./reports/junit/
-      - store_artifacts:
-          path: ./reports/junit
       - store_artifacts:
           path: coverage
 

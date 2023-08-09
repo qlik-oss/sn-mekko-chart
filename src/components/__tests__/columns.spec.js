@@ -10,7 +10,7 @@ describe("columns", () => {
 
   it("should contain empty brush config when neither select nor active is allowed", () => {
     const c = columns(param);
-    expect(c[0].brush).to.eql({});
+    expect(c[0].brush).toEqual({});
   });
 
   it("should not have any brush trigger when dimension is locked", () => {
@@ -19,7 +19,7 @@ describe("columns", () => {
       constraints: {},
       hc: { qDimensionInfo: [{ qLocked: true }] },
     });
-    expect(c[0].brush.trigger).to.eql([]);
+    expect(c[0].brush.trigger).toEqual([]);
   });
 
   it("should have styles from valueLabelStyle", () => {
@@ -31,6 +31,6 @@ describe("columns", () => {
         fontFamily: "MyFontFamily",
       },
     });
-    expect(c[1].settings.sources[0].strategy.settings.fontFamily).to.eql("MyFontFamily");
+    expect(c[1].settings.sources[0].strategy.settings.fontFamily).toEqual("MyFontFamily");
   });
 });

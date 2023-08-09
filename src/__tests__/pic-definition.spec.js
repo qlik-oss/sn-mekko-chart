@@ -1,24 +1,26 @@
+import * as axis from "../components/axis";
+import * as cells from "../components/cells";
+import * as columns from "../components/columns";
+import * as disclaimer from "../components/disclaimer";
+import * as tooltip from "../components/tooltip";
+import picDefinition from "../pic-definition";
+import * as scales from "../scales";
+
 const mock = ({
-  axis = () => [],
-  cells = () => [],
-  columns = () => [],
-  tooltip = () => ["nope"],
-  disclaimer = () => [],
-  scales = () => ({}),
-  stack = () => ({}),
-} = {}) =>
-  aw.mock(
-    [
-      ["**/components/axis.js", () => axis],
-      ["**/components/cells.js", () => cells],
-      ["**/components/columns.js", () => columns],
-      ["**/components/tooltip.js", () => tooltip],
-      ["**/components/disclaimer.js", () => disclaimer],
-      ["**/scales.js", () => scales],
-      ["**/stack.js", () => stack],
-    ],
-    ["../pic-definition"]
-  );
+  mockAxis = [],
+  mockCells = [],
+  mockColumns = [],
+  mockTooltip = ["nope"],
+  mockDisclaimer = [],
+  mockScales = {},
+} = {}) => {
+  jest.spyOn(axis, "default").mockReturnValue(mockAxis);
+  jest.spyOn(cells, "default").mockReturnValue(mockCells);
+  jest.spyOn(columns, "default").mockReturnValue(mockColumns);
+  jest.spyOn(tooltip, "default").mockReturnValue(mockTooltip);
+  jest.spyOn(disclaimer, "default").mockReturnValue(mockDisclaimer);
+  jest.spyOn(scales, "default").mockReturnValue(mockScales);
+};
 
 describe("pic-definition", () => {
   const constraints = { passive: true, active: true, select: true };
@@ -45,70 +47,70 @@ describe("pic-definition", () => {
   };
   describe("components", () => {
     it("should contain axis", () => {
-      const [{ default: def }] = mock({
-        axis: () => ["x", "y"],
+      mock({
+        mockAxis: ["x", "y"],
       });
-      const c = def(param).components;
-      expect(c).to.eql(["x", "y"]);
+      const c = picDefinition(param).components;
+      expect(c).toEqual(["x", "y"]);
     });
 
     it("should contain cell rects and labels", () => {
-      const [{ default: def }] = mock({
-        cells: () => ["rects", "labels"],
+      mock({
+        mockCells: ["rects", "labels"],
       });
-      const c = def(param).components;
-      expect(c).to.eql(["rects", "labels"]);
+      const c = picDefinition(param).components;
+      expect(c).toEqual(["rects", "labels"]);
     });
 
     it("should contain span rects and labels", () => {
-      const [{ default: def }] = mock({
-        axis: () => ["sr", "slabels"],
+      mock({
+        mockAxis: ["sr", "slabels"],
       });
-      const c = def(param).components;
-      expect(c).to.eql(["sr", "slabels"]);
+      const c = picDefinition(param).components;
+      expect(c).toEqual(["sr", "slabels"]);
     });
 
     it("should contain tooltip when no passive constraint", () => {
-      const [{ default: def }] = mock({
-        tooltip: () => ["t"],
+      mock({
+        mockTooltip: ["t"],
       });
-      const c = def({
+      const c = picDefinition({
         ...param,
         constraints: {},
       }).components;
-      expect(c).to.eql(["t"]);
+      expect(c).toEqual(["t"]);
     });
 
     it("should only contain disclaimer component when disruptive restrictions apply", () => {
-      const [{ default: def }] = mock({
-        disclaimer: () => ["d"],
-        cells: () => ["c"],
+      mock({
+        mockDisclaimer: ["d"],
+        mockCells: ["c"],
       });
-      const c = def({
+      const c = picDefinition({
         constraints,
         restricted: { type: "disrupt" },
         picassoColoring,
         env,
       });
-      expect(c).to.eql({
+      expect(c).toEqual({
         components: ["d"],
       });
     });
 
     it("should contain disclaimer component when restrictions apply", () => {
-      const [{ default: def }] = mock({
-        disclaimer: () => ["d"],
+      mock({
+        mockDisclaimer: ["d"],
       });
-      const c = def({
+      const c = picDefinition({
         ...param,
         restricted: {},
       }).components;
-      expect(c).to.eql(["d"]);
+      expect(c).toEqual(["d"]);
     });
 
     it("should contain legend component", () => {
-      const [{ default: def }] = mock();
-      const c = def({
+      mock();
+      const c = picDefinition({
         ...param,
         restricted: {},
         picassoColoring: {
@@ -116,74 +118,80 @@ describe("pic-definition", () => {
           legend: () => ({ components: ["leg"], interactions: [] }),
         },
       }).components;
-      expect(c).to.eql(["leg"]);
+      expect(c).toEqual(["leg"]);
     });
   });
 
   it("should contain scales", () => {
-    const [{ default: def }] = mock({
-      scales: () => ({ x: "data" }),
+    mock({
+      mockScales: { x: "data" },
     });
-    const s = def(param).scales;
-    expect(s).to.eql({ x: "data", colorScale: "s" });
+    const s = picDefinition(param).scales;
+    expect(s).toEqual({ x: "data", colorScale: "s" });
   });
 
   it("should contain palettes", () => {
-    const [{ default: def }] = mock();
-    const s = def(param).palettes;
-    expect(s).to.eql(["p"]);
+    mock();
+    const s = picDefinition(param).palettes;
+    expect(s).toEqual(["p"]);
   });
 
   describe("collections", () => {
     it("should contain stacked first dimension", () => {
-      const [{ default: def }] = mock({
-        stack: (opts) => opts,
-      });
-      const [first] = def(param).collections;
-      expect(first).to.containSubset({
-        key: "span",
-        field: "qDimensionInfo/0",
-        reduce: "first",
-      });
+      mock({});
+      const [
+        {
+          key,
+          data: {
+            extract: { field, reduce, trackBy },
+            stack: { stackKey },
+          },
+        },
+      ] = picDefinition(param).collections;
+      expect(key).toEqual("span");
+      expect(field).toEqual("qDimensionInfo/0");
+      expect(reduce).toEqual("first");
       const cell = { qElemNumber: 7 };
 
-      expect(first.trackBy(cell)).to.equal(7);
-      expect(first.stackKey()).to.equal(-1);
+      expect(trackBy(cell)).toEqual(7);
+      expect(stackKey()).toEqual(-1);
     });
 
     it("should contain a second dimension", () => {
-      const [{ default: def }] = mock({
-        stack: (opts) => opts,
-      });
-      const [, second] = def(param).collections;
-      expect(second).to.eql({
-        key: "cells",
-        field: "qDimensionInfo/1",
-        props: {
-          colorProp: "c",
+      mock({});
+      const [
+        ,
+        {
+          key,
+          data: {
+            extract: { field, props },
+          },
         },
-      });
+      ] = picDefinition(param).collections;
+      expect(key).toEqual("cells");
+      expect(field).toEqual("qDimensionInfo/1");
+      expect(props.colorProp).toEqual("c");
     });
   });
 
   it("should not contain any events when active and passive constraints", () => {
-    const [{ default: def }] = mock();
-    const s = def(param).interactions;
-    expect(s).to.eql([]);
+    mock();
+    const s = picDefinition(param).interactions;
+    expect(s).toEqual([]);
   });
 
   it("should contain interactive mousemove and mouseleave when no passive constraints", () => {
-    const [{ default: def }] = mock();
-    const s = def({
+    mock();
+    const s = picDefinition({
       ...param,
       constraints: {},
     }).interactions;
-    expect(Object.keys(s[0].events)).to.eql(["mousemove", "mouseleave"]);
+    expect(Object.keys(s[0].events)).toEqual(["mousemove", "mouseleave"]);
   });
 
   it("should contain legend interactions", () => {
-    const [{ default: def }] = mock();
-    const c = def({
+    mock();
+    const c = picDefinition({
       constraints: { passive: true },
       restricted: {},
       picassoColoring: {
@@ -199,6 +207,6 @@ describe("pic-definition", () => {
         getStyle: () => {},
       },
     }).interactions;
-    expect(c).to.eql(["legint"]);
+    expect(c).toEqual(["legint"]);
   });
 });

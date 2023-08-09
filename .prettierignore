@@ -16,3 +16,5 @@ commit-msg
 *.qext
 *.qvf
 *.sh
+coverage
+test/cc-bin

@@ -1,0 +1,2 @@
+cc-test-reporter (test-reporter-0.10.0-linux-amd64) fetched from https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 on 24052021
+Checked against https://codeclimate.com/downloads/test-reporter/test-reporter-0.10.0-linux-amd64 and https://github.com/codeclimate/test-reporter/releases

@@ -34,7 +34,7 @@ const nodeTooltipContent = ({ h, data }) => {
         attrs: { colspan: 3 },
         style: { fontWeight: 600, "text-align": "left", padding: "2px 4px" },
       },
-      node.title,
+      node.title
     );
 
     rows.push(title);

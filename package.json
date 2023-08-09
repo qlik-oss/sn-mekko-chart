@@ -73,7 +73,7 @@
     "mocha-junit-reporter": "2.2.0",
     "picasso-plugin-q": "2.2.3",
     "picasso.js": "2.2.3",
-    "prettier": "2.8.8",
+    "prettier": "3.0.0",
     "qlik-chart-modules": "0.56.0",
     "scriptappy-from-jsdoc": "0.7.0"
   },

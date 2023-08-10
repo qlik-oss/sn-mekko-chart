@@ -95,7 +95,7 @@ export default function supernova(env) {
       const [picassoColoring] = useState(() =>
         picassoColoringFn({
           picasso,
-        }),
+        })
       );
 
       useEffect(() => {

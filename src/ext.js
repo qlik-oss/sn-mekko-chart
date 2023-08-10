@@ -155,7 +155,7 @@ export default function ext(env) {
                   env.flags,
                   env.sense.theme,
                   fontResolver,
-                  chartId,
+                  chartId
                 ),
               },
             },

@@ -2,7 +2,7 @@
 /* eslint no-bitwise: 0 */
 const rgba = (uint) =>
   `rgba(${[(0xff0000 & uint) >> 16, (0x00ff00 & uint) >> 8, 0x0000ff & uint, ((0xff000000 & uint) >>> 24) / 255].join(
-    ",",
+    ","
   )})`;
 
 export default function datum({ hc, coloring, scales, key }, measureIdx = 0) {

@@ -40,7 +40,8 @@
   "prettier": "@qlik/prettier-config",
   "eslintConfig": {
     "extends": [
-      "@qlik/eslint-config"
+      "@qlik/eslint-config",
+      "@qlik/eslint-config/jest"
     ],
     "rules": {
       "no-param-reassign": 0,

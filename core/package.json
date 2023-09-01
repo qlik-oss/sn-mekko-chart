@@ -1,8 +1,8 @@
 {
   "module": "esm/index.js",
   "peerDependencies": {
-    "@nebula.js/stardust": ">=4.3.0",
-    "picasso-plugin-q": ">=2.2.4",
-    "picasso.js": ">=2.2.4"
+    "@nebula.js/stardust": ">=4.4.0",
+    "picasso-plugin-q": ">=2.2.5",
+    "picasso.js": ">=2.2.5"
   }
 }

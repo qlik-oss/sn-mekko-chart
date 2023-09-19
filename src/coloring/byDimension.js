@@ -18,7 +18,7 @@ const byDimension = {
    */
   typeValue: undefined,
   /**
-   * @type {(string|StringExpression)=}
+   * @type {(string|EngineAPI.StringExpression)=}
    */
   label: undefined,
   /**

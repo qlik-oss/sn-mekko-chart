@@ -30,7 +30,7 @@
     "format:check": "prettier --check '**'",
     "lint": "./tools/generate-all-locale.js && eslint src",
     "prepare": "husky install",
-    "spec": "scriptappy-from-jsdoc -c ./spec-configs/props.conf.js",
+    "spec": "sy from-jsdoc -c ./spec-configs/props.conf.js",
     "start": "nebula serve --type mekkochart",
     "test:unit": "jest",
     "validate:locale": "node ./tools/validate-locale-strings.js",
@@ -63,6 +63,8 @@
     "@nebula.js/stardust": "4.4.0",
     "@qlik/eslint-config": "0.4.16",
     "@qlik/prettier-config": "0.3.0",
+    "@scriptappy/cli": "0.10.0",
+    "@scriptappy/from-jsdoc": "0.19.0",
     "babel-plugin-istanbul": "6.1.1",
     "eslint": "8.48.0",
     "fs-extra": "11.1.1",
@@ -72,8 +74,7 @@
     "picasso-plugin-q": "2.2.5",
     "picasso.js": "2.2.5",
     "prettier": "3.0.3",
-    "qlik-chart-modules": "0.59.0",
-    "scriptappy-from-jsdoc": "0.7.0"
+    "qlik-chart-modules": "0.59.0"
   },
   "peerDependencies": {
     "@nebula.js/stardust": ">=4.4.0"

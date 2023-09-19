@@ -10,8 +10,12 @@
   },
   "entries": {
     "properties": {
-      "kind": "function",
-      "params": [],
+      "extends": [
+        {
+          "type": "EngineAPI.GenericObjectProperties"
+        }
+      ],
+      "kind": "object",
       "entries": {
         "version": {
           "description": "Current version of this generic object definition",

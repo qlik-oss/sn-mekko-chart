@@ -1,6 +1,6 @@
 import { legendConfig } from "./coloring";
 /**
- * @typedef {object}
+ * @extends {EngineAPI.GenericObjectProperties}
  * @entry
  */
 const properties = {

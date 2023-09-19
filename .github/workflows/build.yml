@@ -1,0 +1,23 @@
+name: Build
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        type: boolean
+        required: true
+        default: false
+
+  pull_request:
+    branches:
+      - master
+
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    uses: qlik-oss/sn-gh-workflows/.github/workflows/build.yaml@v1
+    secrets: inherit
+    with:
+      release: ${{ inputs.release || false}}

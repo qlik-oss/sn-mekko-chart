@@ -16,5 +16,5 @@ const x = ${JSON.stringify(merged, " ", 2)};
 export {
   x as default
 };
-`
+`,
 );

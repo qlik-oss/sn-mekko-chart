@@ -127,7 +127,7 @@ export default function coloringFn(resources) {
           key: inputCache.key,
           hc: inputCache.hc,
         },
-        midx
+        midx,
       );
     },
 
@@ -167,7 +167,7 @@ export default function coloringFn(resources) {
           hc: inputCache.hc,
           scales: this.scales(),
           constraints: inputCache.constraints,
-        }
+        },
       );
     },
   };

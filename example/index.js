@@ -10,7 +10,7 @@
             url: `ws://${window.location.hostname || "localhost"}:9076/app/${encodeURIComponent(appId)}`,
           })
           .open()
-          .then((qix) => qix.openDoc(appId))
+          .then((qix) => qix.openDoc(appId)),
       );
 
     return openDoc;

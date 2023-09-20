@@ -8,7 +8,7 @@ const MEASURE_RX = /(qMeasures|qMeasureInfo)\/\d+(\/(qAttributeExpressions|qAttr
 /**
  * @typedef {object}
  */
-export const legendConfig = {
+const legendConfig = {
   /** @type {boolean|'auto'} */
   show: "auto",
   /** @type {boolean} */
@@ -105,3 +105,5 @@ export default function coloring({ properties, layout, theme }) {
     },
   };
 }
+
+export { legendConfig };

@@ -1,6 +1,6 @@
 import { legendConfig } from "./coloring";
 /**
- * @typedef {object}
+ * @extends {EngineAPI.GenericObjectProperties}
  * @entry
  */
 const properties = {
@@ -11,7 +11,7 @@ const properties = {
   version: process.env.PACKAGE_VERSION,
   /**
    * Extends `HyperCubeDef`, see Engine API: `HyperCubeDef`.
-   * @extends {HyperCubeDef}
+   * @extends {EngineAPI.HyperCubeDef}
    */
   qHyperCubeDef: {
     qInitialDataFetch: [
@@ -32,17 +32,17 @@ const properties = {
   showTitles: true,
   /**
    * Visualization title.
-   * @type {(string|StringExpression)=}
+   * @type {(string|EngineAPI.StringExpression)=}
    */
   title: "",
   /**
    * Visualization subtitle.
-   * @type {(string|StringExpression)=}
+   * @type {(string|EngineAPI.StringExpression)=}
    */
   subtitle: "",
   /**
    * Visualization footnote.
-   * @type {(string|StringExpression)=}
+   * @type {(string|EngineAPI.StringExpression)=}
    */
   footnote: "",
   /**

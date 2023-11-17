@@ -75,7 +75,7 @@
     "picasso.js": "2.2.5",
     "prettier": "3.1.0",
     "qlik-chart-modules": "0.61.0",
-    "typescript": "^5.2.2"
+    "typescript": "5.2.2"
   },
   "peerDependencies": {
     "@nebula.js/stardust": ">=4.7.0"

@@ -98,7 +98,7 @@ export default function ext(env) {
 
   const chartId = "object.mekkochart";
   const fontResolver = createFontResolver({
-    theme: env.sense.theme,
+    theme: env.sense?.theme,
     translator,
     flags,
     config: {

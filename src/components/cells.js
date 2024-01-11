@@ -1,7 +1,8 @@
 import REFS from "../refs";
 
-export default function cells({ constraints, contraster, colorFill, hc, formatPercentage, valueLabelStyle }) {
+export default function cells({ constraints, contraster, colorFill, hc, formatPercentage, valueLabelStyle, textRenderer }) {
   const isLocked = hc.qDimensionInfo[1].qLocked;
+
   return [
     {
       type: "box",
@@ -58,6 +59,7 @@ export default function cells({ constraints, contraster, colorFill, hc, formatPe
     {
       type: "labels",
       key: "cell-labels",
+      renderer: textRenderer,
       dock: "@cells",
       displayOrder: 2,
       brush: {

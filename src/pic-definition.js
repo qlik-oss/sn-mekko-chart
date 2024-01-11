@@ -9,6 +9,7 @@ import stack from "./stack";
 
 import REFS from "./refs";
 import { getAxisLabelStyle, getLegendLabelStyle, getLegendTitleStyle, getValueLabelStyle } from "./styling-utils";
+import getTextRenderer from './text-renderer';
 
 function tooltipInteraction() {
   return {
@@ -85,6 +86,8 @@ export default function picDefinition({
   const axisLabelStyle = getAxisLabelStyle(theme, layout, flags);
   const valueLabelStyle = getValueLabelStyle(theme, layout, flags);
   const allowTooltip = !constraints.passive;
+  const textRenderer = getTextRenderer(flags);
+
   return {
     strategy: {
       layoutModes: {
@@ -127,7 +130,7 @@ export default function picDefinition({
     palettes: picassoColoring.palettes(),
     components: [
       ...leg.components,
-      ...axis(axisLabelStyle),
+      ...axis(axisLabelStyle, textRenderer),
       ...cells({
         constraints,
         contraster,
@@ -135,6 +138,7 @@ export default function picDefinition({
         hc: layout.qHyperCube,
         formatPercentage,
         valueLabelStyle,
+        textRenderer,
       }),
       ...columns({
         constraints,
@@ -142,6 +146,7 @@ export default function picDefinition({
         hc: layout.qHyperCube,
         formatPercentage,
         valueLabelStyle,
+        textRenderer,
       }),
       ...(allowTooltip ? tooltip(picassoColoring.settings(), translator, formatPercentage) : []),
       ...disclaimer(restricted, translator),

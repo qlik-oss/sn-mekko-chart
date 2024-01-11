@@ -3,7 +3,7 @@ export default function axis(axisLabelStyle, textRenderer) {
     {
       key: "y-axis",
       type: "axis",
-      renderer: textRenderer, 
+      renderer: textRenderer,
       layout: {
         minimumLayoutMode: "WIDTH_MEDIUM",
         dock: "left",

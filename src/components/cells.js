@@ -1,6 +1,14 @@
 import REFS from "../refs";
 
-export default function cells({ constraints, contraster, colorFill, hc, formatPercentage, valueLabelStyle, textRenderer }) {
+export default function cells({
+  constraints,
+  contraster,
+  colorFill,
+  hc,
+  formatPercentage,
+  valueLabelStyle,
+  textRenderer,
+}) {
   const isLocked = hc.qDimensionInfo[1].qLocked;
 
   return [

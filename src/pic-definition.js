@@ -9,7 +9,7 @@ import stack from "./stack";
 
 import REFS from "./refs";
 import { getAxisLabelStyle, getLegendLabelStyle, getLegendTitleStyle, getValueLabelStyle } from "./styling-utils";
-import getTextRenderer from './text-renderer';
+import getTextRenderer from "./text-renderer";
 
 function tooltipInteraction() {
   return {

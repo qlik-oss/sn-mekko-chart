@@ -12,7 +12,7 @@ export const legendShow = (legendProps, hc, coloring) => {
 };
 
 export function catLegend(componentConfig, opts) {
-  const { key } = componentConfig;
+  const { key, renderer } = componentConfig;
 
   const { scaleKey, scales, coloring, hc, constraints, styleOptions } = opts;
 
@@ -21,6 +21,7 @@ export function catLegend(componentConfig, opts) {
   return {
     type: "legend-cat",
     key: `${key}-cat`,
+    renderer,
     scale: s in scales ? s : scaleKey,
     show: legendShow(opts.legendConfig, hc, coloring),
     layout: {

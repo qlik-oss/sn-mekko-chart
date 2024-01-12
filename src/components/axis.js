@@ -1,8 +1,9 @@
-export default function axis(axisLabelStyle) {
+export default function axis(axisLabelStyle, textRenderer) {
   return [
     {
       key: "y-axis",
       type: "axis",
+      renderer: textRenderer,
       layout: {
         minimumLayoutMode: "WIDTH_MEDIUM",
         dock: "left",
@@ -19,6 +20,7 @@ export default function axis(axisLabelStyle) {
     {
       key: "x-axis",
       type: "axis",
+      renderer: textRenderer,
       layout: {
         minimumLayoutMode: "HEIGHT_MEDIUM",
         dock: "bottom",

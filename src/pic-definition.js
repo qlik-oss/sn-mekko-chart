@@ -9,6 +9,7 @@ import stack from "./stack";
 
 import REFS from "./refs";
 import { getAxisLabelStyle, getLegendLabelStyle, getLegendTitleStyle, getValueLabelStyle } from "./styling-utils";
+import getTextRenderer from "./text-renderer";
 
 function tooltipInteraction() {
   return {
@@ -71,12 +72,15 @@ export default function picDefinition({
     };
   }
 
+  const textRenderer = getTextRenderer(flags);
+
   const colorDatum = picassoColoring.datumProps();
   const colorFill = picassoColoring.color();
 
   const leg = picassoColoring.legend({
     key: "color-legend",
     eventName: "ev",
+    renderer: textRenderer,
     styleOptions: {
       title: getLegendTitleStyle(theme, layout, flags),
       label: getLegendLabelStyle(theme, layout, flags),
@@ -85,6 +89,7 @@ export default function picDefinition({
   const axisLabelStyle = getAxisLabelStyle(theme, layout, flags);
   const valueLabelStyle = getValueLabelStyle(theme, layout, flags);
   const allowTooltip = !constraints.passive;
+
   return {
     strategy: {
       layoutModes: {
@@ -127,7 +132,7 @@ export default function picDefinition({
     palettes: picassoColoring.palettes(),
     components: [
       ...leg.components,
-      ...axis(axisLabelStyle),
+      ...axis(axisLabelStyle, textRenderer),
       ...cells({
         constraints,
         contraster,
@@ -135,6 +140,7 @@ export default function picDefinition({
         hc: layout.qHyperCube,
         formatPercentage,
         valueLabelStyle,
+        textRenderer,
       }),
       ...columns({
         constraints,
@@ -142,6 +148,7 @@ export default function picDefinition({
         hc: layout.qHyperCube,
         formatPercentage,
         valueLabelStyle,
+        textRenderer,
       }),
       ...(allowTooltip ? tooltip(picassoColoring.settings(), translator, formatPercentage) : []),
       ...disclaimer(restricted, translator),

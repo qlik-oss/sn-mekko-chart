@@ -1,7 +1,8 @@
 import REFS from "../refs";
 
-export default function columns({ constraints, style, hc, formatPercentage, valueLabelStyle }) {
+export default function columns({ constraints, style, hc, formatPercentage, valueLabelStyle, textRenderer }) {
   const isLocked = hc.qDimensionInfo[0].qLocked;
+
   return [
     {
       type: "box",
@@ -63,6 +64,7 @@ export default function columns({ constraints, style, hc, formatPercentage, valu
     {
       type: "labels",
       key: "column-labels",
+      renderer: textRenderer,
       dock: "@column-boxes",
       displayOrder: 2,
       brush: {

@@ -74,7 +74,7 @@
     "picasso-plugin-q": "2.2.5",
     "picasso.js": "2.2.5",
     "prettier": "3.1.1",
-    "qlik-chart-modules": "0.61.0",
+    "qlik-chart-modules": "0.59.0",
     "typescript": "5.3.3"
   },
   "peerDependencies": {

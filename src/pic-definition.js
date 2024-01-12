@@ -72,12 +72,15 @@ export default function picDefinition({
     };
   }
 
+  const textRenderer = getTextRenderer(flags);
+
   const colorDatum = picassoColoring.datumProps();
   const colorFill = picassoColoring.color();
 
   const leg = picassoColoring.legend({
     key: "color-legend",
     eventName: "ev",
+    renderer: textRenderer,
     styleOptions: {
       title: getLegendTitleStyle(theme, layout, flags),
       label: getLegendLabelStyle(theme, layout, flags),
@@ -86,7 +89,6 @@ export default function picDefinition({
   const axisLabelStyle = getAxisLabelStyle(theme, layout, flags);
   const valueLabelStyle = getValueLabelStyle(theme, layout, flags);
   const allowTooltip = !constraints.passive;
-  const textRenderer = getTextRenderer(flags);
 
   return {
     strategy: {

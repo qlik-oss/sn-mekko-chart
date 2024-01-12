@@ -153,11 +153,12 @@ export default function coloringFn(resources) {
      * @param {string} [cfg.styleReference='object.legend']
      * @returns {object}
      */
-    legend({ eventName, key, styleOptions } = {}) {
+    legend({ eventName, key, renderer, styleOptions } = {}) {
       return legend(
         {
           eventName,
           key,
+          renderer,
         },
         {
           legendConfig: chartColorModel.getLegendSettings(),

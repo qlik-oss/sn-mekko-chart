@@ -2,7 +2,7 @@
   "module": "esm/index.js",
   "peerDependencies": {
     "@nebula.js/stardust": ">=4.9.0",
-    "picasso-plugin-q": ">=2.2.5",
-    "picasso.js": ">=2.2.5"
+    "picasso-plugin-q": ">=2.2.7",
+    "picasso.js": ">=2.2.7"
   }
 }

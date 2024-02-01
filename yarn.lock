@@ -9124,10 +9124,10 @@ pure-rand@^6.0.0:
   resolved "https://registry.yarnpkg.com/pure-rand/-/pure-rand-6.0.2.tgz#a9c2ddcae9b68d736a8163036f088a2781c8b306"
   integrity sha512-6Yg0ekpKICSjPswYOuC5sku/TSWaRYlA0qsXqJgM/d/4pLPHPuTxK7Nbf7jFKzAeedUhR8C7K9Uv63FBsSo8xQ==
 
-qlik-chart-modules@0.63.0:
-  version "0.63.0"
-  resolved "https://registry.yarnpkg.com/qlik-chart-modules/-/qlik-chart-modules-0.63.0.tgz#5119b76c052a9c9ee80c9954582035874feddaf0"
-  integrity sha512-Gj3oQbmlsoVCU2XR8KgYogW8ZfKTUX59kLJ1PGfd7uHIDM6vBDdIyAcT1azsg77gQH2irY7oKZLO5wx6JZRLug==
+qlik-chart-modules@0.59.0:
+  version "0.59.0"
+  resolved "https://registry.yarnpkg.com/qlik-chart-modules/-/qlik-chart-modules-0.59.0.tgz#2bffe8ebdbef5dc0316907933c1061e2fe1bfac7"
+  integrity sha512-ErnAjpIugAUzXPnRS4l+rxQghmMjd67Q3FeFyWVWT2WCZDMjsOw4a3hSUIN3h5OOwtzSBmw3jxdDqL8DmTMDjw==
 
 qs@6.10.3:
   version "6.10.3"

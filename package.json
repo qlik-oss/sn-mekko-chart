@@ -45,7 +45,8 @@
     ],
     "rules": {
       "no-param-reassign": 0,
-      "no-unused-expressions": 0
+      "no-unused-expressions": 0,
+      "jest/unbound-method": 0
     }
   },
   "devDependencies": {
@@ -75,7 +76,7 @@
     "picasso-plugin-q": "2.2.7",
     "picasso.js": "2.2.7",
     "prettier": "3.2.4",
-    "qlik-chart-modules": "0.63.0",
+    "qlik-chart-modules": "0.59.0",
     "typescript": "5.3.3"
   },
   "peerDependencies": {

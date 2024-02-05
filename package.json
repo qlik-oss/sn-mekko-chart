@@ -29,7 +29,7 @@
     "format": "prettier --write '**'",
     "format:check": "prettier --check '**'",
     "lint": "./tools/generate-all-locale.js && eslint src",
-    "prepare": "husky install",
+    "prepare": "husky",
     "spec": "sy from-jsdoc -c ./spec-configs/props.conf.js",
     "start": "nebula serve --type mekkochart",
     "test:unit": "jest",

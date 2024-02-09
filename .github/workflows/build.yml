@@ -21,3 +21,4 @@ jobs:
     secrets: inherit
     with:
       release: ${{ inputs.release || false}}
+      api_specification_path: api-specifications/properties.json

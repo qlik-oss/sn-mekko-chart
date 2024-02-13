@@ -1,4 +1,5 @@
 .cache/
+.husky/
 .editorconfig
 .eslintignore
 .gitignore

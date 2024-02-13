@@ -34,8 +34,8 @@
     "start": "nebula serve --type mekkochart",
     "test:unit": "jest",
     "validate:locale": "node ./tools/validate-locale-strings.js",
-    "preversion": "yarn build",
-    "version": "yarn spec && git add api-specifications"
+    "preversion": "pnpm build",
+    "version": "pnpm spec && git add api-specifications"
   },
   "prettier": "@qlik/prettier-config",
   "eslintConfig": {

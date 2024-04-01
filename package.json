@@ -50,20 +50,20 @@
     }
   },
   "devDependencies": {
-    "@babel/cli": "7.23.9",
-    "@babel/core": "7.24.0",
-    "@babel/parser": "7.24.0",
-    "@babel/preset-env": "7.24.0",
-    "@babel/traverse": "7.24.0",
-    "@commitlint/cli": "19.0.3",
-    "@commitlint/config-conventional": "19.0.3",
-    "@nebula.js/cli": "4.12.0",
-    "@nebula.js/cli-build": "4.12.0",
-    "@nebula.js/cli-sense": "4.12.0",
-    "@nebula.js/cli-serve": "4.12.0",
-    "@nebula.js/stardust": "4.12.0",
-    "@qlik/eslint-config": "0.7.11",
-    "@qlik/prettier-config": "0.4.10",
+    "@babel/cli": "7.24.1",
+    "@babel/core": "7.24.3",
+    "@babel/parser": "7.24.1",
+    "@babel/preset-env": "7.24.3",
+    "@babel/traverse": "7.24.1",
+    "@commitlint/cli": "19.2.1",
+    "@commitlint/config-conventional": "19.1.0",
+    "@nebula.js/cli": "4.14.0",
+    "@nebula.js/cli-build": "4.14.0",
+    "@nebula.js/cli-sense": "4.14.0",
+    "@nebula.js/cli-serve": "4.14.0",
+    "@nebula.js/stardust": "4.14.0",
+    "@qlik/eslint-config": "0.7.15",
+    "@qlik/prettier-config": "0.4.11",
     "@scriptappy/cli": "0.10.0",
     "@scriptappy/from-jsdoc": "0.19.0",
     "babel-plugin-istanbul": "6.1.1",
@@ -76,11 +76,11 @@
     "picasso-plugin-q": "2.2.7",
     "picasso.js": "2.2.7",
     "prettier": "3.2.5",
-    "qlik-chart-modules": "0.67.0",
-    "typescript": "5.3.3"
+    "qlik-chart-modules": "0.69.0",
+    "typescript": "5.4.3"
   },
   "peerDependencies": {
-    "@nebula.js/stardust": ">=4.12.0"
+    "@nebula.js/stardust": ">=4.14.0"
   },
   "publishConfig": {
     "access": "public"

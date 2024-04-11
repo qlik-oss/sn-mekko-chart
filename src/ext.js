@@ -93,9 +93,6 @@ export default function ext(env) {
     }
     return [];
   };
-  const stylingPanelEnabled = flags.isEnabled("SENSECLIENT_IM_2022_STYLINGPANEL_MEKKOCHART");
-  const bkgOptionsEnabled = flags.isEnabled("SENSECLIENT_IM_2022_MEKKO_BG");
-
   const chartId = "object.mekkochart";
   const fontResolver = createFontResolver({
     theme: env.sense?.theme,
@@ -145,18 +142,12 @@ export default function ext(env) {
         settings: {
           uses: "settings",
           items: {
-            presentation: stylingPanelEnabled && {
+            presentation: {
               type: "items",
               translation: "properties.presentation",
               grouped: true,
               items: {
-                styleEditor: getStylingPanelDefinition(
-                  bkgOptionsEnabled,
-                  env.flags,
-                  env.sense.theme,
-                  fontResolver,
-                  chartId,
-                ),
+                styleEditor: getStylingPanelDefinition(env.flags, env.sense.theme, fontResolver, chartId),
               },
             },
             colorsAndLegend: {

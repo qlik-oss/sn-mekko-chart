@@ -39,8 +39,8 @@ export const labelStylingDefinition = (path, fontResolver, chartId, theme) => {
   };
 };
 
-export const getAxisLabelStyle = (theme, layout, flags) => {
-  const axis = flags.isEnabled("CLIENT_IM_2022") ? (layout.components || []).find((c) => c.key === "axis") : {};
+export const getAxisLabelStyle = (theme, layout) => {
+  const axis = (layout.components || []).find((c) => c.key === "axis");
   return axis && axis.axis && axis.axis.label && axis.axis.label.name
     ? {
         fontSize: axis.axis.label.name.fontSize,
@@ -52,8 +52,8 @@ export const getAxisLabelStyle = (theme, layout, flags) => {
     : {};
 };
 
-export const getValueLabelStyle = (theme, layout, flags) => {
-  const valueLabel = flags.isEnabled("CLIENT_IM_2022") ? (layout.components || []).find((c) => c.key === "value") : {};
+export const getValueLabelStyle = (theme, layout) => {
+  const valueLabel = (layout.components || []).find((c) => c.key === "value");
   return valueLabel && valueLabel.label && valueLabel.label.value
     ? {
         fontFamily: valueLabel.label.value.fontFamily,

@@ -60,7 +60,7 @@ describe("Styling options", () => {
       },
     };
     layout.components = [component];
-    const style = getAxisLabelStyle(theme, layout, flags);
+    const style = getAxisLabelStyle(theme, layout);
     expect(style.fontFamily).toEqual("aLabelFont, sans-serif");
     expect(style.fontSize).toEqual("2000");
     expect(style.fill).toEqual("green");
@@ -78,7 +78,7 @@ describe("Styling options", () => {
       },
     };
     layout.components = [component];
-    const style = getValueLabelStyle(theme, layout, flags);
+    const style = getValueLabelStyle(theme, layout);
     expect(style.fontFamily).toEqual("vLabelFont, sans-serif");
     expect(style.fontSize).toEqual(3000);
     expect(style.fill).toEqual("blue");

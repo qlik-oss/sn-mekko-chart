@@ -86,8 +86,8 @@ export default function picDefinition({
       label: getLegendLabelStyle(theme, layout, flags),
     },
   });
-  const axisLabelStyle = getAxisLabelStyle(theme, layout, flags);
-  const valueLabelStyle = getValueLabelStyle(theme, layout, flags);
+  const axisLabelStyle = getAxisLabelStyle(theme, layout);
+  const valueLabelStyle = getValueLabelStyle(theme, layout);
   const allowTooltip = !constraints.passive;
 
   return {

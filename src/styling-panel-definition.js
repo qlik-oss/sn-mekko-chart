@@ -3,33 +3,31 @@ import { labelStylingDefinition } from "./styling-utils";
 const getStylingItems = (flags, theme, fontResolver, chartId) => {
   const items = {};
 
-  if (flags.isEnabled("CLIENT_IM_2022")) {
-    items.axisLabelSection = {
-      translation: "properties.axis.label",
-      component: "panel-section",
-      items: {
-        labelSection: {
-          component: "items",
-          ref: "components",
-          key: "axis",
-          items: labelStylingDefinition("axis.label.name", fontResolver, chartId, theme),
-        },
+  items.axisLabelSection = {
+    translation: "properties.axis.label",
+    component: "panel-section",
+    items: {
+      labelSection: {
+        component: "items",
+        ref: "components",
+        key: "axis",
+        items: labelStylingDefinition("axis.label.name", fontResolver, chartId, theme),
       },
-    };
+    },
+  };
 
-    items.valueLabelSection = {
-      translation: "properties.value.label",
-      component: "panel-section",
-      items: {
-        labelSection: {
-          component: "items",
-          ref: "components",
-          key: "value",
-          items: labelStylingDefinition("label.value", fontResolver, chartId, theme),
-        },
+  items.valueLabelSection = {
+    translation: "properties.value.label",
+    component: "panel-section",
+    items: {
+      labelSection: {
+        component: "items",
+        ref: "components",
+        key: "value",
+        items: labelStylingDefinition("label.value", fontResolver, chartId, theme),
       },
-    };
-  }
+    },
+  };
 
   if (flags.isEnabled("CLIENT_IM_3051")) {
     items.legendTitleSection = {
@@ -63,14 +61,14 @@ const getStylingItems = (flags, theme, fontResolver, chartId) => {
   return Object.keys(items).length > 0 ? items : undefined;
 };
 
-const getStylingPanelDefinition = (bkgOptionsEnabled, flags, theme, fontResolver, chartId) => ({
+const getStylingPanelDefinition = (flags, theme, fontResolver, chartId) => ({
   component: "styling-panel",
   chartTitle: "Object.MekkoChart",
   translation: "LayerStyleEditor.component.styling",
   subtitle: "LayerStyleEditor.component.styling",
   ref: "components",
   useGeneral: true,
-  useBackground: bkgOptionsEnabled,
+  useBackground: true,
   items: getStylingItems(flags, theme, fontResolver, chartId),
 });
 
